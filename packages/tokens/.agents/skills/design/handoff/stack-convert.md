@@ -20,9 +20,9 @@ Close the gap where designers prototype with AI tools and engineers rebuild ever
 
 The conversion honours a fidelity contract, stated to the engineer before anything runs:
 
-* **Preserved:** layout, hierarchy, component states, content, interaction intent and observed responsive behaviour.
-* **Deliberately replaced:** arbitrary colours and sizes become the nearest semantic token, with every substitution recorded in a mapping table; custom widgets become the matching DS component, with a swap note for each.
-* **Never done:** guessing. A value or widget that cannot be mapped with confidence is flagged in the report with what is needed to resolve it. No raw hex reaches the output, no token is invented, and no component is fabricated to look like a DS one.
+- **Preserved:** layout, hierarchy, component states, content, interaction intent and observed responsive behaviour.
+- **Deliberately replaced:** arbitrary colours and sizes become the nearest semantic token, with every substitution recorded in a mapping table; custom widgets become the matching DS component, with a swap note for each.
+- **Never done:** guessing. A value or widget that cannot be mapped with confidence is flagged in the report with what is needed to resolve it. No raw hex reaches the output, no token is invented, and no component is fabricated to look like a DS one.
 
 This skill **writes code**, so it is `requires-approval`. It shows the plan (files to be written plus both mapping tables) and waits for a go before touching anything.
 
@@ -30,18 +30,18 @@ This skill **writes code**, so it is `requires-approval`. It shows the plan (fil
 
 1. The DNA TL;DR is loaded (`foundation/design-dna`): voice rules and the semantic-tokens-only law.
 2. A token source is available: the token MCP tools (`token_lookup`, `search_tokens`, `token_validate`, `contrast_check`) or the token JSON under `packages/tokens/`. Without token truth this skill cannot map; it must stop, not guess.
-3. A component inventory for the target stack is readable: the exports of `@ds/components-react`, or the equivalent inventory for, `theme-ios`, `theme-css` / `theme-scss`.
+3. A component inventory for the target stack is readable: the exports of `@ds/ui`, or the equivalent inventory for, `theme-ios`, `theme-css` / `theme-scss`.
 4. An input prototype is present (code, image or Figma access).
 5. Vision is available to the running agent when the input is an image. If not, stop and say so.
 
 ## Inputs
 
-* `source`: the prototype. A path to code or a folder, an image, or a Figma URL or node. Required.
-* `target_stack`: `react` | `` | `ios` | `` | `css`. Required.
-* `feature`: kebab-case slug. Artefacts persist to `.design/<feature>/`. Derived from the source name if absent, confirmed with the engineer.
-* `mode`: `light` | `dark` | `both`. Default `both` where the stack supports it.
-* `out_dir`: where generated code goes. Default: the conventional location in the target package, proposed in the plan; the engineer can redirect it.
-* `dry_run`: when true, produce the inventories, both mapping tables and the plan, but write nothing. Default false; the approval gate applies either way.
+- `source`: the prototype. A path to code or a folder, an image, or a Figma URL or node. Required.
+- `target_stack`: `react` | ``| `ios` |`` | `css`. Required.
+- `feature`: kebab-case slug. Artefacts persist to `.design/<feature>/`. Derived from the source name if absent, confirmed with the engineer.
+- `mode`: `light` | `dark` | `both`. Default `both` where the stack supports it.
+- `out_dir`: where generated code goes. Default: the conventional location in the target package, proposed in the plan; the engineer can redirect it.
+- `dry_run`: when true, produce the inventories, both mapping tables and the plan, but write nothing. Default false; the approval gate applies either way.
 
 ## Procedure
 
@@ -49,16 +49,16 @@ This skill **writes code**, so it is `requires-approval`. It shows the plan (fil
 
 Establish what kind of input this is and read it accordingly. Record a provenance for every value you will later map: `measured` (read from code), `bound` (read from a Figma variable binding), or `estimated` (read from pixels).
 
-* **Code** (v0, Lovable, plain HTML, JSX, anything similar): parse the markup and the styles. Collect values from inline styles, stylesheets and utility classes; translate utility-class scales (for example Tailwind) into concrete values before mapping. Provenance: `measured`.
-* **Image**: read the screen visually. All derived values are `estimated`; say so up front and mark them in every table.
-* **Figma**: when the desktop MCP is live (`127.0.0.1:3845`, file as active tab), pull the design context and variable definitions; variable bindings are ground truth, provenance `bound`. When it is not live, fall back to a screenshot of the frame and treat it as an image input.
+- **Code** (v0, Lovable, plain HTML, JSX, anything similar): parse the markup and the styles. Collect values from inline styles, stylesheets and utility classes; translate utility-class scales (for example Tailwind) into concrete values before mapping. Provenance: `measured`.
+- **Image**: read the screen visually. All derived values are `estimated`; say so up front and mark them in every table.
+- **Figma**: when the desktop MCP is live (`127.0.0.1:3845`, file as active tab), pull the design context and variable definitions; variable bindings are ground truth, provenance `bound`. When it is not live, fall back to a screenshot of the frame and treat it as an image input.
 
 ### Step 2: Inventory everything
 
 Build two complete inventories. Nothing is skipped; these are the checklists the rest of the run works through, and the totals in the final report must reconcile against them.
 
-* **Value inventory**: every colour, font family, size and weight, line height, spacing value, radius, border, shadow, breakpoint, opacity and motion duration, each with its location in the source and its provenance.
-* **Widget inventory**: every distinct interactive or structural widget (buttons, links, inputs, cards, navigation, tabs, accordions, modals, badges, tables, media blocks and so on), each with the states the prototype shows or implies.
+- **Value inventory**: every colour, font family, size and weight, line height, spacing value, radius, border, shadow, breakpoint, opacity and motion duration, each with its location in the source and its provenance.
+- **Widget inventory**: every distinct interactive or structural widget (buttons, links, inputs, cards, navigation, tabs, accordions, modals, badges, tables, media blocks and so on), each with the states the prototype shows or implies.
 
 ### Step 3: Map values to semantic tokens
 
@@ -82,11 +82,11 @@ For each entry in the widget inventory:
 
 Assemble the output using the maps from Steps 3 and 4:
 
-* `react`: components from `@ds/components-react`, tokens through the theme layer, states wired, and a story when the output is a component.
-* ``: blocks, patterns or templates in the conventions.
-* `ios`: native code consuming the `theme-ios` semantic token names.
-* ``: native code consuming the semantic token names.
-* `css`: plain markup plus `theme-css` (or `theme-scss`) semantic variables, no framework.
+- `react`: components from `@ds/ui`, tokens through the theme layer, states wired, and a story when the output is a component.
+- ``: blocks, patterns or templates in the conventions.
+- `ios`: native code consuming the `theme-ios` semantic token names.
+- ``: native code consuming the semantic token names.
+- `css`: plain markup plus `theme-css` (or `theme-scss`) semantic variables, no framework.
 
 Then present the plan: the file list with destinations, the value mapping table, the widget table, and the flag count. **If `dry_run`, stop here.** Otherwise request approval, and write only after the go.
 
@@ -126,20 +126,20 @@ Flagged, not guessed: <n> items, listed below.
 
 ## Value mappings
 
-| Original | Where | Token | Match | Note |
-|---|---|---|---|---|
-| #1D7A8C | hero background | <semantic token path> | nearest | slightly cooler; AA holds |
+| Original | Where           | Token                 | Match   | Note                      |
+| -------- | --------------- | --------------------- | ------- | ------------------------- |
+| #1D7A8C  | hero background | <semantic token path> | nearest | slightly cooler; AA holds |
 
 ## Widget swaps
 
-| Prototype widget | Component used | What changes |
-|---|---|---|
+| Prototype widget   | Component used   | What changes          |
+| ------------------ | ---------------- | --------------------- |
 | custom pill button | Button (rounded) | gradient fill dropped |
 
 ## Flagged unknowns
 
 | Item | Where | Why flagged | To resolve |
-|---|---|---|---|
+| ---- | ----- | ----------- | ---------- |
 
 ## Verification
 
@@ -160,22 +160,27 @@ Followed by the machine-readable summary:
   "feature": "<slug>",
   "values": { "total": 0, "exact": 0, "nearest": 0, "flagged": 0 },
   "widgets": { "total": 0, "matched": 0, "swapped": 0, "gaps": 0 },
-  "verification": { "raw_values": 0, "legacy_names": 0, "unresolved_imports": 0, "reconciled": true },
+  "verification": {
+    "raw_values": 0,
+    "legacy_names": 0,
+    "unresolved_imports": 0,
+    "reconciled": true
+  },
   "artifacts": [".design/<feature>/CONVERSION.md", "<run folder>/DEV-SPEC.html"]
 }
 ```
 
 ## Error Handling
 
-* **No token source.** Stop. Conversion without token truth would be guessing, which this skill exists to prevent. Say what to start (the token MCP server or a path to the token JSON).
-* **Figma URL given but the desktop MCP is not live.** Fall back to a screenshot of the frame, mark every derived value `estimated`, and note in the report that reconnecting Figma would upgrade the mapping.
-* **Minified or unreadable prototype code.** Extract what parses; everything unreadable becomes flagged. Suggest asking the designer for the tool's source export rather than the built bundle.
-* **Target package not present in the checkout.** Generate into `.design/<feature>/build/`, state the intended destination in the report, and let the engineer move it.
-* **Prototype too large for one pass** (a whole multi-page site). Propose a split by page or feature, agree the first slice, and convert that. One honest slice beats a sprawling half-mapped whole.
-* **Approval declined.** Write nothing. Present both mapping tables in the conversation so the work of the analysis is not lost, and stop.
-* **A single tool fails mid-run** (for example `contrast_check` unavailable). Continue, demote affected mappings from `nearest` to `flagged`, and record the gap in the report.
+- **No token source.** Stop. Conversion without token truth would be guessing, which this skill exists to prevent. Say what to start (the token MCP server or a path to the token JSON).
+- **Figma URL given but the desktop MCP is not live.** Fall back to a screenshot of the frame, mark every derived value `estimated`, and note in the report that reconnecting Figma would upgrade the mapping.
+- **Minified or unreadable prototype code.** Extract what parses; everything unreadable becomes flagged. Suggest asking the designer for the tool's source export rather than the built bundle.
+- **Target package not present in the checkout.** Generate into `.design/<feature>/build/`, state the intended destination in the report, and let the engineer move it.
+- **Prototype too large for one pass** (a whole multi-page site). Propose a split by page or feature, agree the first slice, and convert that. One honest slice beats a sprawling half-mapped whole.
+- **Approval declined.** Write nothing. Present both mapping tables in the conversation so the work of the analysis is not lost, and stop.
+- **A single tool fails mid-run** (for example `contrast_check` unavailable). Continue, demote affected mappings from `nearest` to `flagged`, and record the gap in the report.
 
 ## Composition
 
-* `compose_after`: `/engineer-start` (the conversion path routes here); `handoff/frame-to-spec` or `agents/handoff-agent` when a spec or packet already exists, because a packet sharpens every mapping decision.
-* `compose_before`: `handoff/dev-spec` (the quick-view page written in the same pass as the report); `ui/visual-vs-built` to compare the generated output against the source design; `ui/token-mapping-audit` for an independent audit of the written code; `agents/build-agent` when a flagged widget gap is approved as a genuinely new component; `handoff/code-connect-stub` once Code Connect is wired (it is not yet; record it as pending, do not pretend it ran).
+- `compose_after`: `/engineer-start` (the conversion path routes here); `handoff/frame-to-spec` or `agents/handoff-agent` when a spec or packet already exists, because a packet sharpens every mapping decision.
+- `compose_before`: `handoff/dev-spec` (the quick-view page written in the same pass as the report); `ui/visual-vs-built` to compare the generated output against the source design; `ui/token-mapping-audit` for an independent audit of the written code; `agents/build-agent` when a flagged widget gap is approved as a genuinely new component; `handoff/code-connect-stub` once Code Connect is wired (it is not yet; record it as pending, do not pretend it ran).

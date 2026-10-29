@@ -490,7 +490,7 @@
     },
     {
       "name": "story-writing",
-      "description": "Write Storybook stories using modern CSF3 format. Generates type-safe story files from component specs or designer descriptions.",
+      "description": "Write CSF3 Storybook stories for @ds/ui components under Core/<Group>, one story per state, autodocs, brand-neutral copy. Type-safe story files from a component's props or a designer's description.",
       "category": "react",
       "path": "storybook/story-writing.md",
       "agents": ["Architect", "Code", "Testing"],
@@ -714,7 +714,7 @@
     },
     {
       "name": "component-scaffold",
-      "description": "Scaffold a new Design System React component from a completed handoff packet. Creates the component file, CSS, story, docs MDX and changelog stub. Never invents, never overwrites, everything traces to upstream SPEC.md and STATE_MATRIX.md.",
+      "description": "Scaffold a new @ds/ui component from a handoff packet or a short brief: the component (cva + Tailwind on the brand theme tokens), its export, and a Core Storybook story per state. Never invents, never overwrites, never adds dependencies. Requires-approval.",
       "category": "handoff",
       "path": "design/handoff/component-scaffold.md",
       "agents": ["Design Engineer", "Code", "Architect"],
@@ -810,7 +810,7 @@
     },
     {
       "name": "build-agent",
-      "description": "The only design agent that writes code. Takes an approved handoff packet and builds the React component end-to-end: scaffold, Code Connect stub, visual verification against Storybook. Requires approval at every write step; dry-run by default.",
+      "description": "The only agent that writes code. Takes an approved handoff packet or a brief and builds a @ds/ui component end-to-end: scaffold, export, Core story, verification across every brand and both colour modes, optional Code Connect stub. Requires-approval at every write step. Dry-run by default.",
       "category": "workflow",
       "path": "design/agents/build-agent.md",
       "agents": ["Designer", "Design Engineer"],

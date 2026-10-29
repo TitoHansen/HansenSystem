@@ -19,8 +19,8 @@ Convert Figma component designs into fully-documented Storybook stories. This is
 
 - Figma design exists with the component to implement
 - Figma MCP server is available (or designer provides screenshots/specs)
-- Component source will be created in `packages/components-react/src/`
-- Stories will be created in `stories/components/`
+- Component source will be created in `packages/ui/src/components/`
+- Stories will be created in `stories/ui/`
 
 ## Mandatory Live Preview Rule
 
@@ -135,7 +135,7 @@ Use the screenshot to extract visual specifications manually:
 | -------------- | --------------- | --------------------------------------------- | ----------------------------------------- |
 | Background     | `#1D1D1B`       | `interactive.primary.fill.default`            | `var(--interactive-primary-fill-default)` |
 | Text colour    | `#FFFFFF`       | `text.inverse`                                | `var(--text-inverse)`                     |
-| Font family    | "Inter"  | `brand.heading.fluid.bold.large` (fontFamily) | —                                         |
+| Font family    | "Inter"         | `brand.heading.fluid.bold.large` (fontFamily) | —                                         |
 | Font size      | 16px            | `fontSize040`                                 | `var(--font-size-040)`                    |
 | Padding        | 16px 24px       | `spacing.static.400` / `spacing.static.500`   | `var(--spacing-static-400)`               |
 | Border radius  | 4px             | —                                             | `4px`                                     |
@@ -146,7 +146,7 @@ Use the screenshot to extract visual specifications manually:
 ### Step 3: Build React Component
 
 ```jsx
-// packages/components-react/src/ComponentName/ComponentName.jsx
+// packages/ui/src/components/component-name.tsx
 import React from 'react';
 import './ComponentName.css';
 
@@ -180,7 +180,7 @@ export const ComponentName = ({
 ```
 
 ```css
-/* packages/components-react/src/ComponentName/ComponentName.css */
+/* packages/ui/src/components/component-name.tsx  (Tailwind classes, no separate CSS file) */
 .component-name {
   /* Use CSS custom properties from design tokens */
   font-family: var(--font-family-brand-heading);
@@ -211,12 +211,12 @@ export const ComponentName = ({
 ### Step 4: Generate Storybook Stories
 
 ```jsx
-// stories/components/ComponentName.stories.jsx
+// stories/ui/ComponentName.stories.jsx
 import { fn } from 'storybook/test';
-import { ComponentName } from '@ds/components-react';
+import { ComponentName } from '@ds/ui/components/component-name';
 
 export default {
-  title: 'Components/ComponentName',
+  title: 'Core/Content/ComponentName',
   component: ComponentName,
   parameters: {
     layout: 'centered',

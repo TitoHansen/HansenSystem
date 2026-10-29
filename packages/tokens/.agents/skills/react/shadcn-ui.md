@@ -1,6 +1,6 @@
 ---
 name: shadcn-ui
-description: Build screens and features with the @ds/ui component library (the full shadcn/ui set) themed by the design-system tokens. Covers imports, theming contract, composition patterns, and when to use @ds/ui versus components-react.
+description: Build screens and features with the @ds/ui component library (the full shadcn/ui set) themed by the design-system tokens. Covers imports, the theming contract (which Tailwind classes resolve to which brand variables), status and soft colours, composition patterns, and the rules every new component follows.
 license: MIT
 metadata:
   category: react
@@ -13,7 +13,7 @@ metadata:
 
 ## Purpose
 
-Generate screens with `packages/ui` (`@ds/ui`): the complete shadcn/ui new-york v4 set, 61 components, themed live by the token engine. This is the preferred library for new product surfaces. `@ds/components-react` remains for the legacy CSS-variable components.
+Generate screens with `packages/ui` (`@ds/ui`): the complete shadcn/ui new-york v4 set plus the system's own additions (Stepper), 62 components, themed live by the token engine. It is the only component library in the system: new components are added to it (see `handoff/component-scaffold`), never alongside it.
 
 ## Preconditions
 
@@ -25,11 +25,37 @@ Generate screens with `packages/ui` (`@ds/ui`): the complete shadcn/ui new-york 
 
 Components consume CSS variables only: `--background, --foreground, --card, --popover, --primary, --secondary, --muted, --accent, --destructive, --border, --input, --ring, --chart-1..5, --sidebar-*, --radius, --spacing, --font-sans, --font-heading, --font-weight-heading, --font-weight-body, --leading, --tracking, --shadow-*, --surface-opacity, --surface-blur, --surface-tint, --surface-highlight, --page-style`. Surface material (flat/elevated/glass/soft/outline) is applied to shadcn surfaces via `data-slot` rules in `/ui/styles/shadcn.css`; for the glass material give pages a gradient or image background so the blur reads, and rely on the controller contrast audit which composites translucent surfaces. Light values live on `:root`, dark on `.dark`. Toggling dark mode is adding the `dark` class to `<html>`. Never hardcode a colour, radius or font in generated screens; if a value seems missing, it belongs in the token engine, not inline.
 
+## Status and soft colours
+
+Beyond the shadcn set, the theme map exposes the engine's status colours and their solved soft pairs as Tailwind classes:
+
+| Need                                                                | Classes                                                                                            | Resolves to                                                  |
+| ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| Informational fill + ink                                            | `bg-info text-info-foreground`                                                                     | `--info`, `--info-foreground`                                |
+| Success / warning / destructive fill                                | `bg-success`, `bg-warning`, `bg-destructive` + `-foreground`                                       | the matching variables                                       |
+| Tinted surface with AA-safe ink (alerts, callouts, badges on cards) | `bg-info-soft text-info-soft-foreground` (same for `success`, `warning`, `destructive`, `primary`) | `--*-soft`, `--*-soft-foreground`, both solved by the engine |
+| Status border                                                       | `border-info/40` etc.                                                                              | `--info` at 40 %                                             |
+
+Use these instead of inventing a tint with `/10` opacity on a status colour: the opacity tint is not contrast-checked, the soft pair is.
+
 ## Usage
 
 ```tsx
-import { Button, Card, CardHeader, CardTitle, CardContent, Input, Label,
-         Dialog, DialogTrigger, DialogContent, Tabs, TabsList, TabsTrigger } from "@ds/ui";
+import {
+  Button,
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  Input,
+  Label,
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  Tabs,
+  TabsList,
+  TabsTrigger
+} from '@ds/ui';
 ```
 
 Tailwind utilities map to tokens: `bg-background text-foreground border-border rounded-lg`, `bg-primary text-primary-foreground`, `text-muted-foreground`, `ring-ring`. Radius utilities (`rounded-sm..2xl`) derive from `--radius`, so the Controller's radius slider reshapes every component.
