@@ -1,4 +1,7 @@
 {
   "active": "prism",
-  "brands": ["ipe-invest", "prism"]
+  "brands": [
+    "ipe-invest",
+    "prism"
+  ]
 }

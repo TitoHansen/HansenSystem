@@ -6,7 +6,13 @@
   "success": "#31a46f",
   "warning": "#ffa300",
   "error": "#e54b4f",
-  "charts": ["#f9b138", "#2d62ef", "#a4a4a4", "#e4e4e4", "#747474"],
+  "charts": [
+    "#f9b138",
+    "#2d62ef",
+    "#a4a4a4",
+    "#e4e4e4",
+    "#747474"
+  ],
   "headingFont": "Geist",
   "bodyFont": "Geist",
   "typeScale": 1.4,

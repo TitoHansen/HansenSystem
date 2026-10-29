@@ -9,3 +9,9 @@ packages/*/dist
 packages/*/node_modules
 packages/icons/src/index.js
 .git
+# machine-written by the token engine / brand builder (JSON.stringify, 2 spaces)
+packages/tokens/src/tokens.json
+packages/tokens/data/resolved-hexes.json
+packages/output/tokens-reconciled.json
+tools/controller/brand.json
+brands/index.json
