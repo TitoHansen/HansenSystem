@@ -1,7 +1,7 @@
 {
   "codeConnect": {
     "$comment": "NEEDS DESIGN-TEAM VERIFICATION: documentUrlSubstitutions and importPaths/paths below come from the Figma Code Connect starter (file YOUR-FIGMA-FILE-KEY, SDS components like Accordion/Avatar that DS does not ship). DS component contracts in packages/tokens/docs/components/ reference file YOUR-FIGMA-FILE-KEY. No .figma.tsx files exist yet; replace substitutions with DS nodes when Code Connect is wired up.",
-    "include": ["packages/components-react/src/**/*"],
+    "include": ["packages/ui/src/**/*"],
     "parser": "react",
     "importPaths": {
       "ui/compositions/**/*": "compositions",
@@ -11,8 +11,8 @@
       "ui/primitives/**/*": "primitives"
     },
     "paths": {
-      "compositions": ["packages/components-react/src/ui/compositions"],
-      "hooks": ["packages/components-react/src/ui/hooks"],
+      "compositions": ["packages/ui/src/blocks"],
+      "hooks": ["packages/ui/src/hooks"],
       "icons": ["packages/components-react/src/ui/icons"],
       "images": ["packages/components-react/src/ui/images"],
       "layout": ["packages/components-react/src/ui/layout"],

@@ -11,12 +11,45 @@
 
 const ROUTES = {
   prototype: {
-    keywords: ['prototype', 'mock', 'mockup', 'quick', 'first pass', 'explore', 'try ', 'idea', 'sketch', 'rough'],
-    sequence: ['design/foundation/design-dna', 'design/agents/prototyping-agent'],
+    strong: ['prototype', 'mock', 'mockup', 'rough', 'quick'],
+    keywords: [
+      'prototype',
+      'mock',
+      'mockup',
+      'quick',
+      'first pass',
+      'explore',
+      'try ',
+      'idea',
+      'sketch',
+      'rough'
+    ],
+    sequence: [
+      'design/foundation/design-dna',
+      'design/agents/prototyping-agent'
+    ],
     note: 'Early exploration. The prototyping-agent loads the DNA and reaches for token and state skills as needed.'
   },
   'ui-craft': {
-    keywords: ['critique', 'check', 'review', 'is this', 'tokens', 'spacing', 'contrast', 'accessibility', 'a11y', 'states', 'audit', 'fix', 'polish', 'improve', 'frame', 'score'],
+    strong: ['critique', 'check', 'review', 'audit', 'score'],
+    keywords: [
+      'critique',
+      'check',
+      'review',
+      'is this',
+      'tokens',
+      'spacing',
+      'contrast',
+      'accessibility',
+      'a11y',
+      'states',
+      'audit',
+      'fix',
+      'polish',
+      'improve',
+      'frame',
+      'score'
+    ],
     sequence: [
       'design/foundation/design-dna',
       'design/ui/design-critique',
@@ -27,7 +60,25 @@ const ROUTES = {
     note: 'Scope to what the request asks for. The full battery is design/agents/critique-agent.'
   },
   'new-experience': {
-    keywords: ['new ', 'design a', 'flow', 'journey', 'create', 'experience', 'page type', 'onboarding', 'paywall', 'live blog', 'live-blog', 'live-updating', 'feature', "don't have", 'do not have'],
+    strong: ['design a', 'new ', 'create'],
+    keywords: [
+      'new ',
+      'design a',
+      'flow',
+      'journey',
+      'create',
+      'experience',
+      'page type',
+      'onboarding',
+      'checkout',
+      'settings',
+      'dashboard',
+      'wizard',
+      'multi-step',
+      'feature',
+      "don't have",
+      'do not have'
+    ],
     sequence: [
       'design/foundation/design-dna',
       'design/ux/experience-principles',
@@ -39,12 +90,41 @@ const ROUTES = {
     note: 'flow-design grounds in Mobbin and the corpus and writes .design/<feature>/FLOW.md.'
   },
   handoff: {
-    keywords: ['handoff', 'hand off', 'hand-off', 'spec', 'ready for engineering', 'engineering', 'packet', 'ship it', 'developer'],
+    strong: [
+      'handoff',
+      'hand off',
+      'hand-off',
+      'packet',
+      'ready for engineering'
+    ],
+    keywords: [
+      'handoff',
+      'hand off',
+      'hand-off',
+      'spec',
+      'ready for engineering',
+      'engineering',
+      'packet',
+      'ship it',
+      'developer'
+    ],
     sequence: ['design/foundation/design-dna', 'design/handoff/handoff-flow'],
     note: 'Ends in .design/<feature>/PACKET.md. Use design/agents/handoff-agent to run it end to end.'
   },
   'corpus-distill': {
-    keywords: ['screenshot', 'screenshots', 'corpus', 'learn how', 'learn from', 'distil', 'distill', 'drop these', 'these images', 'these screens'],
+    strong: ['screenshot', 'learn from', 'distil', 'distill', 'corpus'],
+    keywords: [
+      'screenshot',
+      'screenshots',
+      'corpus',
+      'learn how',
+      'learn from',
+      'distil',
+      'distill',
+      'drop these',
+      'these images',
+      'these screens'
+    ],
     sequence: ['design/corpus/distill-corpus'],
     note: 'Drop images in design-corpus/raw/inbox/ first; distill-corpus classifies, files and distils them.'
   }
@@ -60,7 +140,8 @@ export function designRoute({ request = '' } = {}) {
     return {
       error: 'empty request',
       routes: Object.keys(ROUTES),
-      guidance: 'Describe the design task in a sentence; the router classifies it into one of five routes.'
+      guidance:
+        'Describe the design task in a sentence; the router classifies it into one of five routes.'
     };
   }
 
@@ -69,8 +150,16 @@ export function designRoute({ request = '' } = {}) {
   for (const [route, def] of Object.entries(ROUTES)) {
     let score = 0;
     const matched = [];
-    for (const kw of def.keywords) {
+    // Explicit verbs outrank topic words: "hand off the onboarding flow" is a
+    // handoff, however many new-experience nouns it carries.
+    for (const kw of def.strong || []) {
       if (q.includes(kw)) {
+        score += 3;
+        matched.push(kw.trim());
+      }
+    }
+    for (const kw of def.keywords) {
+      if (q.includes(kw) && !(def.strong || []).includes(kw)) {
         score += 1;
         matched.push(kw.trim());
       }
@@ -89,13 +178,25 @@ export function designRoute({ request = '' } = {}) {
 
   return {
     route,
-    confidence: topScore === 0 ? 'none' : ambiguous ? 'low' : topScore >= 3 ? 'high' : 'medium',
+    confidence:
+      topScore === 0
+        ? 'none'
+        : ambiguous
+          ? 'low'
+          : topScore >= 4
+            ? 'high'
+            : 'medium',
     ambiguous,
     scores,
     matched_keywords: hits,
     sequence: route ? ROUTES[route].sequence : [],
-    note: route ? ROUTES[route].note : 'No clear signal. The design-router skill should ask one clarifying question.',
-    all_routes: Object.fromEntries(Object.entries(ROUTES).map(([r, d]) => [r, d.sequence])),
-    reminder: 'Heuristic only. design/design-router.md does the context-aware routing and loads the DNA first.'
+    note: route
+      ? ROUTES[route].note
+      : 'No clear signal. The design-router skill should ask one clarifying question.',
+    all_routes: Object.fromEntries(
+      Object.entries(ROUTES).map(([r, d]) => [r, d.sequence])
+    ),
+    reminder:
+      'Heuristic only. design/design-router.md does the context-aware routing and loads the DNA first.'
   };
 }

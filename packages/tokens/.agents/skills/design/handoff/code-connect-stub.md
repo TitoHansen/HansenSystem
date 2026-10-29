@@ -23,27 +23,27 @@ The skill is `requires-approval` because it writes to the source tree.
 
 ## Preconditions
 
-1. The component exists at `packages/components-react/src/<ComponentName>/<ComponentName>.tsx`. If not, run `handoff/component-scaffold.md` first.
+1. The component exists at `packages/ui/src/components/<kebab-name>.tsx`. If not, run `handoff/component-scaffold.md` first.
 2. `figma.config.json` contains a `documentUrlSubstitutions` entry for this component (or the user provides the Figma node URL directly).
 3. A `SPEC.md` for the feature exists with a Public API section, so the prop mapping is grounded.
 4. Code Connect CLI is available in the project (verify via `package.json` dependencies, look for `@figma/code-connect`).
 
-## Known issue (worth surfacing on first run)
+## Paths
 
-`figma.config.json` currently references paths under `packages/react-components/src/`, but the actual source lives under `packages/components-react/src/`. This is a config mismatch and Code Connect will fail until it is reconciled. The skill surfaces this in the report and recommends a one-line fix to `figma.config.json` before proceeding. The skill does not edit `figma.config.json` itself - that is a governance change.
+`figma.config.json` includes `packages/ui/src/**/*`; the Code Connect file sits next to the component as `<kebab-name>.figma.tsx`.
 
 ## Inputs
 
 Required:
 
-* `component_name` — PascalCase, e.g. `Button`, `CommentsModal`.
-* `feature_name` — the `.design/<feature>/` folder.
+- `component_name` — PascalCase, e.g. `Button`, `CommentsModal`.
+- `feature_name` — the `.design/<feature>/` folder.
 
 Optional:
 
-* `figma_node_url` — explicit override if `documentUrlSubstitutions` does not yet contain an entry for this component.
-* `dry_run` — boolean, default true. When true, prints the would-write file content without writing.
-* `output_path` — defaults to `packages/components-react/src/<ComponentName>/<ComponentName>.figma.tsx`.
+- `figma_node_url` — explicit override if `documentUrlSubstitutions` does not yet contain an entry for this component.
+- `dry_run` — boolean, default true. When true, prints the would-write file content without writing.
+- `output_path` — defaults to `packages/ui/src/components/<kebab-name>.figma.tsx`.
 
 ## Procedure
 
@@ -58,17 +58,17 @@ Optional:
 
 Parse `<ComponentName>.tsx` and extract:
 
-* The TypeScript interface declaration.
-* Each prop name, type, default value, and JSDoc description.
-* The component's export shape (named export, default export).
+- The TypeScript interface declaration.
+- Each prop name, type, default value, and JSDoc description.
+- The component's export shape (named export, default export).
 
 ### Step 3: Read the SPEC for the Figma-side mapping
 
 From SPEC.md's Public API table, extract:
 
-* The Figma property names (component properties from the Figma component set).
-* The Figma value enums.
-* The mapping between Figma property values and React prop values, where they differ in naming (e.g. Figma might say `state=Press`, React `state=active`).
+- The Figma property names (component properties from the Figma component set).
+- The Figma value enums.
+- The mapping between Figma property values and React prop values, where they differ in naming (e.g. Figma might say `state=Press`, React `state=active`).
 
 If the SPEC table lacks a "Figma property" column, abort and ask the user to add it. Code Connect cannot guess.
 
@@ -104,10 +104,10 @@ figma.connect(<ComponentName>, '<FIGMA_*_PLACEHOLDER>', {
 
 Rules:
 
-* The Figma URL placeholder uses the same `<FIGMA_*>` token form as `figma.config.json` (e.g. `<FIGMA_BUTTONS_BUTTON>`). The Figma CLI resolves the placeholder at runtime via `documentUrlSubstitutions`.
-* Every React prop in the interface must appear in the `props` map, or be explicitly noted as "not exposed in Figma" via a comment.
-* Default values come from the component interface defaults, not invented.
-* `example` renders the component with all props spread; do not add JSX children unless the component requires them.
+- The Figma URL placeholder uses the same `<FIGMA_*>` token form as `figma.config.json` (e.g. `<FIGMA_BUTTONS_BUTTON>`). The Figma CLI resolves the placeholder at runtime via `documentUrlSubstitutions`.
+- Every React prop in the interface must appear in the `props` map, or be explicitly noted as "not exposed in Figma" via a comment.
+- Default values come from the component interface defaults, not invented.
+- `example` renders the component with all props spread; do not add JSX children unless the component requires them.
 
 ### Step 5: Write or dry-run
 
@@ -128,30 +128,30 @@ Write `.design/<feature>/CODE_CONNECT.md` summarising what was written, with the
 ```markdown
 # Code Connect Stub — <ComponentName>
 
-> Feature: <feature_name>
+> Feature: <feature*name>
 > Generated: <ISO timestamp>
 > Dry run: <true | false>
-> Placeholder used: <FIGMA_*>
+> Placeholder used: <FIGMA*\*>
 > Figma node URL (resolved): <url>
 
 ## Prop mapping
 
-| Figma property | Figma type | React prop | React type | Mapping |
-|---|---|---|---|---|
-| Intent | enum | intent | 'primary' \| 'secondary' \| ... | enum mapping table |
-| Size | enum | size | 'small' \| 'medium' \| 'large' \| 'xlarge' | enum mapping table |
-| Label | text | label | string | figma.string |
-| Has Icon Left | boolean | iconLeft | IconName \| undefined | figma.boolean (note: lossy mapping) |
+| Figma property | Figma type | React prop | React type                                 | Mapping                             |
+| -------------- | ---------- | ---------- | ------------------------------------------ | ----------------------------------- |
+| Intent         | enum       | intent     | 'primary' \| 'secondary' \| ...            | enum mapping table                  |
+| Size           | enum       | size       | 'small' \| 'medium' \| 'large' \| 'xlarge' | enum mapping table                  |
+| Label          | text       | label      | string                                     | figma.string                        |
+| Has Icon Left  | boolean    | iconLeft   | IconName \| undefined                      | figma.boolean (note: lossy mapping) |
 
 ## Unresolved mappings
 
 | Figma property | Issue | Suggested action |
-|---|---|---|
-| ... | ... | ... |
+| -------------- | ----- | ---------------- |
+| ...            | ...   | ...              |
 
 ## File written
 
-`packages/components-react/src/<ComponentName>/<ComponentName>.figma.tsx`
+`packages/ui/src/components/<kebab-name>.figma.tsx`
 
 ## Validation
 
@@ -160,11 +160,11 @@ Result: <pass | fail with output>
 
 ## Known config issue
 
-If `figma.config.json` references `packages/react-components/` instead of `packages/components-react/`, the Code Connect CLI will not find this file. Recommended fix: update `figma.config.json` to point to the correct package path. This is a separate governance change.
+If `figma.config.json` does not include `packages/ui/src/**/*`, the Code Connect CLI will not find this file. Recommended fix: update `figma.config.json` to point to the correct package path. This is a separate governance change.
 
 ## Provenance
 
-- Component file: packages/components-react/src/<ComponentName>/<ComponentName>.tsx
+- Component file: packages/ui/src/components/<kebab-name>.tsx
 - SPEC.md sha: <sha>
 - figma.config.json sha: <sha>
 - Skill version: <semver>
@@ -172,23 +172,23 @@ If `figma.config.json` references `packages/react-components/` instead of `packa
 
 ## Error Handling
 
-* **No documentUrlSubstitutions entry.** Abort with a clear instruction: "add a `<FIGMA_*_NAME>` entry to figma.config.json for this component, then re-run".
-* **SPEC.md Public API missing Figma column.** Abort. The mapping cannot be inferred. The fix is to update the SPEC.
-* **Existing .figma.tsx file.** Abort the write, surface the diff for human review.
-* **Validation fails.** Remove the file and report the validator's output.
-* **Lossy mapping detected.** When a Figma boolean maps to a richer React type (e.g. `Has Icon Left` boolean vs `iconLeft: IconName | undefined`), surface as `warning` and leave a TODO comment in the generated file.
+- **No documentUrlSubstitutions entry.** Abort with a clear instruction: "add a `<FIGMA_*_NAME>` entry to figma.config.json for this component, then re-run".
+- **SPEC.md Public API missing Figma column.** Abort. The mapping cannot be inferred. The fix is to update the SPEC.
+- **Existing .figma.tsx file.** Abort the write, surface the diff for human review.
+- **Validation fails.** Remove the file and report the validator's output.
+- **Lossy mapping detected.** When a Figma boolean maps to a richer React type (e.g. `Has Icon Left` boolean vs `iconLeft: IconName | undefined`), surface as `warning` and leave a TODO comment in the generated file.
 
 ## Composition
 
-* `compose_after`: `handoff/component-scaffold`, `handoff/frame-to-spec`
-* `compose_before`: `ui/visual-vs-built`
-* `calls`: `figma-integration/figma-console-mcp-integration`, `figma-integration/variable-binding-reference`
+- `compose_after`: `handoff/component-scaffold`, `handoff/frame-to-spec`
+- `compose_before`: `ui/visual-vs-built`
+- `calls`: `figma-integration/figma-console-mcp-integration`, `figma-integration/variable-binding-reference`
 
 ## Related Skills
 
-* `./component-scaffold.md` — must run before this skill
-* `../ui/visual-vs-built.md` — verifies the connection renders correctly
-* `../../figma-integration/figma-make-workflow.md` — the broader Figma-to-React pipeline this slots into
+- `./component-scaffold.md` — must run before this skill
+- `../ui/visual-vs-built.md` — verifies the connection renders correctly
+- `../../figma-integration/figma-make-workflow.md` — the broader Figma-to-React pipeline this slots into
 
 ## Autonomy note
 

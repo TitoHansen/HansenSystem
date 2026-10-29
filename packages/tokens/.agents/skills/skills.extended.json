@@ -1452,8 +1452,9 @@
     },
     "story-writing": {
       "trigger_intents": [
-        "Need story/doc generation or visual verification workflow",
-        "Need Storybook config/testing guidance"
+        "Write Storybook stories for a @ds/ui component",
+        "Cover every state of a component in Core",
+        "Turn a designer's description into stories"
       ],
       "do_not_use_for": [
         "Core token mutation",
@@ -2183,8 +2184,8 @@
     },
     "component-scaffold": {
       "trigger_intents": [
-        "Need to scaffold a new DS React component",
-        "Need to generate component + story + docs + changelog from a spec",
+        "Need to add a new component to the design system (@ds/ui)",
+        "Need to scaffold component + export + Core story from a spec or a brief",
         "After a handoff packet is approved and ready to build"
       ],
       "do_not_use_for": [
@@ -2192,20 +2193,22 @@
         "Editing tokens or theme files",
         "Implementing business logic"
       ],
-      "required_inputs": ["feature_name", "component_name"],
+      "required_inputs": ["component_name", "feature_name or brief"],
       "outputs": [
-        "seven_scaffolded_files",
-        "scaffold_report",
-        "follow_up_checklist"
+        "component_file",
+        "index_export",
+        "core_story",
+        "scaffold_report"
       ],
       "approval_required": true,
-      "breaking_risks_summary": "Writes seven files into the production source tree. Mitigated by dry-run default, atomic write semantics, and refusal to overwrite existing files.",
+      "breaking_risks_summary": "Writes into packages/ui and stories/ui. Mitigated by dry-run default, atomic write semantics, refusal to overwrite, and no new dependencies.",
       "compose_after": [
         "design/handoff/frame-to-spec",
         "design/ui/state-matrix",
         "design/ui/token-mapping-audit"
       ],
       "compose_before": [
+        "storybook/visual-regression-gate",
         "design/handoff/code-connect-stub",
         "design/ui/visual-vs-built"
       ],
@@ -2558,14 +2561,15 @@
     "build-agent": {
       "type": "agent",
       "trigger_intents": [
-        "Approved packet needs a component scaffold",
-        "Need Code Connect stub and visual verification"
+        "Build a @ds/ui component from an approved packet",
+        "Add a component to the design system from a brief",
+        "Set up Code Connect for a component that exists"
       ],
       "do_not_use_for": [
         "Anything before an approved handoff packet exists",
         "Token editing"
       ],
-      "required_inputs": ["request_or_figma_url"],
+      "required_inputs": ["component_name", "feature_name or brief"],
       "outputs": ["agent_run_report"],
       "approval_required": true,
       "breaking_risks_summary": "Approval-sensitive: writes component code and stories; every write step is gated and dry-run by default.",

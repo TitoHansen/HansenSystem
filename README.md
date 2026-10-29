@@ -153,13 +153,22 @@ Until you run that, the six browser checks skip rather than fail, and the summar
 
 ## What lands where
 
-The tokens in `packages/tokens/src` are the single source of truth: when anything disagrees with them, they win. The brand, once saved, lives in the token sources and in `design-corpus/brand/GUIDELINES.md` and `DESIGN-LANGUAGE.md`. Generated work lands in `sandbox/`, one folder per run. `START-HERE.md` is the one-page orientation; `design-start.md` and `engineer-start.md` carry the two intake flows.
+The tokens in `packages/tokens/src` are the single source of truth: when anything disagrees with them, they win. The brand, once saved, lives in `brands/<slug>.json`, the token sources and `design-corpus/brand/GUIDELINES.md`. Generated work lands in `sandbox/`, one folder per run; design artefacts in `.design/<feature>/`. `START-HERE.md` is the human index of what you can ask for; `AGENTS.md` is the same for the assistant; `TEST-PLAN.md` is how to prove it works; `design-start.md` and `engineer-start.md` carry the two intake flows.
 
 ## Requirements
 
 Node 22 or later and npm. The Figma desktop app with its Dev Mode MCP server enabled is optional, and only needed if you want the controller to read design language straight from a Figma file. The local `claude` CLI is optional too; without it, image analysis falls back to client-side colour extraction. Chromium is wanted only by the six browser checks: run `npx playwright install chromium` once and they run instead of skipping.
 
 ## Changelog
+
+### 29 October 2026 — test-ready
+
+- **Adding a component works again.** `handoff/component-scaffold`, `design/agents/build-agent` and `storybook/story-writing` rewritten for the `@ds/ui` contract (cva + Tailwind on the theme map, export in `index.ts`, Core story). `Rating` added by following the new manual; `.design/rating/` is the reference run.
+- **One entry point for assistants.** `AGENTS.md` at the root (read by Claude Code, Cursor, Codex, Copilot, Continue); `START-HERE.md` is now the human index: ten requests, the exact words, what comes back.
+- **`npm run ask "<request>"`** prints the route and the skills the router would load, with no model involved. The router heuristic now weights explicit verbs, so "hand off the onboarding flow" routes to handoff.
+- **MCP out of the box.** `.mcp.json` registers the token server for Claude Code; the server is a workspace now, so `npm install` provides its dependencies.
+- **`TEST-PLAN.md`**: six scripted tests (catalogue, new brand, routing, screen, review, component), about an hour on a clean clone.
+- `.claude/settings.json` no longer carries the original author's absolute paths; `engineer-start` stops offering platforms the repo has no output for.
 
 ### 29 October 2026 — Hansen System
 

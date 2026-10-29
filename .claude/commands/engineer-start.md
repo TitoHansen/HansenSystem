@@ -38,7 +38,7 @@ Look before asking, and drop any question the context already answers:
 - Did the engineer type a description after `/engineer-start`? If so, classify it straight to a path and skip to the receipt.
 - Is a `.design/<feature>/` folder present with a `PACKET.md` or `SPEC.md`, or a recent `sandbox/<project>/<run>/` with a `DEV-SPEC.html`? If so, offer **Pick up `<feature>`** as the first option: a handoff is waiting. A dev spec is the designer's quick view of a generated screen (components, tokens, statuses, target surface); read it first, it is the fastest map of what was made.
 - Is an input already attached (a Figma link, an HTML file or folder, pasted prototype code, a screenshot)? Note it for Step 6; it usually means the conversion path.
-- Can you already tell the target stack? A `.swift` file means the iOS theme, a WordPress template means WordPress, and a working directory inside one of the production packages names the stack outright. If you can tell, do not ask; confirm it in the receipt instead.
+- Can you already tell the target stack? A `.swift` file means the iOS theme, and a working directory inside one of the production packages names the stack outright. If you can tell, do not ask; confirm it in the receipt instead.
 - Is the Figma desktop MCP live on `127.0.0.1:3845`? Record yes or no now; you need it in Step 6.
 
 ## Step 3: First question, what do you want to do (clickable)
@@ -89,7 +89,7 @@ Deliverable: production code for the chosen stack, a `CONVERSION.md` report list
 - **From a Figma frame.** "I read the frame, then scaffold."
 - **From a description.** "Tell me what it does; I propose the shape before building."
 
-Whatever the source, the build follows the house conventions: the full state grid (default, hover, focus, active, disabled, loading, empty and error where relevant), accessibility built in (labels, focus order, contrast, reduced motion), semantic tokens only, a story covering every state, and channel handled by section context rather than props. The plan is shown and approved before any file is written. (Internal note: `agents/build-agent` normally includes a Code Connect step; Code Connect is not yet wired, so record it as pending in the plan rather than pretending it ran.)
+Whatever the source, the build follows the house conventions: the full state grid (default, hover, focus, active, disabled, loading, empty and error where relevant), accessibility built in (labels, focus order, contrast, reduced motion), semantic tokens only through the theme classes, a Core story covering every state, and the file landing in `packages/ui/src/components/<kebab-name>.tsx` with its export in `packages/ui/src/index.ts` (see `handoff/component-scaffold`). The plan is shown and approved before any file is written. (Internal note: `agents/build-agent` normally includes a Code Connect step; Code Connect is not yet wired, so record it as pending in the plan rather than pretending it ran.)
 
 **If they chose Check what was built:**
 
@@ -102,12 +102,10 @@ Whatever the source, the build follows the house conventions: the full state gri
 ## Step 5: Third question, the stack (clickable, only for paths that produce code and only when Step 2 could not tell)
 
 - **React.** "Our main web components."
-- **WordPress.** "Blocks and templates for the WordPress build."
 - **iOS theme.** "Native code on the iOS token set."
-- **Android theme.** "Native code on the Android token set."
 - **Just CSS variables.** "Plain markup and our semantic CSS variables, no framework."
 
-(Internal routing: `@ds/components-react`, `theme-ios`, `theme-css` or `theme-scss`. `icons` is shared by all of them.)
+(Internal routing: `@ds/ui`, `theme-ios`, `theme-css` or `theme-scss`. `icons` is shared by all of them.)
 
 If a handoff packet already names the stack, use it and confirm in the receipt. Checking and asking never need this question.
 

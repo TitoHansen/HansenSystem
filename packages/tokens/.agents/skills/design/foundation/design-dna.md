@@ -139,7 +139,7 @@ Specific motion tokens are in `motion/motion-tokens.md`. Specific interaction pa
 
 ## Component philosophy
 
-- **Reuse always.** Every primitive (Button, Input, Link, Chip, Label, Icon, Toast, Divider, Text, Flag) is in `@ds/components-react`. Use it. If you need to override, override via prop. If you cannot override via prop, that is a system gap.
+- **Reuse always.** Every primitive (Button, Input, Select, Checkbox, Badge, Alert, Dialog, Table, Stepper and the rest of the Core set) is in `@ds/ui`. Use it. If you need to override, override via prop. If you cannot override via prop, that is a system gap.
 - **Composition over invention.** New patterns combine existing primitives. Inventing a new primitive requires governance approval (`governance/token-modification-gates.md`).
 - **Variants for state, not for opinion.** A Button has size, intent, state, behaviour. It does not have a `Button.LookFancy` variant. Variants encode functional difference.
 

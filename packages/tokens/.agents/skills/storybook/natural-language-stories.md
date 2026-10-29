@@ -106,13 +106,13 @@ I need to extract:
 **Template for simple component stories:**
 
 ```jsx
-// stories/components/[ComponentName].stories.jsx
+// stories/ui/[ComponentName].stories.jsx
 import { fn } from 'storybook/test';
 // Import existing component OR create new one
-import { ComponentName } from '@ds/components-react';
+import { ComponentName } from '@ds/ui/components/component-name';
 
 export default {
-  title: 'Components/ComponentName',
+  title: 'Core/Content/ComponentName',
   component: ComponentName,
   parameters: {
     layout: 'centered', // or 'fullscreen' for page-level
@@ -141,7 +141,8 @@ export const Default = {
 ```jsx
 // stories/pages/[PageName].stories.jsx
 import React, { useState } from 'react';
-import { Button, Input, Text, Link } from '@ds/components-react';
+import { Button } from '@ds/ui/components/button';
+import { Input } from '@ds/ui/components/input';
 import './PageName.css';
 
 export default {
@@ -217,7 +218,7 @@ Tokens: heading typography, spacing, surface colours
 ```jsx
 // stories/pages/HeroBanner.stories.jsx
 import React from 'react';
-import { Button, Text } from '@ds/components-react';
+import { Button } from '@ds/ui/components/button';
 import './HeroBanner.css';
 
 export default {
@@ -266,11 +267,11 @@ export const WithImage = {
 ### Example 2: "Show me all our button styles side by side"
 
 ```jsx
-// stories/components/ButtonShowcase.stories.jsx
-import { Button } from '@ds/components-react';
+// stories/ui/ButtonShowcase.stories.jsx
+import { Button } from '@ds/ui/components/button';
 
 export default {
-  title: 'Components/Button Showcase',
+  title: 'Core/Content/Button Showcase',
   parameters: { layout: 'padded' },
   tags: ['autodocs']
 };
@@ -300,7 +301,8 @@ export const AllVariants = {
 ```jsx
 // stories/pages/SimpleForm.stories.jsx
 import React, { useState } from 'react';
-import { Input, Button } from '@ds/components-react';
+import { Input } from '@ds/ui/components/input';
+import { Button } from '@ds/ui/components/button';
 
 export default {
   title: 'Pages/Simple Form',
@@ -342,13 +344,13 @@ export const Default = {
 
 ## Error Handling
 
-| Problem                   | Recovery                                                  |
-| ------------------------- | --------------------------------------------------------- |
-| Component doesn't exist   | Create it in `packages/components-react/src/`, then story |
-| Designer changes mind     | Edit the story file, re-run Storybook                     |
-| "That's not what I meant" | Ask one clarifying question, regenerate                   |
-| Import error              | Check component is exported from package index            |
-| Style doesn't match       | Inspect CSS variables, adjust token references            |
+| Problem                   | Recovery                                               |
+| ------------------------- | ------------------------------------------------------ |
+| Component doesn't exist   | Create it in `packages/ui/src/components/`, then story |
+| Designer changes mind     | Edit the story file, re-run Storybook                  |
+| "That's not what I meant" | Ask one clarifying question, regenerate                |
+| Import error              | Check component is exported from package index         |
+| Style doesn't match       | Inspect CSS variables, adjust token references         |
 
 ## Related Skills
 

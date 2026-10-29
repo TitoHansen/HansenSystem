@@ -1,6 +1,6 @@
 ---
 name: story-writing
-description: Write Storybook stories using modern CSF3 format. Generates type-safe story files from component specs or designer descriptions, covering all states and variants.
+description: Write Storybook stories in CSF3 for @ds/ui components, under the Core section, with one story per state, autodocs, and no brand- or segment-specific content. Generates type-safe story files from a component's props or a designer's description.
 license: MIT
 metadata:
   category: storybook
@@ -13,296 +13,172 @@ metadata:
 
 ## Purpose
 
-Generate production-quality Storybook stories using Component Story Format 3 (CSF3) for React components in the Design System. Designed to be invoked by a designer describing what they want — the agent handles all code.
+Generate production-quality stories for components in `packages/ui/src/components/`, in the format the existing `stories/ui/*.stories.tsx` files use. A designer describes what they want; the agent writes the file. Stories are what the brand switcher and the visual gate run against, so every story must render correctly in every brand and both colour modes without any per-story theming.
 
 ## Preconditions
 
-- Storybook is installed and running (`npm run storybook`)
-- Target component exists in `packages/components-react/src/` or will be created
-- React 18+, Storybook 8+
+- The component exists in `packages/ui/src/components/<kebab-name>.tsx` and is exported from `packages/ui/src/index.ts`.
+- Storybook builds (`npm run build-storybook`) or runs (`npm run storybook`). Both run `build:brands` first.
 
-## Mandatory Live Preview Rule
+## Where stories live and how they are named
 
-For any work using this skill, restart the local Storybook server on port `6006` before validating changes so browser refresh always shows the latest result.
-
-```bash
-PORT_PIDS=$(lsof -ti tcp:6006); if [ -n "$PORT_PIDS" ]; then kill $PORT_PIDS; sleep 1; fi
-npm run storybook -- --port 6006
 ```
+stories/ui/<ComponentName>.stories.tsx          one component
+stories/ui/<Topic>.stories.tsx                   a small family (e.g. Choice.stories.tsx: Checkbox, Radio, Switch)
+```
+
+Title: `Core/<Group>/<Name>` where `<Group>` is one of `Actions`, `Inputs`, `Feedback`, `Navigation`, `Overlays`, `Content`. The sidebar order is fixed in `.storybook/preview.js`; a new group is a change to that file, not to a story.
+
+Imports are from the package subpath, never relative to the source:
+
+```tsx
+import { Button } from '@ds/ui/components/button';
+```
+
+Icons from `lucide-react`. Never from `@ds/icons` in `@ds/ui` stories.
 
 ## Inputs
 
-| Parameter     | Type     | Required | Description                                                          |
-| ------------- | -------- | -------- | -------------------------------------------------------------------- |
-| componentName | string   | Yes      | Name of the component (e.g., "Button", "Card")                       |
-| componentPath | string   | Yes      | Import path (e.g., `@ds/components-react`)          |
-| variants      | string[] | No       | Visual variants to showcase (e.g., "primary", "secondary")           |
-| states        | string[] | No       | Interactive states (e.g., "default", "hover", "disabled", "loading") |
-| description   | string   | No       | Natural language description from designer                           |
-
----
+| Parameter     | Type     | Required | Description                                                    |
+| ------------- | -------- | -------- | -------------------------------------------------------------- |
+| componentName | string   | Yes      | PascalCase, as exported (`Rating`)                             |
+| group         | string   | Yes      | Core group                                                     |
+| states        | string[] | No       | From the spec's state matrix; defaults to what the props imply |
+| description   | string   | No       | Natural-language description from the designer                 |
 
 ## Procedure
 
-### Step 1: Understand the Component
+### Step 1: Read the component
 
-```markdown
-**Thought [PLAN]**: Designer wants stories for [ComponentName]. I need to:
+Open the source. Note the props interface, the cva variants and their options, the `data-*` attributes that express state, and any required `aria-*` prop. Controls come from these; do not guess options.
 
-1. Check if the component exists and what props it accepts
-2. Determine which variants/states to cover
-3. Write CSF3 stories
+### Step 2: Write the file
 
-**Action**: Read the component source to find props
-**Observation**: Component has props: { label, primary, size, onClick, disabled, ... }
-```
+```tsx
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { Star } from 'lucide-react';
+import { Rating } from '@ds/ui/components/rating';
 
-### Step 2: Create the Story File
-
-Stories live in `stories/components/` (NOT alongside the component source).
-
-**File naming**: `ComponentName.stories.jsx` (use `.jsx` for this repo — matches existing patterns).
-
-### Step 3: Write CSF3 Story Structure
-
-```jsx
-// stories/components/ComponentName.stories.jsx
-import { fn } from 'storybook/test';
-import { ComponentName } from '@ds/components-react';
-
-// Meta — the default export
-export default {
-  title: 'Components/ComponentName', // Sidebar hierarchy
-  component: ComponentName, // Auto-generates controls
-  parameters: {
-    layout: 'centered', // or 'fullscreen', 'padded'
-    docs: {
-      description: {
-        component: 'Brief description of what this component does.'
-      }
-    }
-  },
-  tags: ['autodocs'], // Enable automatic documentation
-  argTypes: {
-    // Override auto-detected control types
-    variant: {
-      control: 'select',
-      options: ['primary', 'secondary', 'tertiary'],
-      description: 'Visual style variant'
-    },
-    size: {
-      control: 'radio',
-      options: ['small', 'medium', 'large']
-    },
-    disabled: { control: 'boolean' },
-    backgroundColor: { control: 'color' }
-  },
-  args: {
-    // Default args shared across stories
-    onClick: fn() // Spy function for Actions panel
-  }
-};
-
-// Named exports = individual stories
-export const Default = {
-  args: {
-    label: 'Button'
-  }
-};
-
-export const Primary = {
-  args: {
-    primary: true,
-    label: 'Primary Button'
-  }
-};
-
-export const Large = {
-  args: {
-    size: 'large',
-    label: 'Large Button'
-  }
-};
-
-export const Disabled = {
-  args: {
-    label: 'Disabled',
-    disabled: true
-  }
-};
-```
-
-### Step 4: Cover All Visual States
-
-Always generate stories for:
-
-| State                  | When to Include                                  | Example                           |
-| ---------------------- | ------------------------------------------------ | --------------------------------- |
-| **Default**            | Always                                           | Base component with minimal props |
-| **Primary**            | When component has a `primary` or `variant` prop | Primary CTA style                 |
-| **Secondary**          | When variants exist                              | Secondary style                   |
-| **Disabled**           | When component has `disabled` prop               | Greyed out, non-interactive       |
-| **Loading**            | When component has loading state                 | Spinner or skeleton               |
-| **Error**              | When component has error state                   | Red border, error message         |
-| **WithIcon**           | When component accepts icons                     | Icon + label combination          |
-| **Small/Medium/Large** | When component has `size` prop                   | All size variants                 |
-| **Mobile**             | For responsive components                        | Narrow viewport                   |
-
-### Step 5: Add Decorators (when needed)
-
-```jsx
-// Theme decorator (for light/dark mode)
-export default {
-  // ...meta
-  decorators: [
-    (Story) => (
-      <div style={{ padding: '2rem' }}>
-        <Story />
-      </div>
-    )
-  ]
-};
-
-// Story-level decorator
-export const DarkMode = {
-  decorators: [
-    (Story) => (
-      <div data-theme="dark" style={{ background: '#000', padding: '2rem' }}>
-        <Story />
-      </div>
-    )
-  ],
-  args: {
-    label: 'Dark Mode Button',
-    primary: true
-  }
-};
-```
-
-### Step 6: Composite/Multi-Component Stories
-
-```jsx
-// For page-level or multi-component compositions
-export const FormExample = {
-  render: (args) => (
-    <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <Input label="Email" placeholder="you@example.com" />
-      <Input label="Password" type="password" />
-      <ComponentName {...args} />
-    </form>
-  ),
-  args: {
-    label: 'Submit',
-    primary: true
-  }
-};
-```
-
-### Step 7: Validate
-
-```bash
-# 1. Start Storybook to verify rendering
-npm run storybook
-
-# 2. Check story is discovered (look in sidebar)
-# 3. Verify Controls panel works
-# 4. Verify Actions panel logs events
-```
-
----
-
-## Story Writing Checklist
-
-- [ ] File is in `stories/components/` directory
-- [ ] Uses CSF3 object syntax (NOT template/bind pattern)
-- [ ] Has `tags: ['autodocs']` for documentation
-- [ ] Imports from `@ds/components-react` (package import, not relative)
-- [ ] All interactive props have `fn()` spies in default `args`
-- [ ] Multiple variants are covered
-- [ ] `layout` parameter is set appropriately
-- [ ] No TypeScript errors (if using `.tsx`)
-
----
-
-## Common Anti-Patterns (AVOID)
-
-```jsx
-// ❌ OLD CSF2 template/bind pattern — DO NOT USE
-const Template = (args) => <Button {...args} />;
-export const Primary = Template.bind({});
-Primary.args = { primary: true };
-
-// ✅ CSF3 object syntax — USE THIS
-export const Primary = {
-  args: { primary: true }
-};
-```
-
-```jsx
-// ❌ Relative imports to source
-import { Button } from '../../packages/components-react/src';
-
-// ✅ Package imports (preferred for stories/components/)
-import { Button } from '@ds/components-react';
-// NOTE: For pages/ stories, relative imports MAY be needed — check existing patterns
-```
-
----
-
-## Examples
-
-### Designer says: "I need a Button story with all sizes"
-
-```jsx
-export default {
-  title: 'Components/Button',
-  component: Button,
+const meta = {
+  title: 'Core/Inputs/Rating',
+  component: Rating,
   tags: ['autodocs'],
-  args: { onClick: fn() }
-};
+  parameters: { layout: 'centered' },
+  argTypes: {
+    size: { control: 'select', options: ['sm', 'default', 'lg'] },
+    readOnly: { control: 'boolean' }
+  },
+  args: {
+    value: 3,
+    max: 5,
+    size: 'default',
+    readOnly: false,
+    'aria-label': 'Rating'
+  }
+} satisfies Meta<typeof Rating>;
 
-export const Small = { args: { size: 'small', label: 'Small' } };
-export const Medium = { args: { size: 'medium', label: 'Medium' } };
-export const Large = { args: { size: 'large', label: 'Large' } };
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};
+export const ReadOnly: Story = { args: { readOnly: true } };
+export const Empty: Story = { args: { value: 0 } };
+export const Sizes: Story = {
+  render: (args) => (
+    <div className="flex items-center gap-4">
+      <Rating {...args} size="sm" />
+      <Rating {...args} />
+      <Rating {...args} size="lg" />
+    </div>
+  )
+};
 ```
 
-### Designer says: "Show me a card with image, title, and description"
+Rules the file must follow:
 
-```jsx
-export const WithContent = {
-  args: {
-    title: 'Article Title',
-    description: 'A brief summary of the article content.',
-    imageUrl: 'https://picsum.photos/400/200'
-  }
-};
+- CSF3 objects with `satisfies Meta<typeof X>` and `StoryObj<typeof meta>`. No `Template.bind`.
+- `tags: ['autodocs']` on the meta.
+- `argTypes` for every cva variant (`select` with the real options) and every boolean.
+- `args` provide a complete, sensible default so the Docs canvas renders at rest.
+- Interaction handlers as `fn()` from `storybook/test` only when the story needs the Actions panel.
+- `layout: 'centered'` for a single element, `'padded'` for a composition or anything wide.
+- Width is set with a decorator or a wrapper `div` and Tailwind classes (`w-80`, `max-w-xl`), never inline style.
 
-export const WithLongContent = {
-  args: {
-    title: 'A Very Long Article Title That Wraps to Multiple Lines',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    imageUrl: 'https://picsum.photos/400/200'
-  }
-};
+### Step 3: Cover the states
+
+| State           | Include when                            | Story                                                         |
+| --------------- | --------------------------------------- | ------------------------------------------------------------- |
+| Default         | always                                  | `Default`                                                     |
+| each variant    | the component has a `variant` or `size` | one story each, or one `AllVariants` grid when there are many |
+| Disabled        | `disabled` prop                         | `Disabled`                                                    |
+| Invalid / error | `aria-invalid` or an error prop         | `Invalid`                                                     |
+| Loading         | a loading prop or pattern               | `Loading`                                                     |
+| Empty           | the component shows a collection        | `Empty`                                                       |
+| With icon       | accepts icons                           | `WithIcon`                                                    |
+| In context      | the spec names a composition            | one composite story using other `@ds/ui` components           |
+
+Hover and focus are not stories; they are visible through interaction and checked by `ui/state-matrix` and the a11y addon.
+
+### Step 4: Keep stories brand-neutral
+
+Story copy names a generic job ("Continue", "Create account", "Notifications"), never a company, a product, a sector or a currency. The brand switcher supplies the identity; a story that hard-codes a colour, a font or a radius is a bug. Example data is small, obviously illustrative and locale-neutral (`Intl.NumberFormat(undefined, …)` when numbers must be formatted).
+
+### Step 5: Validate
+
+```sh
+npx eslint stories/ui/<ComponentName>.stories.tsx
+npm run build-storybook
 ```
 
----
+Then open the story in each brand (toolbar → Brand) and both modes (toolbar → Mode), or run `ui/visual-regression-gate`. The story is done when it reads correctly in every combination.
+
+## Checklist
+
+- [ ] File in `stories/ui/`, title `Core/<Group>/<Name>`
+- [ ] CSF3 with `satisfies Meta`, `tags: ['autodocs']`
+- [ ] Imports from `@ds/ui/components/*`, icons from `lucide-react`
+- [ ] `argTypes` for every variant, `args` complete
+- [ ] One story per spec state; composite story when a context is named
+- [ ] No brand, sector, hex, font or inline style in the file
+- [ ] eslint and `build-storybook` pass; renders in every brand × mode
+
+## Anti-patterns
+
+```tsx
+// ❌ CSF2
+const Template = (args) => <Rating {...args} />;
+export const Primary = Template.bind({});
+
+// ❌ relative import to source, hard-coded theme
+import { Rating } from '../../packages/ui/src/components/rating';
+<div style={{ background: '#000' }}>…</div>;
+
+// ❌ sector copy
+args: {
+  label: 'Comprar Tesouro Selic';
+}
+
+// ✅
+import { Rating } from '@ds/ui/components/rating';
+export const Default: Story = {};
+args: {
+  label: 'Continue';
+}
+```
 
 ## Error Handling
 
-| Problem               | Recovery                                                                     |
-| --------------------- | ---------------------------------------------------------------------------- |
-| Component not found   | Check import path, verify component is exported from package                 |
-| Controls don't appear | Ensure `component` is set in meta, check argTypes                            |
-| Story not in sidebar  | Check `title` path, verify file matches stories glob in `.storybook/main.js` |
-| Actions don't log     | Add `fn()` to event handler args                                             |
-| Styles missing        | Check if CSS variables are loaded via `preview-head.html`                    |
+| Problem                  | Recovery                                                                      |
+| ------------------------ | ----------------------------------------------------------------------------- |
+| Component not exported   | Add the line to `packages/ui/src/index.ts` (see `handoff/component-scaffold`) |
+| Controls missing         | `component` set in meta; `argTypes` lists the variant options                 |
+| Story not in sidebar     | Title under `Core/<Group>`; file matches the glob in `.storybook/main.js`     |
+| Looks wrong in one brand | The component is using a raw value; fix the component, not the story          |
+| Fonts fall back          | Expected offline; the brand's Google Fonts load at runtime                    |
 
-## References
+## Related skills
 
-- [Storybook Writing Stories](https://storybook.js.org/docs/writing-stories)
-- [CSF3 Format](https://storybook.js.org/docs/api/csf)
-- [Args](https://storybook.js.org/docs/writing-stories/args)
-- [Decorators](https://storybook.js.org/docs/writing-stories/decorators)
-- [Parameters](https://storybook.js.org/docs/writing-stories/parameters)
+- `../design/handoff/component-scaffold.md` — writes the first version of a story alongside a new component
+- `../react/shadcn-ui.md` — the theming contract the component under test follows
+- `./visual-testing.md` — play functions and a11y checks on top of these stories
+- `./storybook-config.md` — the brand switcher, groups and sidebar order

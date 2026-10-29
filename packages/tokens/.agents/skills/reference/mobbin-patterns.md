@@ -108,7 +108,7 @@ Never record colours, typefaces, iconography, illustration style, logo treatment
 
 ### Step 7: Translate into DS terms
 
-Re-express the extracted pattern with your brand material. For each mechanic, name the DS re-expression: a semantic token, a component from `@ds/components-react`, a template from `ux/page-templates`, an interaction from `motion/interaction-patterns.md`. For example:
+Re-express the extracted pattern with your brand material. For each mechanic, name the DS re-expression: a semantic token, a component from `@ds/ui`, a template from `ux/page-templates`, an interaction from `motion/interaction-patterns.md`. For example:
 
 | Observed on Mobbin (mechanic only)                                        | DS re-expression                                                                                                                                                    |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

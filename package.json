@@ -9,6 +9,7 @@
     "test": "lerna run test",
     "controller": "node tools/controller/server.mjs",
     "check": "node tools/controller/checks/run.mjs",
+    "ask": "node tools/ask/ask.mjs",
     "build:brands": "node tools/controller/cli/build-brands.mjs",
     "prestorybook": "npm run build:brands",
     "storybook": "storybook dev -p 6006",
@@ -36,7 +37,8 @@
     "prepare": "husky"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/tokens/mcp-server"
   ],
   "resolutions": {
     "strip-ansi": "^6.0.1",

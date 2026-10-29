@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "ds-tokens": {
+      "command": "node",
+      "args": ["packages/tokens/mcp-server/index.js"]
+    }
+  }
+}

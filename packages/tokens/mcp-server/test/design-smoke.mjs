@@ -52,7 +52,8 @@ const invented = designScore({ findings: [{ ruleId: 'DS-XYZ-99', severity: 'erro
 check('flags invented rule id', invented.unknown_rules.includes('DS-XYZ-99'));
 
 console.log('design_route');
-check('live-blog → new-experience', designRoute({ request: 'design a new live blog experience' }).route === 'new-experience');
+check('checkout → new-experience', designRoute({ request: 'design a new checkout flow' }).route === 'new-experience');
+check('hand off wins over flow nouns', designRoute({ request: 'hand off the onboarding flow' }).route === 'handoff');
 check('critique → ui-craft', designRoute({ request: 'critique this frame, check spacing and contrast' }).route === 'ui-craft');
 check('handoff → handoff', designRoute({ request: 'this is ready for engineering, produce the spec' }).route === 'handoff');
 check('screenshots → corpus-distill', designRoute({ request: 'learn from these screenshots' }).route === 'corpus-distill');

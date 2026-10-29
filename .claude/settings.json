@@ -1,15 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git -C /Users/apparicio.junior/VSCode/DS-Hansen/HansenSystem remote -v)",
-      "Bash(python3 -c ' *)",
-      "Bash(gh api *)",
-      "Bash(npm update *)",
-      "Bash(npm ls *)",
       "Bash(npm run *)",
+      "Bash(npx storybook *)",
+      "Bash(npx eslint *)",
+      "Bash(npx tsc *)",
       "Bash(npx playwright *)",
-      "Read(//Users/apparicio.junior/VSCode/DS-Hansen/HansenSystem/build/**)",
-      "Bash(git check-ignore *)"
+      "Bash(node tools/*)",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Read(./build/**)"
     ],
     "deny": []
   }
