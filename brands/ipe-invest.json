@@ -1,0 +1,47 @@
+{
+  "primary": "#0B6E4F",
+  "neutralTint": "#6B7A72",
+  "tertiary": "#D98E04",
+  "info": "#1D5FBF",
+  "success": "#1F8A5B",
+  "warning": "#E09400",
+  "error": "#C8323A",
+  "charts": ["#0B6E4F", "#D98E04", "#1D5FBF", "#7A8F86", "#B5651D"],
+  "headingFont": "Manrope",
+  "bodyFont": "Inter",
+  "typeScale": 1.25,
+  "radius": 1.5,
+  "spacing": 1.0,
+  "borderWidth": 1,
+  "shadow": {
+    "preset": "soft",
+    "blur": 12,
+    "y": 4,
+    "op": 8
+  },
+  "headingWeight": 700,
+  "bodyWeight": 400,
+  "lineHeight": "normal",
+  "material": {
+    "preset": "elevated",
+    "opacity": 100,
+    "blur": 0,
+    "tint": 0,
+    "highlight": 0,
+    "page": "plain"
+  },
+  "identity": {
+    "name": "Ipê Invest",
+    "industry": "Fintech / investments",
+    "tagline": "Investimentos claros, sem letra miúda.",
+    "description": "Fictional retail investment platform used to prove the white-label pipeline on a regulated-finance brand.",
+    "website": "",
+    "audience": "Retail investors who are not finance professionals.",
+    "voice": "Plain language, calm, never urgent. Numbers always with their unit and date.",
+    "values": ["Clarity", "Trust", "Accessibility"],
+    "directives": "Every monetary value carries currency and formatting for pt-BR and en-CA. Never imply guaranteed returns. All interactive states must meet WCAG 2.2 AA."
+  },
+  "guidelines": "# Ipê Invest — Brand Guidelines\n\n## Visual rules\n- Deep green is the primary action colour; amber is reserved for highlights and never for destructive actions.\n- Generous radius and soft elevation: surfaces read as cards, not panels.\n- Data first: tables and figures use tabular numerals.\n\n## Writing rules\n- Sentence case everywhere.\n- Say what happens next before asking the user to act.\n- Regulatory text is visible, never hidden behind a tooltip.",
+  "presetSlug": null,
+  "overrides": null
+}

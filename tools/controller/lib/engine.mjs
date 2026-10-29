@@ -463,11 +463,17 @@ export function applySystem(brand, system) {
     }
   };
   setFonts(tokens.foundation);
-  if (tokens.borderRadius) {
-    const base = { 50: 4, 100: 8, 150: 12, 200: 16, 300: 24, 400: 32 };
-    for (const [k, v] of Object.entries(tokens.borderRadius)) {
+  // The radius scale lives at borderRadius['border-radius'][step] (Token Studio
+  // layout); older sources kept it flat at borderRadius[step]. Base values match
+  // the shipped scale (2/4/6/8/12/16px) so radius = 1 is a no-op.
+  const radiusSet = tokens.borderRadius?.['border-radius'] || tokens.borderRadius;
+  if (radiusSet) {
+    const base = { 50: 2, 100: 4, 150: 6, 200: 8, 300: 12, 400: 16 };
+    for (const [k, v] of Object.entries(radiusSet)) {
       if (v && typeof v === 'object' && base[k] !== undefined) {
-        v.value = `${Math.round(base[k] * brand.radius)}px`;
+        // radius = 1 keeps the `{dimension.N}` alias intact for Token Studio /
+        // Figma; any other multiplier has to become a literal.
+        v.value = brand.radius === 1 ? `{dimension.${k}}` : String(Math.round(base[k] * brand.radius));
       }
     }
   }

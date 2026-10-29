@@ -28,16 +28,6 @@
       "require": "./dist/IconButton/IconButton.cjs",
       "types": "./dist/IconButton/IconButton.d.ts"
     },
-    "./AdContainer": {
-      "import": "./dist/AdContainer/AdContainer.js",
-      "require": "./dist/AdContainer/AdContainer.cjs",
-      "types": "./dist/AdContainer/AdContainer.d.ts"
-    },
-    "./CommentsDisabled": {
-      "import": "./dist/CommentsDisabled/CommentsDisabled.js",
-      "require": "./dist/CommentsDisabled/CommentsDisabled.cjs",
-      "types": "./dist/CommentsDisabled/CommentsDisabled.d.ts"
-    },
     "./Text": {
       "import": "./dist/Text/Text.js",
       "require": "./dist/Text/Text.cjs",
@@ -78,11 +68,6 @@
       "require": "./dist/Icon/Icon.cjs",
       "types": "./dist/Icon/Icon.d.ts"
     },
-    "./Article": {
-      "import": "./dist/Article/UpNextArticles.js",
-      "require": "./dist/Article/UpNextArticles.cjs",
-      "types": "./dist/Article/UpNextArticles.d.ts"
-    },
     "./utils": {
       "import": "./dist/utils/hooks.js",
       "require": "./dist/utils/hooks.cjs",
@@ -95,7 +80,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-org/design-system.git"
+    "url": "git+https://github.com/TitoHansen/PrismSystem.git"
   },
   "scripts": {
     "build": "npm run clean && npm run build:rollup",
@@ -107,9 +92,9 @@
     "test": "node ./__tests__/*.test.js"
   },
   "bugs": {
-    "url": "https://github.com/your-org/design-system/issues"
+    "url": "https://github.com/TitoHansen/PrismSystem/issues"
   },
-  "homepage": "https://github.com/your-org/design-system#readme",
+  "homepage": "https://github.com/TitoHansen/PrismSystem#readme",
   "publishConfig": {
     "access": "public"
   },

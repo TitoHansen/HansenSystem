@@ -14,14 +14,14 @@ The mental model is a bubble you step inside. You run the controller, feed it yo
 
 ## In numbers
 
-| Layer | What it is | Count |
-| --- | --- | --- |
-| Skills | Task recipes the agents follow, in `packages/tokens/.agents/skills/` | 107 across 8 categories |
-| Agents | Personas that own the work | 9 |
-| Routes | The entry classifier that picks a skill sequence | 5 |
-| MCP tools | The engine: token lookup, contrast, scoring, gating, audit | 24 |
-| Packages | Tokens, three built themes, two component sets, icons | 8 |
-| Platform outputs | CSS variables, SCSS, Swift | 3 |
+| Layer            | What it is                                                           | Count                   |
+| ---------------- | -------------------------------------------------------------------- | ----------------------- |
+| Skills           | Task recipes the agents follow, in `packages/tokens/.agents/skills/` | 107 across 8 categories |
+| Agents           | Personas that own the work                                           | 9                       |
+| Routes           | The entry classifier that picks a skill sequence                     | 5                       |
+| MCP tools        | The engine: token lookup, contrast, scoring, gating, audit           | 24                      |
+| Packages         | Tokens, three built themes, two component sets, icons                | 8                       |
+| Platform outputs | CSS variables, SCSS, Swift                                           | 3                       |
 
 ## Structure mapping
 
@@ -65,11 +65,27 @@ The engine does real colour work, not just find-and-replace. From your seed colo
 The components are the vendored shadcn/ui set in `@ds/ui`, with React components in `@ds/components-react` and Phosphor icons in `@ds/icons`, all themed from your tokens. To browse them, build the workspace packages once, then open Storybook:
 
 ```sh
-npm run build       # builds the packages
-npm run storybook   # http://localhost:6006
+npm run build       # builds the packages and the token outputs
+npm run storybook   # http://localhost:6006  (builds every brand first)
 ```
 
-Storybook documents the components alongside the token foundations, the colour palette and the type scale.
+Storybook documents the components alongside the token foundations, the colour palette and the type scale. The toolbar carries a **Brand** switcher and a **Mode** (light/dark) switcher: every story is re-themed live from that brand's generated CSS, with no rebuild. Brands come from the `brands/` folder, described next.
+
+## Brands: more than one at a time
+
+`brands/<slug>.json` is the only brand-specific input. Each file holds the same shape the controller edits (seed colours, fonts, radius, density, material, identity, guidelines). Two ship with the repo: `prism`, the neutral baseline, and `ipe-invest`, a fictional retail-investment brand that proves the pipeline on a regulated-finance look.
+
+```sh
+npm run build:brands                 # builds every brand under brands/
+npm run build:brands -- ipe-invest   # one brand
+npm run build:brands -- --active prism
+```
+
+The builder runs the controller's own Save pipeline per brand (`computeSystem` → `applySystem` → `build:output`) and drops each result in `.storybook/public/brands/<slug>/` (generated, git-ignored) plus a manifest the toolbar reads. The repo's token sources are a single-brand surface, so the builder finishes on the _active_ brand (`brands/index.json`) and the committed `tokens.json` / `variables.css` always describe that one. CI fails if rebuilding the active brand changes them, which keeps the sources an honest function of their brand file.
+
+To turn controller work into a named brand: press Save & apply in the controller, then `npm run build:brands -- --save-active <slug>` and build again.
+
+What switches live today: everything under **Components**, because their CSS reads tokens at runtime. The **Theme** pages (palette, type scale, grid) still read the active brand at build time; moving them to runtime is the next step.
 
 ## The Prism Controller: kick off your design language
 
@@ -86,13 +102,14 @@ Beyond colours and type, the controller captures your actual design language. Dr
 ### 1. Start with the controller
 
 ```sh
-git clone <your-repo-url> prism-system
+git clone https://github.com/TitoHansen/PrismSystem.git prism-system
 cd prism-system
 npm install --legacy-peer-deps
+npm run build            # packages + token outputs, once
 npm run controller       # http://localhost:4400
 ```
 
-Set your brand. Pick a preset or set your colours, choose fonts, dial in shape, spacing and material. If you have a Figma file or a reference screen, capture its design language in the References tab and apply the values you want. Press **Save & apply**. The controller rewrites the token sources and rebuilds every output, so the whole repo now carries your brand.
+Set your brand. Pick a preset or set your colours, choose fonts, dial in shape, spacing and material. If you have a Figma file or a reference screen, capture its design language in the References tab and apply the values you want. Press **Save & apply**. The controller rewrites the token sources and rebuilds every output, so the whole repo now carries your brand. Save it as a named brand with `npm run build:brands -- --save-active <slug>` so it shows up in the Storybook switcher next to the others.
 
 ### 2. Move into VS Code, or the LLM of your choice
 
@@ -143,6 +160,15 @@ The tokens in `packages/tokens/src` are the single source of truth: when anythin
 Node 22 or later and npm. The Figma desktop app with its Dev Mode MCP server enabled is optional, and only needed if you want the controller to read design language straight from a Figma file. The local `claude` CLI is optional too; without it, image analysis falls back to client-side colour extraction. Chromium is wanted only by the six browser checks: run `npx playwright install chromium` once and they run instead of skipping.
 
 ## Changelog
+
+### 29 October 2026 (TitoHansen fork)
+
+- **Multi-brand.** `brands/<slug>.json` is the brand input; `npm run build:brands` runs the controller pipeline headlessly for each and publishes per-brand CSS to Storybook. A second brand, `ipe-invest`, ships as proof.
+- **Brand and mode switchers in Storybook.** Toolbar globals re-theme every component story live; dark mode is one click.
+- **Radius actually applies.** The engine wrote the radius multiplier to a path that did not exist in `tokens.json` (`borderRadius[step]` instead of `borderRadius['border-radius'][step]`), so every brand shipped the same corners. Fixed, and `Button`, `Input` and `Toast` now read `--border-radius-100` instead of hard-coding theirs.
+- **Setup that works from a clean clone.** `npm run build` now runs `build:output`, which produces the `build/js/tokens.json` the Theme stories import; previously Storybook failed on a fresh checkout.
+- **Out of scope for a white-label system.** `AdContainer`, `CommentsDisabled` and the `Article/*` components were editorial leftovers and are gone.
+- **GitHub Pages.** `.github/workflows/storybook-pages.yml` builds all brands and deploys the Storybook on every push to `main`.
 
 ### 26 July 2026
 

@@ -11,9 +11,6 @@ const input = {
   'Button/Button': 'src/Button/Button.tsx',
   'Button/ButtonContainer': 'src/Button/ButtonContainer.tsx',
   'IconButton/IconButton': 'src/IconButton/IconButton.tsx',
-  'AdContainer/AdContainer': 'src/AdContainer/AdContainer.tsx',
-  'CommentsDisabled/CommentsDisabled':
-    'src/CommentsDisabled/CommentsDisabled.tsx',
   'Text/Text': 'src/Text/Text.tsx',
   'Input/Input': 'src/Input/Input.tsx',
   'Divider/Divider': 'src/Divider/Divider.tsx',
@@ -22,7 +19,6 @@ const input = {
   'Flag/Flag': 'src/Flag/Flag.tsx',
   'Toast/Toast': 'src/Toast/Toast.tsx',
   'Icon/Icon': 'src/Icon/Icon.tsx',
-  'Article/UpNextArticles': 'src/Article/UpNextArticles/UpNextArticles.tsx',
   'utils/hooks': 'src/utils/hooks.ts'
 };
 

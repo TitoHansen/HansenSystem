@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-03);
-  border-radius: 0;
+  border-radius: var(--border-radius-100, 0);
   border: 1px solid var(--ds-button-border);
   background-color: var(--ds-button-bg);
   color: var(--ds-button-fg);
