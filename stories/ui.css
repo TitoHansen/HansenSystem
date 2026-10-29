@@ -1,0 +1,8 @@
+/* Tailwind v4 entry for the Storybook preview.
+   Order matters: tailwind → the @ds/ui contract (maps --color-* to the brand
+   variables) → the brand's generated theme.css, which the brand switcher links
+   at runtime from .storybook/public/brands/<slug>/theme.css (see preview-head). */
+@import "tailwindcss";
+@import "@ds/ui/styles/shadcn.css";
+/* @ds/ui is a symlinked workspace package; Tailwind skips node_modules unless told. */
+@source "../packages/ui/src";

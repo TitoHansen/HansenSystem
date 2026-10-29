@@ -1,7 +1,5 @@
-import React from 'react';
 import theme from '../../build/js/tokens.json';
 import './tokens-display.css';
-import { Text } from '@ds/components-react';
 
 const flattenObject = (ob, tokenType) => {
   var toReturn = {};
@@ -90,9 +88,14 @@ const generateTypography = (typography) => {
               key={typographyObject[0]}
               // style={typographyStyle[1]}
             >
-              <Text typographyStyle={typographyObject[0]}>
+              {/* Typography classes come from variables.css: `brand.heading.fluid.bold.large` → `.brand-heading-fluid-bold-large` */}
+              <p
+                className={typographyObject[0]
+                  .replaceAll('.', '-')
+                  .toLowerCase()}
+              >
                 {typographyObject[0]}
-              </Text>
+              </p>
             </div>
           ) : null;
         }

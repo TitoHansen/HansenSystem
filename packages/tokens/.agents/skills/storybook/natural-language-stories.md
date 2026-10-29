@@ -32,11 +32,11 @@ npm run storybook -- --port 6006
 
 ## Inputs
 
-| Parameter          | Type   | Required | Description                                                |
-| ------------------ | ------ | -------- | ---------------------------------------------------------- |
-| description        | string | Yes      | Plain English description of the desired component         |
-| context            | string | No       | Where this component is used (e.g., "article page header") |
-| referenceComponent | string | No       | Existing component to base this on                         |
+| Parameter          | Type   | Required | Description                                               |
+| ------------------ | ------ | -------- | --------------------------------------------------------- |
+| description        | string | Yes      | Plain English description of the desired component        |
+| context            | string | No       | Where this component is used (e.g., "detail page header") |
+| referenceComponent | string | No       | Existing component to base this on                        |
 
 ---
 
@@ -141,12 +141,7 @@ export const Default = {
 ```jsx
 // stories/pages/[PageName].stories.jsx
 import React, { useState } from 'react';
-import {
-  Button,
-  Input,
-  Text,
-  Link
-} from '@ds/components-react';
+import { Button, Input, Text, Link } from '@ds/components-react';
 import './PageName.css';
 
 export default {

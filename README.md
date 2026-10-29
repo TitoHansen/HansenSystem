@@ -1,14 +1,14 @@
-# Prism System
+# Hansen System
 
-![The Prism Controller theming a live dashboard preview](docs/assets/prism-controller.png)
+![The Hansen Controller theming a live dashboard preview](docs/assets/hansen-controller.png)
 
 A white-label design system in a box. Clone it, feed it a brand, and generate on-brand product UI for web, mobile and native, with AI agents that stay on brand because everything they touch is themed from the same tokens.
 
-Nothing here is tied to any one company. Fork it, brand it, generate.
+White-label in concept, not only in colour: nothing here is tied to a company, a segment or a kind of product. The core components, the page templates and the agent skills describe what nearly every journey needs (lists, detail views, forms, multi-step flows, confirmations, settings, the empty/error/loading trio) and stop there. Anything specific to a sector lives in a brand file, not in the system. Fork it, brand it, generate.
 
 ## What this is
 
-Prism System is a monorepo that carries everything a product team needs to look like itself: one token source of truth, a themed component library, build pipelines for web and iOS, a visual controller that turns a brand into a working theme in minutes, and an agent layer that generates product screens from that theme.
+Hansen System is a monorepo that carries everything a product team needs to look like itself: one token source of truth, a themed component library, build pipelines for web and iOS, a visual controller that turns a brand into a working theme in minutes, and an agent layer that generates product screens from that theme.
 
 The mental model is a bubble you step inside. You run the controller, feed it your brand (colours, fonts, a logo, reference imagery, even a Figma file or an existing website), and it derives a complete token system and rebuilds every output so the whole repo now speaks your brand. From then on, any UI generated inside the repo is on brand by construction, because it is built from those tokens and nothing else.
 
@@ -20,7 +20,7 @@ The mental model is a bubble you step inside. You run the controller, feed it yo
 | Agents           | Personas that own the work                                           | 9                       |
 | Routes           | The entry classifier that picks a skill sequence                     | 5                       |
 | MCP tools        | The engine: token lookup, contrast, scoring, gating, audit           | 24                      |
-| Packages         | Tokens, three built themes, two component sets, icons                | 8                       |
+| Packages         | Tokens, three built themes, the `@ds/ui` component set, icons        | 7                       |
 | Platform outputs | CSS variables, SCSS, Swift                                           | 3                       |
 
 ## Structure mapping
@@ -62,7 +62,7 @@ The engine does real colour work, not just find-and-replace. From your seed colo
 
 ## Component library and Storybook
 
-The components are the vendored shadcn/ui set in `@ds/ui`, with React components in `@ds/components-react` and Phosphor icons in `@ds/icons`, all themed from your tokens. To browse them, build the workspace packages once, then open Storybook:
+The components are the shadcn/ui set in `@ds/ui` (Tailwind v4, Radix), themed from your tokens through the generated `theme.css`, plus a `Stepper` the set lacked. Storybook's **Core** section documents the segment-agnostic subset every journey needs, grouped by job: Actions, Inputs, Feedback, Navigation, Overlays, Content. Status colours (`info`, `success`, `warning`) and the engine's solved soft fills are mapped into the Tailwind theme, so `Alert` and `Badge` carry status variants that clear WCAG AA by construction. To browse, build the workspace packages once, then open Storybook:
 
 ```sh
 npm run build       # builds the packages and the token outputs
@@ -73,12 +73,12 @@ Storybook documents the components alongside the token foundations, the colour p
 
 ## Brands: more than one at a time
 
-`brands/<slug>.json` is the only brand-specific input. Each file holds the same shape the controller edits (seed colours, fonts, radius, density, material, identity, guidelines). Two ship with the repo: `prism`, the neutral baseline, and `ipe-invest`, a fictional retail-investment brand that proves the pipeline on a regulated-finance look.
+`brands/<slug>.json` is the only brand-specific input. Each file holds the same shape the controller edits (seed colours, fonts, radius, density, material, identity, guidelines). Three ship with the repo, deliberately from different sectors so nothing in the system can lean on one: `hansen`, the neutral baseline; `ipe-invest`, a fictional retail-investment platform; `alva-care`, a fictional patient-facing health service. Sector rules (currency formatting, clinical language, regulatory text) live in each brand's `identity` and `guidelines`, which the generation agents read; the components and skills never carry them.
 
 ```sh
 npm run build:brands                 # builds every brand under brands/
 npm run build:brands -- ipe-invest   # one brand
-npm run build:brands -- --active prism
+npm run build:brands -- --active hansen
 ```
 
 The builder runs the controller's own Save pipeline per brand (`computeSystem` → `applySystem` → `build:output`) and drops each result in `.storybook/public/brands/<slug>/` (generated, git-ignored) plus a manifest the toolbar reads. The repo's token sources are a single-brand surface, so the builder finishes on the _active_ brand (`brands/index.json`) and the committed `tokens.json` / `variables.css` always describe that one. CI fails if rebuilding the active brand changes them, which keeps the sources an honest function of their brand file.
@@ -87,7 +87,7 @@ To turn controller work into a named brand: press Save & apply in the controller
 
 What switches live today: everything under **Components**, because their CSS reads tokens at runtime. The **Theme** pages (palette, type scale, grid) still read the active brand at build time; moving them to runtime is the next step.
 
-## The Prism Controller: kick off your design language
+## The Hansen Controller: kick off your design language
 
 The controller is a zero-dependency Node server at `tools/controller`, served at `http://localhost:4400`. The left rail defines the brand; the right side previews it live against real surfaces.
 
@@ -102,8 +102,8 @@ Beyond colours and type, the controller captures your actual design language. Dr
 ### 1. Start with the controller
 
 ```sh
-git clone https://github.com/TitoHansen/PrismSystem.git prism-system
-cd prism-system
+git clone https://github.com/TitoHansen/HansenSystem.git hansen-system
+cd hansen-system
 npm install --legacy-peer-deps
 npm run build            # packages + token outputs, once
 npm run controller       # http://localhost:4400
@@ -161,6 +161,15 @@ Node 22 or later and npm. The Figma desktop app with its Dev Mode MCP server ena
 
 ## Changelog
 
+### 29 October 2026 — Hansen System
+
+- **Renamed** from Prism System. Repo `TitoHansen/HansenSystem`, package `hansen-system`, baseline brand `hansen`.
+- **Segment-agnostic by contract.** `ux/pattern-library` and `ux/page-templates` rewritten around journeys every product has (list, detail, form, multi-step flow, dashboard, settings, confirmation, state trio). Editorial residue (articles, section fronts, paywalls, live blogs, puzzle hubs) removed from the skills, the corpus stubs and the typography token descriptions.
+- **One component base.** `@ds/components-react` retired; Storybook now runs on `@ds/ui` (shadcn, Tailwind v4) with a **Core** section of 25+ stories across six groups, plus a new `Stepper`. The brand switcher swaps both `variables.css` and `theme.css`; dark mode toggles shadcn's `.dark`.
+- **Status colours in the Tailwind layer.** `info/success/warning` and the engine's `*-soft` / `*-soft-foreground` tokens are mapped, and `Alert`/`Badge` gained status variants that use them.
+- **16px root.** The output formats used to rescale font-size tokens to a 10px root (a product-specific convention); removed, so the token layer and Tailwind agree.
+- **Baseline passes its own audit.** `hansen` no longer carries a tweakcn preset's pinned inks (9 failing pairings); the engine derives them (0 failing). Third example brand `alva-care` added.
+
 ### 29 October 2026 (TitoHansen fork)
 
 - **Multi-brand.** `brands/<slug>.json` is the brand input; `npm run build:brands` runs the controller pipeline headlessly for each and publishes per-brand CSS to Storybook. A second brand, `ipe-invest`, ships as proof.
@@ -182,8 +191,8 @@ Node 22 or later and npm. The Figma desktop app with its Dev Mode MCP server ena
 
 ## Contributing
 
-Prism System is public and open to contributions. Fork it, branch off `main`, and open a pull request. `CONTRIBUTING.md` covers the setup and the house rules (keep it brand-neutral, bind to tokens, never commit secrets), `SECURITY.md` explains how to report anything sensitive privately, and issue and pull-request templates live under `.github/`.
+Hansen System is public and open to contributions. Fork it, branch off `main`, and open a pull request. `CONTRIBUTING.md` covers the setup and the house rules (keep it brand-neutral, bind to tokens, never commit secrets), `SECURITY.md` explains how to report anything sensitive privately, and issue and pull-request templates live under `.github/`.
 
 ## Open source, not for sale
 
-Prism System is open source and free. Use it for your own projects, or for work you do for your clients. It is not a product to be sold or resold; the value is in what you build with it, not in the system itself. Take it, brand it, ship real things with it. See `LICENSE` for the legal text.
+Hansen System is open source and free. Use it for your own projects, or for work you do for your clients. It is not a product to be sold or resold; the value is in what you build with it, not in the system itself. Take it, brand it, ship real things with it. See `LICENSE` for the legal text.

@@ -29,10 +29,10 @@ This skill **writes files and moves images**, so it is `requires-approval`. It s
 
 ## Inputs
 
-* `source` — folder to inventory. Default `design-corpus/raw/inbox/`.
-* `batch_size` — max images to process in one run. Default 20. Larger batches are split across runs.
-* `default_surface` — `web` | `ios` | `android` | `auto`. Default `auto` (classify per image).
-* `dry_run` — when true, produce the plan and the proposed distilled diffs but move nothing and write nothing. Default true. The caller sets `dry_run: false` to apply.
+- `source` — folder to inventory. Default `design-corpus/raw/inbox/`.
+- `batch_size` — max images to process in one run. Default 20. Larger batches are split across runs.
+- `default_surface` — `web` | `ios` | `android` | `auto`. Default `auto` (classify per image).
+- `dry_run` — when true, produce the plan and the proposed distilled diffs but move nothing and write nothing. Default true. The caller sets `dry_run: false` to apply.
 
 ## Procedure
 
@@ -50,8 +50,8 @@ Cross-check each hash against `screens[].sha256` in `manifest/corpus-manifest.js
 
 Look at each new image and determine:
 
-* **surface** — web, ios, or android, from chrome, status bar, proportions. If `default_surface` is not `auto`, use it and only override on strong evidence.
-* **journey** — a short slug for the flow the screen belongs to: `reader-journey`, `paywall-subscription`, `onboarding`, `live-blog`, `navigation-search`, or a new slug if none fit (note new slugs for review).
+- **surface** — web, ios, or android, from chrome, status bar, proportions. If `default_surface` is not `auto`, use it and only override on strong evidence.
+- **journey** — a short slug for the flow the screen belongs to: `reader-journey`, `upgrade gate-subscription`, `onboarding`, `live-blog`, `navigation-search`, or a new slug if none fit (note new slugs for review).
 
 Low-confidence classifications are allowed; record them as `unknown` rather than guessing, and list them in the run report for a human to correct.
 
@@ -90,16 +90,16 @@ Write the manifest back as valid JSON (validate with `python3 -m json.tool`). `f
 
 This is the value. Reading the batch **together** (patterns emerge across screens, not within one), update the distilled documents:
 
-* `distilled/layout-patterns.md` — grids and columns, card anatomy, page templates, density and rhythm actually used.
-* `distilled/component-usage.md` — which DS components appear, in which variants, how often, and any divergence from the component contracts in `packages/tokens/docs/components/`.
-* `distilled/ux-patterns/<journey>.md` — for each journey in the batch: screens in the flow, steps and decision points, states (loading, empty, error), components used.
+- `distilled/layout-patterns.md` — grids and columns, card anatomy, page templates, density and rhythm actually used.
+- `distilled/component-usage.md` — which DS components appear, in which variants, how often, and any divergence from the component contracts in `packages/tokens/docs/components/`.
+- `distilled/ux-patterns/<journey>.md` — for each journey in the batch: screens in the flow, steps and decision points, states (loading, empty, error), components used.
 
 Rules for writing observations:
 
-* Every observation ends with `(corpus v<N> · <n> screens)` and the manifest `sha256` prefixes it draws from, per `foundation/corpus-guide`.
-* **Append, do not overwrite.** Strengthen an existing observation by adding to its screen count and evidence; add new observations under the right heading. Never delete prior evidence.
-* Describe, do not prescribe. "Section fronts lead with one large headline card then a 3-column list" is an observation. "Section fronts should..." is a rule, and rules live in `design-rules`.
-* Update each touched screen's manifest `distilled_into` with the anchors it fed.
+- Every observation ends with `(corpus v<N> · <n> screens)` and the manifest `sha256` prefixes it draws from, per `foundation/corpus-guide`.
+- **Append, do not overwrite.** Strengthen an existing observation by adding to its screen count and evidence; add new observations under the right heading. Never delete prior evidence.
+- Describe, do not prescribe. "Section fronts lead with one large headline card then a 3-column list" is an observation. "Section fronts should..." is a rule, and rules live in `design-rules`.
+- Update each touched screen's manifest `distilled_into` with the anchors it fed.
 
 ### Step 6: Propose rule candidates
 
@@ -126,19 +126,19 @@ Increment `corpus_version` in the manifest, and add a row to `distilled/VERSION.
 
 ## Batch
 
-| Metric | Value |
-|---|---|
-| Images found | <n> |
-| Already in corpus (skipped) | <n> |
-| Processed this run | <n> |
-| Left for next run | <n> |
-| Unknown classifications (need review) | <n> |
+| Metric                                | Value |
+| ------------------------------------- | ----- |
+| Images found                          | <n>   |
+| Already in corpus (skipped)           | <n>   |
+| Processed this run                    | <n>   |
+| Left for next run                     | <n>   |
+| Unknown classifications (need review) | <n>   |
 
 ## Filed
 
 | Source | Destination | Surface | Journey |
-|---|---|---|---|
-| ... | ... | ... | ... |
+| ------ | ----------- | ------- | ------- |
+| ...    | ...         | ...     | ...     |
 
 ## Distilled
 
@@ -169,21 +169,21 @@ Followed by the machine-readable summary:
 
 ## Error Handling
 
-* **No images in source.** Return `info`: "nothing to distil". Not an error.
-* **Vision unavailable.** Stop. This skill cannot classify or distil without seeing the images.
-* **Manifest invalid JSON after write.** Restore the pre-run manifest, stop, and report. Never leave the manifest unparseable; the whole corpus keys on it.
-* **Ambiguous surface.** Record `unknown`, file under `raw/unknown/` as appropriate, and list for human correction. Do not force a guess into the evidence.
-* **A raw image would be committed.** The gitignore covers `design-corpus/raw/**`; if a filing path falls outside it, stop and report rather than risk committing subscriber or unreleased content.
-* **Batch too large.** Process `batch_size`, report the remainder, and leave it in `source` for the next run.
+- **No images in source.** Return `info`: "nothing to distil". Not an error.
+- **Vision unavailable.** Stop. This skill cannot classify or distil without seeing the images.
+- **Manifest invalid JSON after write.** Restore the pre-run manifest, stop, and report. Never leave the manifest unparseable; the whole corpus keys on it.
+- **Ambiguous surface.** Record `unknown`, file under `raw/unknown/` as appropriate, and list for human correction. Do not force a guess into the evidence.
+- **A raw image would be committed.** The gitignore covers `design-corpus/raw/**`; if a filing path falls outside it, stop and report rather than risk committing subscriber or unreleased content.
+- **Batch too large.** Process `batch_size`, report the remainder, and leave it in `source` for the next run.
 
 ## Composition
 
-* `compose_after`: `design/foundation/design-dna`, `design/foundation/design-rules`, `design/foundation/corpus-guide`
-* `compose_before`: `design/ui/design-critique`, `design/ux/flow-design`, `design/ux/pattern-library`
-* `calls`: vision on the running agent; `python3` for hashing and JSON
+- `compose_after`: `design/foundation/design-dna`, `design/foundation/design-rules`, `design/foundation/corpus-guide`
+- `compose_before`: `design/ui/design-critique`, `design/ux/flow-design`, `design/ux/pattern-library`
+- `calls`: vision on the running agent; `python3` for hashing and JSON
 
 ## Related skills
 
-* `../foundation/corpus-guide.md` — the citation contract for what this skill writes
-* `../foundation/design-rules.md` — where strong candidates get promoted
-* `../ui/design-critique.md` — consumes both the rules and the corpus evidence
+- `../foundation/corpus-guide.md` — the citation contract for what this skill writes
+- `../foundation/design-rules.md` — where strong candidates get promoted
+- `../ui/design-critique.md` — consumes both the rules and the corpus evidence

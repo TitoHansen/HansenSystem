@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prism Controller</title>
+<title>Hansen Controller</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -813,7 +813,7 @@
 <div class="app">
 
   <header class="topbar">
-    <div class="wordmark"><span class="mark">PS</span>Prism Controller</div>
+    <div class="wordmark"><span class="mark">PS</span>Hansen Controller</div>
     <div class="spacer"></div>
     <div class="seg" role="group" aria-label="Preview mode">
       <button id="mode-light" class="active" type="button">Light</button>
@@ -2495,11 +2495,11 @@
     });
     if (pushHash !== false) {
       var h = '#' + id;
-      if (id === 'preview' && window.PrismGallery) h += '/' + window.PrismGallery.current();
+      if (id === 'preview' && window.HansenGallery) h += '/' + window.HansenGallery.current();
       try { history.replaceState(null, '', h); } catch (e) { location.hash = h; }
     }
     if (id === 'preview') {
-      if (window.PrismGallery) window.PrismGallery.refresh();
+      if (window.HansenGallery) window.HansenGallery.refresh();
       else renderMood();
     }
   }
@@ -2514,8 +2514,8 @@
     var raw = (location.hash || '#preview').slice(1);
     var parts = raw.split('/');
     setTab(parts[0] || 'preview', false);
-    if (parts[0] === 'preview' && window.PrismGallery) {
-      window.PrismGallery.select(parts[1] || 'brand', false);
+    if (parts[0] === 'preview' && window.HansenGallery) {
+      window.HansenGallery.select(parts[1] || 'brand', false);
     }
   }
   window.addEventListener('hashchange', routeFromHash);
@@ -4042,7 +4042,7 @@
     /* The gallery reads resolved custom properties off the preview element, so
        it has to redraw after the theme changes, not before. */
     if (currentTab === 'preview') {
-      if (window.PrismGallery) window.PrismGallery.refresh();
+      if (window.HansenGallery) window.HansenGallery.refresh();
       else renderMood();
     }
     var cp = document.getElementById('pane-colours');

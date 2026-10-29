@@ -20,7 +20,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TitoHansen/PrismSystem.git"
+    "url": "git+https://github.com/TitoHansen/HansenSystem.git"
   },
   "scripts": {
     "reconcile": "node src/scripts/reconcile-tokens.js",
@@ -36,9 +36,9 @@
     "rimraf": "^5.0.0"
   },
   "bugs": {
-    "url": "https://github.com/TitoHansen/PrismSystem/issues"
+    "url": "https://github.com/TitoHansen/HansenSystem/issues"
   },
-  "homepage": "https://github.com/TitoHansen/PrismSystem#readme",
+  "homepage": "https://github.com/TitoHansen/HansenSystem#readme",
   "dependencies": {
     "colorjs.io": "0.6.0"
   }

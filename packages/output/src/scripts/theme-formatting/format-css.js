@@ -192,16 +192,9 @@ export const formatCSS = ({ dictionary, options }) => {
           .replace(`viewport-${breakpoint}-`, '')
           .replace(`font-size`, 'fontSize');
 
-        // Convert rem values from 16px base to 10px base for fontSize tokens
-        if (replacedToken.includes('fontSize')) {
-          replacedToken = replacedToken.replace(
-            /: ([\d.]+)rem;/,
-            (match, remValue) => {
-              const base10Value = (parseFloat(remValue) * 1.6).toFixed(4);
-              return `: ${parseFloat(base10Value)}rem;`;
-            }
-          );
-        }
+        // fontSize tokens are authored on a 16px root (fontSize030 = 1rem) and are
+        // emitted as-is. The 10px-root (62.5%) conversion that used to live here was
+        // a product-specific convention; the shadcn/Tailwind layer assumes 16px.
 
         if (
           !replacedToken.includes('px') &&

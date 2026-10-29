@@ -6,7 +6,7 @@
 //
 //   node tools/controller/cli/build-brands.mjs              # all brands
 //   node tools/controller/cli/build-brands.mjs ipe-invest   # one brand
-//   node tools/controller/cli/build-brands.mjs --active prism
+//   node tools/controller/cli/build-brands.mjs --active hansen
 //
 // For each brand it runs the same path the controller's "Save & apply" runs:
 // computeSystem -> applySystem -> npm run build:output. The engine writes into
@@ -136,6 +136,10 @@ for (const slug of order) {
 fs.copyFileSync(path.join(OUT_DIR, active, 'variables.css'), path.join(ROOT, '.storybook/public/variables.css'));
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
+// Drop bundles for brands that no longer exist under brands/ (renamed or removed).
+for (const d of fs.readdirSync(OUT_DIR, { withFileTypes: true })) {
+  if (d.isDirectory() && !all.includes(d.name)) fs.rmSync(path.join(OUT_DIR, d.name), { recursive: true, force: true });
+}
 fs.writeFileSync(manifestFile, JSON.stringify({
   active,
   generatedAt: new Date().toISOString(),

@@ -103,20 +103,20 @@ Typography token descriptions must follow a strict template to serve Product, De
 ### Required Rules
 
 - **Start with user intent, not classification.** Lead with size, context, or use case—never weight name alone.
- - ✓ "Micro headline. Tertiary section breaks. Pair with `h5` or `h6`."
- - ✗ "Light-weight micro headline. Typically h5, h6."
+- ✓ "Micro headline. Tertiary section breaks. Pair with `h5` or `h6`."
+- ✗ "Light-weight micro headline. Typically h5, h6."
 
 - **Avoid redundancy with token path.** The token name already says `heading`, `fluid`, `light`, etc.
- - ✓ "Small headline. Sections and cards. Pair with `h3` or `h4`."
- - ✗ "Light-weight heading for small sections and cards. Pair with `h3` or `h4`."
+- ✓ "Small headline. Sections and cards. Pair with `h3` or `h4`."
+- ✗ "Light-weight heading for small sections and cards. Pair with `h3` or `h4`."
 
 - **Always use inline code for HTML elements.** Never write "h5" without backticks; always `` `h5` ``.
- - ✓ "Pair with `h5` or `h6`."
- - ✗ "Pair with h5 or h6. Typically h5, h6."
+- ✓ "Pair with `h5` or `h6`."
+- ✗ "Pair with h5 or h6. Typically h5, h6."
 
 - **Use active, imperative verbs.** Action-oriented language helps developers and designers.
- - ✓ "Use for footnotes. Pair with `p`."
- - ✗ "Typically used for footnotes and pairs with p elements."
+- ✓ "Use for footnotes. Pair with `p`."
+- ✗ "Typically used for footnotes and pairs with p elements."
 
 - **Keep descriptions ≤60 characters when possible.** Longer descriptions need strong justification.
 
@@ -136,26 +136,26 @@ Use consistent, hyphen-free weight names in descriptions (weight classification 
 
 Structure HTML guidance clearly and consistently:
 
-| Situation | Format | Example |
+| Situation         | Format                                             | Example                              |
 | ----------------- | -------------------------------------------------- | ------------------------------------ |
-| Single element | "Use inside `p`." | For inline links within body text |
-| Multiple elements | "Use inside `p` or `span`." | For elements with flexible container |
-| Specific context | "Use for standalone links outside paragraph text." | For block-level link containers |
-| Semantic emphasis | "Use `figcaption` for semantic captions." | When HTML5 semantics matter |
+| Single element    | "Use inside `p`."                                  | For inline links within body text    |
+| Multiple elements | "Use inside `p` or `span`."                        | For elements with flexible container |
+| Specific context  | "Use for standalone links outside paragraph text." | For block-level link containers      |
+| Semantic emphasis | "Use `figcaption` for semantic captions."          | When HTML5 semantics matter          |
 
 ### Accessibility & Warnings
 
 For extreme sizes (very large or very small) and accessibility-critical tokens:
 
 - **Minimum-size tokens (≤12px):** Add verification requirement.
- - ✓ "Micro caption (10px). Verify 4.5:1 contrast ratio. Use inside `p` or `span`."
+- ✓ "Micro caption (10px). Verify 4.5:1 contrast ratio. Use inside `p` or `span`."
 
 - **Maximum-size tokens (≥68px):** Add context and warning.
- - ✓ "Mega-headline (68px). Brand splash pages only. Warning: breaks mobile layouts. Use `p` or `span`."
+- ✓ "Mega-headline (68px). Brand splash pages only. Warning: breaks mobile layouts. Use `p` or `span`."
 
 - **Link tokens:** Note visual state (underline present/absent).
- - ✓ "Underlined inline link (body text). Use inside `p`."
- - ✓ "Standalone link without underline (navigation). Use for block-level nav."
+- ✓ "Underlined inline link (body text). Use inside `p`."
+- ✓ "Standalone link without underline (navigation). Use for block-level nav."
 
 ### Audience-Specific Guidance
 
@@ -164,7 +164,7 @@ Each description serves three audiences. Ensure clarity for all three:
 **Product:** Context and business use
 
 - "Small body text for dense layouts."
-- "Meta for author attribution on article pages."
+- "Meta for author attribution on detail pages."
 
 **Design:** Visual hierarchy and role
 

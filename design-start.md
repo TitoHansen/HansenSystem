@@ -2,7 +2,7 @@
 description: Guided design intake. Pick what you want, then send your design. No keywords to remember.
 ---
 
-Run the Prism System guided design intake. The designer clicks through what they want; never make them type a skill name. This command carries its own flow (below); it does not defer to the router's guided-mode section.
+Run the Hansen System guided design intake. The designer clicks through what they want; never make them type a skill name. This command carries its own flow (below); it does not defer to the router's guided-mode section.
 
 $ARGUMENTS
 

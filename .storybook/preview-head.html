@@ -1,6 +1,8 @@
 <!-- Active brand tokens. The brand switcher (see preview.js) swaps this href to /brands/<slug>/variables.css. -->
-<link id="prism-brand-css" rel="stylesheet" type="text/css" href="./variables.css">
-<link id="prism-brand-fonts" rel="stylesheet" href="">
+<link id="hansen-brand-css" rel="stylesheet" type="text/css" href="./variables.css">
+<!-- shadcn/ui layer of the same brand (generated theme.css); swapped together with the one above. -->
+<link id="hansen-brand-theme" rel="stylesheet" type="text/css" href="./brands/hansen/theme.css">
+<link id="hansen-brand-fonts" rel="stylesheet" href="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
 <style>
 
@@ -52,8 +54,9 @@
     box-sizing: border-box;
   }
 
+  /* 16px root: fontSize tokens and the Tailwind layer both assume it. */
   html {
-    font-size: 62.5%;
+    font-size: 100%;
   }
 
   /* Canvas follows the brand + colour mode so dark mode reads as dark. */
@@ -61,6 +64,7 @@
   .sb-show-main {
     background: var(--surface-canvas, #ffffff);
     color: var(--text-primary, #1a1a1a);
+    min-height: 100vh; /* so the canvas colour fills the viewport in dark mode */
   }
 
   #storybook-root {
@@ -73,7 +77,7 @@
   /* H1: Inter Bold, 3rem, tight tracking */
   .sbdocs h1,
   .sbdocs-h1,
-  h1 {
+  .sbdocs h1 {
     font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
     font-weight: 800 !important;
     font-size: 3rem !important;
@@ -85,7 +89,7 @@
   /* H2: Inter, 1.75rem, tight tracking */
   .sbdocs h2,
   .sbdocs-h2,
-  h2 {
+  .sbdocs h2 {
     font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
     font-weight: 600 !important;
     font-size: 1.75rem !important;
@@ -96,7 +100,7 @@
   /* H3: Inter, 1.375rem, tight tracking */
   .sbdocs h3,
   .sbdocs-h3,
-  h3 {
+  .sbdocs h3 {
     font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
     font-weight: 600 !important;
     font-size: 1.375rem !important;
@@ -106,7 +110,7 @@
 
   /* H4: Inter, 1.125rem */
   .sbdocs h4,
-  h4 {
+  .sbdocs h4 {
     font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
     font-weight: 600 !important;
     font-size: 1.125rem !important;
@@ -116,7 +120,7 @@
   /* H5–H6: Inter (fallback sizes) */
   .sbdocs h5,
   .sbdocs h6,
-  h5, h6 {
+  .sbdocs h5, .sbdocs h6 {
     font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
     font-weight: 600 !important;
     line-height: 112.5% !important;
@@ -159,12 +163,12 @@
   .sbdocs h4,
   .sbdocs h5,
   .sbdocs h6,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  .sbdocs h1,
+  .sbdocs h2,
+  .sbdocs h3,
+  .sbdocs h4,
+  .sbdocs h5,
+  .sbdocs h6 {
     color: var(--ds-storybook-text-primary);
   }
 
@@ -246,9 +250,9 @@
 
   /* ── Labels: Inter, 1rem ── */
   .sbdocs label,
-  label,
-  button,
-  [role="tab"] {
+  .sbdocs label,
+  .sbdocs button,
+  .sbdocs [role="tab"] {
     font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
     font-weight: 700 !important;
     font-size: 1rem;
@@ -284,13 +288,13 @@
 
   .sbdocs strong,
   .sbdocs b,
-  strong, b {
+  .sbdocs strong, b {
     font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
     color: var(--ds-storybook-text-primary);
   }
   .sbdocs em,
   .sbdocs i,
-  em, i {
+  .sbdocs em, i {
     font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
     font-style: italic !important;
     color: var(--ds-storybook-text-secondary);

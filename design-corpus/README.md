@@ -2,7 +2,7 @@
 
 How the Design System learns from the real product. Drop screenshots of the live website and app here; the `corpus/distill-corpus` skill reads them in batches, files them, and distils what it sees into versioned reference documents that every design skill can cite.
 
-The corpus is how the suite stays honest about how your brand *actually* designs, not just how the tokens say it should.
+The corpus is how the suite stays honest about how your brand _actually_ designs, not just how the tokens say it should.
 
 ## How to use it (designers)
 
@@ -28,12 +28,12 @@ design-corpus/
     ├── channel-styling.md    how each channel's colour and tone play out in practice
     ├── component-usage.md    DS components as actually used: variants, frequency, misuse
     ├── rules-candidates.md   observations proposed for promotion into foundation/design-rules.md
-    └── ux-patterns/          per-journey UX patterns (reader journey, paywall, onboarding, live-blog, nav/search)
+    └── ux-patterns/          per-journey UX patterns (onboarding, checkout/transaction, account-settings, nav/search)
 ```
 
 ## Rules of the corpus
 
-* **Raw images are never committed.** They may contain subscriber content, unreleased design, or personal data. `raw/` is gitignored; only the manifest (hashes and metadata) and the distilled documents are kept. In this repo nothing is committed at all yet — it is a local sandbox — but the gitignore keeps that boundary clear.
-* **Distilled docs are evidence, not law.** They describe what the product does. On any conflict, `packages/tokens/src/tokens.json`, `content-styleguide.md` and `foundation/design-dna.md` outrank the corpus. See `foundation/corpus-guide.md` for the citation contract.
-* **Every observation is traceable.** Each line in a distilled doc references the corpus version and the manifest entries it came from, so a claim can always be traced back to the screens that support it.
-* **The corpus grows the rules.** Distillation proposes new rules into `distilled/rules-candidates.md`; a human promotes the good ones into `foundation/design-rules.md`.
+- **Raw images are never committed.** They may contain subscriber content, unreleased design, or personal data. `raw/` is gitignored; only the manifest (hashes and metadata) and the distilled documents are kept. In this repo nothing is committed at all yet — it is a local sandbox — but the gitignore keeps that boundary clear.
+- **Distilled docs are evidence, not law.** They describe what the product does. On any conflict, `packages/tokens/src/tokens.json`, `content-styleguide.md` and `foundation/design-dna.md` outrank the corpus. See `foundation/corpus-guide.md` for the citation contract.
+- **Every observation is traceable.** Each line in a distilled doc references the corpus version and the manifest entries it came from, so a claim can always be traced back to the screens that support it.
+- **The corpus grows the rules.** Distillation proposes new rules into `distilled/rules-candidates.md`; a human promotes the good ones into `foundation/design-rules.md`.

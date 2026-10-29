@@ -1,14 +1,14 @@
-# Contributing to Prism System
+# Contributing to Hansen System
 
-Thanks for your interest in improving Prism System. It is a white-label design system, so contributions that keep it generic and reusable are especially welcome.
+Thanks for your interest in improving Hansen System. It is a white-label design system, so contributions that keep it generic and reusable are especially welcome.
 
 ## Getting set up
 
 You need Node 22 or later and npm.
 
 ```sh
-git clone https://github.com/appariciojunior/PrismSystem.git
-cd PrismSystem
+git clone https://github.com/appariciojunior/HansenSystem.git
+cd HansenSystem
 npm install --legacy-peer-deps
 npm run controller   # visual brand controller at http://localhost:4400
 npm run storybook    # browse the themed component library

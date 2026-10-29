@@ -22,5 +22,8 @@ export default defineConfig([
     languageOptions: { globals: { ...globals.browser, ...globals.node } }
   },
   tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended
+  pluginReact.configs.flat.recommended,
+  // React 17+ automatic JSX runtime: no React import needed in scope.
+  pluginReact.configs.flat['jsx-runtime'],
+  { settings: { react: { version: 'detect' } } }
 ]);

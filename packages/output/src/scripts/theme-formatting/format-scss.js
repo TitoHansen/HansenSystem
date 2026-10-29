@@ -124,18 +124,7 @@ export const formatSCSS = ({ dictionary, options }) => {
         .replace('-font-weight', '$fontWeight')
         .replace('-font-line-height', '$fontLineHeight');
 
-      if (
-        !replacedToken.includes('px') &&
-        replacedToken.includes('$fontSize')
-      ) {
-        replacedToken = replacedToken.replace(
-          /: ([\d.]+)rem;/,
-          (match, remValue) => {
-            const base10Value = (parseFloat(remValue) * 1.6).toFixed(4);
-            return `: ${parseFloat(base10Value)}rem;`;
-          }
-        );
-      }
+      // fontSize tokens stay on the 16px root they are authored on (see format-css.js).
 
       return replacedToken.replace('--', '$');
 

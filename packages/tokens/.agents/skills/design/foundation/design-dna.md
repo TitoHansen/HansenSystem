@@ -3,13 +3,13 @@ name: design-dna
 description: The single source of truth for who the Design System is, how your brand designs, and what we consider good design. Acts both as a standalone prototyping companion (call it when starting any quick design or first iteration) and as an always-on preamble (other design skills compose with this skill to anchor their outputs in your brand's voice and principles). Load this before reaching for anything else.
 license: MIT
 metadata:
- category: design/foundation
- pillar: foundation
- agents: [Designer, Design Engineer, PM, Content, Architect, Code]
- autonomy: autonomous
- portable: true
- cadence: always
- composition_mode: preamble_or_standalone
+  category: design/foundation
+  pillar: foundation
+  agents: [Designer, Design Engineer, PM, Content, Architect, Code]
+  autonomy: autonomous
+  portable: true
+  cadence: always
+  composition_mode: preamble_or_standalone
 ---
 
 # Design DNA
@@ -35,8 +35,8 @@ None. This skill is foundational. It reads from the repo, it does not depend on 
 
 Optional:
 
-* `mode` — `tldr` (default for preamble) | `full` (default for standalone). The TL;DR is the bullet-pointed essentials; full is the long form below.
-* `lens` — `brand` | `tokens` | `motion` | `voice` | `anti-patterns` | `all`. Default `all`. Narrows the response to a single area.
+- `mode` — `tldr` (default for preamble) | `full` (default for standalone). The TL;DR is the bullet-pointed essentials; full is the long form below.
+- `lens` — `brand` | `tokens` | `motion` | `voice` | `anti-patterns` | `all`. Default `all`. Narrows the response to a single area.
 
 ## Procedure
 
@@ -66,13 +66,13 @@ When called standalone with no lens, return the full document below (everything 
 
 This is the identity section. The shipped example is a serious, content-led product with a long-form content heritage: clear, accurate, occasionally dry, never showing off. Replace it with your own brand story, then keep the rest of this file aligned to it.
 
-The brand voice is not chatty. It is not corporate. It is closer to a well-edited article: clear, accurate, occasionally dry, never showing off. Headlines are written, never algorithmically assembled. Body text earns its place. Whitespace is content, not decorative.
+The brand voice is not chatty. It is not corporate. It is closer to a well-edited reference: clear, accurate, occasionally dry, never showing off. Headlines are written, never algorithmically assembled. Body text earns its place. Whitespace is content, not decorative.
 
 What this means for design:
 
-* Clarity beats novelty. If a designer-friendly pattern conflicts with reader comprehension, comprehension wins.
-* Hierarchy is the most important visual decision. Multiple display sizes in one frame is a sign of a confused hierarchy.
-* Trust is the product. Anything that makes the page feel "less real" (decorative animation, fake personalisation, faux-rich interactions) erodes the product.
+- Clarity beats novelty. If a designer-friendly pattern conflicts with user comprehension, comprehension wins.
+- Hierarchy is the most important visual decision. Multiple display sizes in one frame is a sign of a confused hierarchy.
+- Trust is the product. Anything that makes the page feel "less real" (decorative animation, fake personalisation, faux-rich interactions) erodes the product.
 
 ## How the tokens work
 
@@ -94,54 +94,54 @@ Themes are structurally identical. A token like `messaging.fill.warning` means t
 
 Five principles, in priority order. When two conflict, the higher-priority one wins.
 
-1. **Comprehension first.** The reader should understand the page on a single scroll. If a designer-friendly device gets in the way, remove the device.
+1. **Comprehension first.** The user should understand the page on a single scroll. If a designer-friendly device gets in the way, remove the device.
 2. **Hierarchy is the work.** Most visual issues are hierarchy issues. Get the headline / body / metadata relationship right and the page tends to work.
 3. **Content rhythm.** Spacing follows the type scale, not the grid alone. A page that is 4px-perfect but visually arrhythmic is a worse page.
 4. **Components, not custom.** If a DS component exists, use it. If it does not, the design system fills the gap before the feature ships its own.
-5. **Motion is invisible.** Good motion is felt, not seen. If the reader notices the animation, the animation is wrong.
+5. **Motion is invisible.** Good motion is felt, not seen. If the user notices the animation, the animation is wrong.
 
-## What is *not* good design
+## What is _not_ good design
 
 These are anti-patterns. The system should refuse to produce them.
 
-* Purple gradients on white backgrounds. Generic AI-design aesthetic.
-* More than two display type sizes per visible region. Hierarchy collapses.
-* Spring-bouncy motion. Reads as toy-like, undermines authority.
-* Decorative micro-interactions everywhere. Hover effects on every static element, scroll-triggered reveals on every paragraph.
-* Emoji in product surfaces. Allowed in user-generated content; not in UI chrome, error states, or marketing.
-* Body text below the smallest body token (verify exact size via `motion-tokens` or `discovery/token-lookup`).
-* "Friendly" copy that does the reader's thinking for them. Good copy is direct.
-* Borrowed identities. If the design could have come from any other product, the design has failed.
+- Purple gradients on white backgrounds. Generic AI-design aesthetic.
+- More than two display type sizes per visible region. Hierarchy collapses.
+- Spring-bouncy motion. Reads as toy-like, undermines authority.
+- Decorative micro-interactions everywhere. Hover effects on every static element, scroll-triggered reveals on every paragraph.
+- Emoji in product surfaces. Allowed in user-generated content; not in UI chrome, error states, or marketing.
+- Body text below the smallest body token (verify exact size via `motion-tokens` or `discovery/token-lookup`).
+- "Friendly" copy that does the user's thinking for them. Good copy is direct.
+- Borrowed identities. If the design could have come from any other product, the design has failed.
 
 ## Voice and language
 
 From `content-styleguide.md`, the rules that come up most:
 
-* British English. `colour`, `behaviour`, `customise`, `favour`, `recognise`. Never the American forms in product or docs.
-* Plain English. Active voice. Short sentences. Imperative verbs for instructions ("Open your Figma file", not "You should open your Figma file").
-* No em dashes (`—`). Replace with a colon, a comma, or a full stop depending on the case.
-* Full brand names. Write your brand's names in full, and "Design System", "Design System MCP". Never abbreviated unless a section explicitly establishes the abbreviation.
-* Tokens in inline code. `` `text.primary` `` not `text.primary`. Token names are typographically marked.
-* Three audiences. Documentation addresses Product, Design and Code. Never leave one out.
-* Don't be patronising. "You should" almost always means "use the imperative".
+- British English. `colour`, `behaviour`, `customise`, `favour`, `recognise`. Never the American forms in product or docs.
+- Plain English. Active voice. Short sentences. Imperative verbs for instructions ("Open your Figma file", not "You should open your Figma file").
+- No em dashes (`—`). Replace with a colon, a comma, or a full stop depending on the case.
+- Full brand names. Write your brand's names in full, and "Design System", "Design System MCP". Never abbreviated unless a section explicitly establishes the abbreviation.
+- Tokens in inline code. `` `text.primary` `` not `text.primary`. Token names are typographically marked.
+- Three audiences. Documentation addresses Product, Design and Code. Never leave one out.
+- Don't be patronising. "You should" almost always means "use the imperative".
 
 ## Motion philosophy
 
 Motion is content. It exists to clarify, never to perform.
 
-* **Purposeful.** Every animation answers a question: "did my action register?", "where did this content come from?", "what is the relationship between these things?". Motion that doesn't answer a question doesn't ship.
-* **Short.** Default durations are short. The hover state is near-instant. The modal open is under 320ms. Anything over half a second on the critical path is a smell.
-* **Calm easings.** Standard ease-out for things entering, ease-in for things leaving, linear for state changes that should feel instant. No spring physics by default.
-* **Reduced motion by default.** Every animated component has a `prefers-reduced-motion: reduce` fallback. The fallback is usually opacity-only or instant.
-* **Serious, not entertainment.** We are not a video game, a social app, or a marketing site. We do not have a brand mascot that bounces. We do not have hero scroll reveals on articles.
+- **Purposeful.** Every animation answers a question: "did my action register?", "where did this content come from?", "what is the relationship between these things?". Motion that doesn't answer a question doesn't ship.
+- **Short.** Default durations are short. The hover state is near-instant. The modal open is under 320ms. Anything over half a second on the critical path is a smell.
+- **Calm easings.** Standard ease-out for things entering, ease-in for things leaving, linear for state changes that should feel instant. No spring physics by default.
+- **Reduced motion by default.** Every animated component has a `prefers-reduced-motion: reduce` fallback. The fallback is usually opacity-only or instant.
+- **Serious, not entertainment.** We are not a video game, a social app, or a marketing site. We do not have a brand mascot that bounces. We do not have hero scroll reveals on articles.
 
-Specific motion tokens are in `motion/motion-tokens.md`. Specific interaction patterns are in `motion/interaction-patterns.md`. This skill is where the *why* lives.
+Specific motion tokens are in `motion/motion-tokens.md`. Specific interaction patterns are in `motion/interaction-patterns.md`. This skill is where the _why_ lives.
 
 ## Component philosophy
 
-* **Reuse always.** Every primitive (Button, Input, Link, Chip, Label, Icon, Toast, Divider, Text, Flag) is in `@ds/components-react`. Use it. If you need to override, override via prop. If you cannot override via prop, that is a system gap.
-* **Composition over invention.** New patterns combine existing primitives. Inventing a new primitive requires governance approval (`governance/token-modification-gates.md`).
-* **Variants for state, not for opinion.** A Button has size, intent, state, behaviour. It does not have a `Button.LookFancy` variant. Variants encode functional difference.
+- **Reuse always.** Every primitive (Button, Input, Link, Chip, Label, Icon, Toast, Divider, Text, Flag) is in `@ds/components-react`. Use it. If you need to override, override via prop. If you cannot override via prop, that is a system gap.
+- **Composition over invention.** New patterns combine existing primitives. Inventing a new primitive requires governance approval (`governance/token-modification-gates.md`).
+- **Variants for state, not for opinion.** A Button has size, intent, state, behaviour. It does not have a `Button.LookFancy` variant. Variants encode functional difference.
 
 ## Quick-start patterns (the prototyping cheat-sheet)
 
@@ -165,10 +165,10 @@ When you are starting a prototype and want to be productive in the next 15 minut
 
 When a skill in `design/` runs, it should load this skill's TL;DR section before producing its output. That means:
 
-* `ui/design-critique` rates against the principles above, not against generic design advice.
-* `handoff/frame-to-spec` writes the spec in the right voice (British English, no em dashes, real token paths).
-* `motion/motion-review` enforces the motion philosophy above, not generic web animation guidelines.
-* `ui/content-style-check` enforces voice and language rules from this skill.
+- `ui/design-critique` rates against the principles above, not against generic design advice.
+- `handoff/frame-to-spec` writes the spec in the right voice (British English, no em dashes, real token paths).
+- `motion/motion-review` enforces the motion philosophy above, not generic web animation guidelines.
+- `ui/content-style-check` enforces voice and language rules from this skill.
 
 If you author a new design skill, the first line of its Procedure should reference loading this skill's TL;DR.
 
@@ -220,19 +220,19 @@ Return the requested lens section plus the TL;DR for context. Prefixed by:
 
 ## Error Handling
 
-* **`lens` value not recognised.** Return the full document with a note "lens not recognised, returning all".
-* **`tokens.json` unreachable.** Return the skill anyway, omit the snapshot sha, note "tokens snapshot unavailable" in provenance.
-* **Conflicting source.** If a fact in this skill contradicts a fact in another design skill (e.g. token paths drift), the file at `packages/tokens/src/tokens.json` and `content-styleguide.md` are the higher authorities. This skill is a synthesis of those sources. If they change, this skill is updated.
+- **`lens` value not recognised.** Return the full document with a note "lens not recognised, returning all".
+- **`tokens.json` unreachable.** Return the skill anyway, omit the snapshot sha, note "tokens snapshot unavailable" in provenance.
+- **Conflicting source.** If a fact in this skill contradicts a fact in another design skill (e.g. token paths drift), the file at `packages/tokens/src/tokens.json` and `content-styleguide.md` are the higher authorities. This skill is a synthesis of those sources. If they change, this skill is updated.
 
 ## Composition
 
-* `compose_after`: none (this is foundational)
-* `compose_before`: every skill in `design/`
-* `calls`: optionally `discovery/token-lookup` to verify token paths at load time
+- `compose_after`: none (this is foundational)
+- `compose_before`: every skill in `design/`
+- `calls`: optionally `discovery/token-lookup` to verify token paths at load time
 
 ## Related Skills
 
-This skill is referenced by all other skills in `design/`. It is the only skill that the others *should* compose with by default.
+This skill is referenced by all other skills in `design/`. It is the only skill that the others _should_ compose with by default.
 
 ## A note on maintenance
 

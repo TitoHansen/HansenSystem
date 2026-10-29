@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Prism Controller — local server. Zero dependencies (Node 18+).
+// Hansen Controller — local server. Zero dependencies (Node 18+).
 // Run: npm run controller   (then open http://localhost:4400)
 
 import http from 'http';
@@ -148,7 +148,7 @@ async function mcpRpc(url, body, session, timeoutMs = 15000) {
 // Initialize against the first endpoint that answers (IPv4 / localhost / IPv6).
 async function figmaMcpConnect() {
   const initBody = { jsonrpc: '2.0', id: 1, method: 'initialize',
-    params: { protocolVersion: '2025-06-18', capabilities: {}, clientInfo: { name: 'prism-controller', version: '1' } } };
+    params: { protocolVersion: '2025-06-18', capabilities: {}, clientInfo: { name: 'hansen-controller', version: '1' } } };
   let lastErr;
   for (const u of FIGMA_MCP_URLS) {
     try {
@@ -530,5 +530,5 @@ server.on('error', (e) => {
   throw e;
 });
 server.listen(PORT, () => {
-  console.log(`\n  ▲ Prism Controller (build ${BUILD})\n  → http://localhost:${PORT}\n`);
+  console.log(`\n  ▲ Hansen Controller (build ${BUILD})\n  → http://localhost:${PORT}\n`);
 });

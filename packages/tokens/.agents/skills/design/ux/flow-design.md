@@ -16,7 +16,7 @@ metadata:
 
 ## Purpose
 
-The starting point when a designer says "we need a new X" and X does not exist yet in the Design System — a live-blog, an events landing page, an onboarding flow, a saved-articles experience. This skill takes the brief and produces a grounded, brand-shaped flow: the sequence of screens, the states each screen needs, the decisions the reader makes, and the DS components and patterns that build it. It does not draw pixels; it produces the flow document that a prototype or a Figma exploration is then built from.
+The starting point when a designer says "we need a new X" and X does not exist yet in the Design System — a live-blog, an events landing page, an onboarding flow, a saved-items experience. This skill takes the brief and produces a grounded, brand-shaped flow: the sequence of screens, the states each screen needs, the decisions the reader makes, and the DS components and patterns that build it. It does not draw pixels; it produces the flow document that a prototype or a Figma exploration is then built from.
 
 It is deliberately grounded, not generative. Before proposing anything it looks at how the rest of the industry solves the pattern (Mobbin) and how your brand already solves adjacent ones (the corpus). New brand experiences are assembled from prior art and existing components, not invented from a blank page.
 
@@ -31,13 +31,13 @@ It is deliberately grounded, not generative. Before proposing anything it looks 
 
 Required:
 
-* `experience_brief` — what the new experience is, in plain language.
+- `experience_brief` — what the new experience is, in plain language.
 
 Optional:
 
-* `journey` — a slug matching a corpus `ux-patterns/*` doc when one fits (`reader-journey`, `paywall-subscription`, `onboarding`, `live-blog`, `navigation-search`) or a new slug.
-* `surfaces` — `web` | `ios` | `android` | list. Default `web` first, note native divergence.
-* `output_path` — defaults to `.design/<feature>/FLOW.md`.
+- `journey` — a slug matching a corpus `ux-patterns/*` doc when one fits (`reader-journey`, `upgrade gate-subscription`, `onboarding`, `live-blog`, `navigation-search`) or a new slug.
+- `surfaces` — `web` | `ios` | `android` | list. Default `web` first, note native divergence.
+- `output_path` — defaults to `.design/<feature>/FLOW.md`.
 
 ## Procedure
 
@@ -51,8 +51,8 @@ State, in one sentence, what the reader is trying to accomplish and in what cont
 
 ### Step 3: Ground in prior art (mandatory)
 
-* **Mobbin.** Query `reference/mobbin-mcp` for the closest shipped patterns (for a live-blog: live-updating feeds, sports commentary, news tickers). Capture what works and what to avoid. This step is mandatory per the Mobbin mandate; if Mobbin is unavailable, record "prior art not consulted (Mobbin unauthenticated)" and lower confidence.
-* **Corpus.** Check `design-corpus/distilled/ux-patterns/<journey>.md` and `layout-patterns.md` for how your brand already handles this or an adjacent journey. Cite per `foundation/corpus-guide` (`... (corpus vN)`). If the corpus is empty for this journey, note it and proceed on the DNA and Mobbin.
+- **Mobbin.** Query `reference/mobbin-mcp` for the closest shipped patterns (for a live-blog: live-updating feeds, sports commentary, news tickers). Capture what works and what to avoid. This step is mandatory per the Mobbin mandate; if Mobbin is unavailable, record "prior art not consulted (Mobbin unauthenticated)" and lower confidence.
+- **Corpus.** Check `design-corpus/distilled/ux-patterns/<journey>.md` and `layout-patterns.md` for how your brand already handles this or an adjacent journey. Cite per `foundation/corpus-guide` (`... (corpus vN)`). If the corpus is empty for this journey, note it and proceed on the DNA and Mobbin.
 
 ### Step 4: Choose the modality and shape
 
@@ -62,11 +62,11 @@ Using experience-principle 1, decide the top-level shape: is this a page, a flow
 
 List the screens or states in order. For each:
 
-* **Name and purpose** — one line.
-* **Entry** — how the reader arrives.
-* **Content** — what is on it, at a hierarchy level (lead / supporting / metadata), not pixel detail.
-* **Actions** — primary and secondary, mapped to components (Button, Link, Chip...).
-* **Exits** — where the reader can go, including the way back (principle 5).
+- **Name and purpose** — one line.
+- **Entry** — how the reader arrives.
+- **Content** — what is on it, at a hierarchy level (lead / supporting / metadata), not pixel detail.
+- **Actions** — primary and secondary, mapped to components (Button, Link, Chip...).
+- **Exits** — where the reader can go, including the way back (principle 5).
 
 Then the decision points between screens: what the reader chooses, and what each choice leads to. A simple text flow diagram is enough.
 
@@ -78,9 +78,9 @@ For every screen, apply experience-principle 3. Enumerate its loading, empty, er
 
 For each screen and state, name the DS components and interaction patterns that build it. Split into:
 
-* **Exists** — DS components used as-is.
-* **Composition** — new arrangements of existing primitives (no new component needed).
-* **Gap** — genuinely new components or patterns. These need governance approval (`governance/token-modification-gates`) and must be called out, not quietly assumed. Cross-check against the component contracts in `packages/tokens/docs/components/` and the "docs-only" components (Banner, InlineMessage, Tooltip, Label, Image) that exist on paper but not yet in code.
+- **Exists** — DS components used as-is.
+- **Composition** — new arrangements of existing primitives (no new component needed).
+- **Gap** — genuinely new components or patterns. These need governance approval (`governance/token-modification-gates`) and must be called out, not quietly assumed. Cross-check against the component contracts in `packages/tokens/docs/components/` and the "docs-only" components (Banner, InlineMessage, Tooltip, Label, Image) that exist on paper but not yet in code.
 
 ### Step 8: Write the flow and open questions
 
@@ -112,6 +112,7 @@ Recommend the next skills: `ux/page-templates` for any full-page screens, `ui/de
 ## Screen sequence
 
 ### 1. <Screen name>
+
 - Purpose · Entry · Content (by hierarchy) · Actions (→ components) · Exits
 
 ### 2. ...
@@ -123,8 +124,8 @@ Recommend the next skills: `ux/page-templates` for any full-page screens, `ui/de
 ## States (per screen)
 
 | Screen | Loading | Empty | Error | Success | Edge |
-|---|---|---|---|---|---|
-| ... | ... | ... | ... | ... | ... |
+| ------ | ------- | ----- | ----- | ------- | ---- |
+| ...    | ...     | ...   | ...   | ...     | ...  |
 
 ## Component and pattern map
 
@@ -158,21 +159,21 @@ Followed by:
 
 ## Error Handling
 
-* **Brief too thin to shape.** Produce what you can, then make the missing decisions explicit as open questions. Do not invent product intent.
-* **Mobbin unavailable.** Proceed, record the gap, mark pattern choices provisional, lower confidence in the summary.
-* **Corpus empty for the journey.** Note it and lean on the DNA and Mobbin. Never fabricate a corpus citation.
-* **Brief implies a dark pattern** (forced urgency, hidden exit, trap). Refuse that part, cite experience-principle 4, and design the honest version.
-* **The experience already exists in DS.** Stop and redirect: this is a `ui-craft` or `handoff` task, not a new experience. Route back through `design-router`.
+- **Brief too thin to shape.** Produce what you can, then make the missing decisions explicit as open questions. Do not invent product intent.
+- **Mobbin unavailable.** Proceed, record the gap, mark pattern choices provisional, lower confidence in the summary.
+- **Corpus empty for the journey.** Note it and lean on the DNA and Mobbin. Never fabricate a corpus citation.
+- **Brief implies a dark pattern** (forced urgency, hidden exit, trap). Refuse that part, cite experience-principle 4, and design the honest version.
+- **The experience already exists in DS.** Stop and redirect: this is a `ui-craft` or `handoff` task, not a new experience. Route back through `design-router`.
 
 ## Composition
 
-* `compose_after`: `design/foundation/design-dna`, `design/ux/experience-principles`, `reference/mobbin-mcp`, `design/foundation/corpus-guide`
-* `compose_before`: `design/ux/page-templates`, `design/ux/pattern-library`, `design/ui/design-critique`, `design/handoff/handoff-flow`
-* `calls`: `reference/mobbin-mcp`, `design/foundation/corpus-guide`, `discovery/token-lookup`
+- `compose_after`: `design/foundation/design-dna`, `design/ux/experience-principles`, `reference/mobbin-mcp`, `design/foundation/corpus-guide`
+- `compose_before`: `design/ux/page-templates`, `design/ux/pattern-library`, `design/ui/design-critique`, `design/handoff/handoff-flow`
+- `calls`: `reference/mobbin-mcp`, `design/foundation/corpus-guide`, `discovery/token-lookup`
 
 ## Related skills
 
-* `./experience-principles.md` — the journey principles this applies
-* `./pattern-library.md` — the reusable experience patterns a flow draws on
-* `./page-templates.md` — the page-level layouts a flow's full-page screens use
-* `../../reference/mobbin-mcp.md` — cross-product prior art
+- `./experience-principles.md` — the journey principles this applies
+- `./pattern-library.md` — the reusable experience patterns a flow draws on
+- `./page-templates.md` — the page-level layouts a flow's full-page screens use
+- `../../reference/mobbin-mcp.md` — cross-product prior art

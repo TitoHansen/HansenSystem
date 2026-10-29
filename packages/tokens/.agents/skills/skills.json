@@ -3,7 +3,7 @@
   "name": "ds-skills",
   "version": "6.1.0",
   "description": "Skills for the Design System: token architecture (Foundation → Palette → Semantic), component workflows, and the designer-facing design suite (UI, UX, handoff, motion)",
-  "repository": "https://github.com/TitoHansen/PrismSystem",
+  "repository": "https://github.com/TitoHansen/HansenSystem",
   "note": "Lean registry. Extended metadata (intents, compose graph, io, gates) lives in skills.extended.json, keyed by skill name.",
   "skills": [
     {
@@ -858,7 +858,7 @@
     },
     {
       "name": "pattern-library",
-      "description": "Catalogue of Brand experience patterns one altitude above component motions: navigation, content lists and cards, article anatomy, forms and auth, paywall and subscriber touchpoints, the empty/error/loading trio, and live-updating content. Each pattern names its anatomy in DS components, states, a11y and motion.",
+      "description": "Catalogue of segment-agnostic experience patterns one altitude above component motions: navigation, lists and cards, detail view, forms and auth, multi-step flow, confirmation and destructive actions, the empty/error/loading trio, and settings. Each pattern names its anatomy in @ds/ui core components, states, a11y and motion.",
       "category": "design",
       "path": "design/ux/pattern-library.md",
       "agents": ["Designer", "PM", "Design Engineer"],
@@ -866,7 +866,7 @@
     },
     {
       "name": "page-templates",
-      "description": "Page-level layout templates for Brand experiences on the DS responsive grid: article, section front, media, account and settings, and puzzle hub, each with per-viewport reflow. Grounded in the grid reference and the corpus.",
+      "description": "Page-level layout templates that hold across segments on the DS responsive grid: list, detail, form, multi-step flow, dashboard and settings, each with per-viewport reflow. Grounded in the grid reference and the corpus.",
       "category": "design",
       "path": "design/ux/page-templates.md",
       "agents": ["Designer", "PM", "Design Engineer"],
@@ -874,7 +874,7 @@
     },
     {
       "name": "microcopy",
-      "description": "Author the interface copy for a product experience - button labels, form labels, errors, empty states, confirmations, permission asks and paywall copy - in the brand voice. Writes the words; ui/content-style-check checks them. Extends content-styleguide.md to product-surface microcopy.",
+      "description": "Author the interface copy for a product experience - button labels, form labels, errors, empty states, confirmations, permission asks and confirmation copy - in the brand voice. Writes the words; ui/content-style-check checks them. Extends content-styleguide.md to product-surface microcopy.",
       "category": "design",
       "path": "design/ux/microcopy.md",
       "agents": ["Designer", "Content", "PM", "Design Engineer"],

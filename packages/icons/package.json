@@ -26,15 +26,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TitoHansen/PrismSystem.git"
+    "url": "git+https://github.com/TitoHansen/HansenSystem.git"
   },
   "scripts": {
     "build": "echo \"@ds/icons has no build step: it re-exports @phosphor-icons/react\""
   },
   "bugs": {
-    "url": "https://github.com/TitoHansen/PrismSystem/issues"
+    "url": "https://github.com/TitoHansen/HansenSystem/issues"
   },
-  "homepage": "https://github.com/TitoHansen/PrismSystem#readme",
+  "homepage": "https://github.com/TitoHansen/HansenSystem#readme",
   "dependencies": {
     "@phosphor-icons/react": "^2"
   },

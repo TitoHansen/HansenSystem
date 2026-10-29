@@ -14,7 +14,7 @@ For the deeper how and why, read `GUIDE.md` next to this file. This cookbook is 
 ## How to talk to the system
 
 1. **Say what you are doing.** "Critique this", "add a feature", "write the error message". Plain verbs work best.
-2. **Say what the screen is.** "Article page", "checkout step 2", "empty saved-articles state". One phrase is enough.
+2. **Say what the screen is.** "Detail page", "checkout step 2", "empty saved-items state". One phrase is enough.
 3. **Say light or dark** if you know it.
 4. **Attach the screen.** A screenshot is fine for most things. For colour and token precision, open the file in the Figma desktop app and say "it's my active tab".
 5. **Say what you want back.** A full review, just accessibility, just the copy, a spec for engineering.
@@ -32,7 +32,7 @@ For the deeper how and why, read `GUIDE.md` next to this file. This cookbook is 
 You have finished a screen, or nearly. You want a proper review before you share it: what works, what breaks the rules, and a score you can track.
 
 ```
-/design critique the attached screen. It's an article page, dark theme. Full review please.
+/design critique the attached screen. It's an detail page, dark theme. Full review please.
 ```
 
 ```
@@ -52,7 +52,7 @@ You have finished a screen, or nearly. You want a proper review before you share
 You know what the page needs to do but not what it should be. You want several genuinely different takes to react to, not one polished answer.
 
 ```
-/design I'm stuck on the saved-articles page. Give me a few different directions to react to.
+/design I'm stuck on the saved-items page. Give me a few different directions to react to.
 ```
 
 ```
@@ -73,7 +73,7 @@ You know what the page needs to do but not what it should be. You want several g
 You are not starting from scratch. You have a real screen and want to add a feature or change part of it, keeping everything else intact.
 
 ```
-/design build on my active Figma tab: add a "save for later" action to the article header. Keep everything else as it is.
+/design build on my active Figma tab: add a "save for later" action to the page header. Keep everything else as it is.
 ```
 
 ```
@@ -101,7 +101,7 @@ The page or flow does not exist yet. You want the house way to do it, grounded i
 ```
 
 ```
-/design what's the house pattern for a paywall on a long read? Then design one.
+/design what's the house pattern for a upgrade gate on a detail page? Then design one.
 ```
 
 **What you get back:** a flow or page design built from brand principles, real components and shipped patterns, with the reasoning shown. The flow lands in `.design/<feature>/FLOW.md` so you can pick it up again tomorrow.
@@ -117,7 +117,7 @@ The design is settled and someone has to build it. You want a spec engineers wil
 ```
 
 ```
-/design hand off the saved-articles feature. Light: <figma link>. Dark: <figma link>.
+/design hand off the saved-items feature. Light: <figma link>. Dark: <figma link>.
 ```
 
 ```
@@ -173,7 +173,7 @@ Something is not quite right: a blue that is nearly the brand blue, or a dark mo
 Buttons, error messages, empty states, onboarding lines. You want words that sound like the brand: direct, calm, British English.
 
 ```
-/design write the empty state for saved articles. Warm but not chirpy.
+/design write the empty state for saved items. Warm but not chirpy.
 ```
 
 ```
@@ -190,10 +190,10 @@ Buttons, error messages, empty states, onboarding lines. You want words that sou
 
 ### 9. Teach the system our real product
 
-The more real product screens the system has studied, the more specific its advice gets: real card anatomy, real paywall behaviour, not principled guesses. Feeding it takes two minutes.
+The more real product screens the system has studied, the more specific its advice gets: real card anatomy, real upgrade gate behaviour, not principled guesses. Feeding it takes two minutes.
 
 ```
-/design learn from these screenshots. They're from the iOS app, mostly article pages.
+/design learn from these screenshots. They're from the iOS app, mostly detail pages.
 ```
 
 ```
@@ -234,7 +234,7 @@ No files, no process. You just want an answer: what is the rule, what is the pat
 ## Good prompt, weak prompt
 
 **Weak:** `critique this` (with a bare image)
-**Good:** `/design critique the attached article screen. Dark theme. Full review please.`
+**Good:** `/design critique the attached detail screen. Dark theme. Full review please.`
 The good one names the screen and the theme, so every check runs against the right rules instead of hedging.
 
 **Weak:** `is this accessible?`
@@ -242,7 +242,7 @@ The good one names the screen and the theme, so every check runs against the rig
 The good one scopes the job, so you get a fast, focused report instead of a full review you did not ask for.
 
 **Weak:** `make this better` (with a Figma link)
-**Good:** `/design build on my active Figma tab: add a share button to the article footer. Keep everything else as it is.`
+**Good:** `/design build on my active Figma tab: add a share button to the page footer. Keep everything else as it is.`
 The good one names one concrete change, so the system knows what to touch and what to leave alone.
 
 **Weak:** `write some copy for this`

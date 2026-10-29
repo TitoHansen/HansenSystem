@@ -1,0 +1,45 @@
+{
+  "primary": "#1C5BD8",
+  "neutralTint": "#6F7A8C",
+  "tertiary": "#12A3A8",
+  "info": "#1C5BD8",
+  "success": "#1E9E6A",
+  "warning": "#E09400",
+  "error": "#D1343B",
+  "charts": ["#1C5BD8", "#12A3A8", "#7A5AF8", "#E09400", "#8C96A8"],
+  "headingFont": "Nunito Sans",
+  "bodyFont": "Inter",
+  "typeScale": 1.2,
+  "radius": 2.0,
+  "spacing": 1.05,
+  "borderWidth": 1,
+  "shadow": {
+    "preset": "soft",
+    "blur": 16,
+    "y": 6,
+    "op": 8
+  },
+  "headingWeight": 700,
+  "bodyWeight": 400,
+  "lineHeight": "normal",
+  "material": {
+    "preset": "elevated",
+    "opacity": 100,
+    "blur": 0,
+    "tint": 0,
+    "highlight": 0,
+    "page": "plain"
+  },
+  "identity": {
+    "name": "Alva Care",
+    "industry": "Health / patient services",
+    "tagline": "Your care, in plain sight.",
+    "description": "Fictional patient-facing health service used to prove the white-label pipeline on a care brand: appointments, results, messages.",
+    "website": "",
+    "audience": "Patients and carers of all ages and digital confidence.",
+    "voice": "Warm, unhurried, concrete. Never alarming. Explains before it asks.",
+    "values": ["Calm", "Clarity", "Dignity"],
+    "directives": "Large touch targets and generous spacing. Status colours never carry meaning alone; always pair with a label. Avoid red for anything that is not an error."
+  },
+  "guidelines": "# Alva Care — Brand Guidelines\n\n## Visual rules\n- Blue is the primary action colour; teal marks secondary emphasis; both stay off alerts.\n- Fully rounded corners and soft elevation: surfaces feel approachable.\n- Prefer one action per screen; secondary actions are text buttons.\n\n## Writing rules\n- Sentence case. Short sentences. No medical jargon without a plain-language gloss.\n- Tell people what will happen next before asking them to act.\n- Times and dates always with timezone when they matter."
+}

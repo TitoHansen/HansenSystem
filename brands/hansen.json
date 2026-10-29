@@ -1,0 +1,39 @@
+{
+  "primary": "#000000",
+  "neutralTint": "#525252",
+  "tertiary": "#ebebeb",
+  "info": "#1D5FBF",
+  "success": "#31a46f",
+  "warning": "#ffa300",
+  "error": "#D1343B",
+  "charts": ["#f9b138", "#2d62ef", "#a4a4a4", "#e4e4e4", "#747474"],
+  "headingFont": "Geist",
+  "bodyFont": "Geist",
+  "typeScale": 1.4,
+  "radius": 0,
+  "spacing": 1.1,
+  "borderWidth": 1,
+  "shadow": {
+    "preset": "custom",
+    "blur": 46,
+    "y": 18,
+    "op": 2
+  },
+  "headingWeight": 600,
+  "bodyWeight": 400,
+  "identity": {
+    "name": "Hansen",
+    "industry": "Design tooling",
+    "tagline": "The neutral baseline every brand starts from.",
+    "description": "",
+    "website": "",
+    "audience": "",
+    "voice": "",
+    "values": [],
+    "directives": ""
+  },
+  "guidelines": "# Brand Guidelines\n\n## Visual rules\n- Lead with the primary colour, use the tertiary sparingly for accents.\n- Prefer whitespace over decoration. One idea per surface.\n- Corners and spacing follow the token scale, never hand-picked values.\n\n## Writing rules\n- Sentence case everywhere, including buttons and headings.\n- Short sentences. Cut every word that does not earn its place.\n- Speak to the reader as \"you\", refer to the product by name.",
+  "presetSlug": null,
+  "overrides": null,
+  "lineHeight": "loose"
+}
