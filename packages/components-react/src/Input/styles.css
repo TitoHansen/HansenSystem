@@ -26,7 +26,7 @@
   color: var(--text-primary, #1a1a1a);
   background-color: var(--interactive-background-default, #ffffff);
   border: 1px solid var(--border-primary, #999999);
-  border-radius: 0;
+  border-radius: var(--border-radius-100, 0);
   transition: all 0.2s ease-in-out;
   box-sizing: border-box;
 }

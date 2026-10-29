@@ -3,13 +3,13 @@ name: page-templates
 description: The page-level layout templates for brand experiences. Article, section front, media, account and settings, and game hub, each expressed on the DS responsive grid (Small, Medium, Large, XLarge viewports). Grounded in the grid reference and the design corpus. Tells a new full-page screen how to sit on the grid before it fills in content.
 license: MIT
 metadata:
- category: design/ux
- pillar: ux
- agents: [Designer, PM, Design Engineer]
- autonomy: autonomous
- portable: true
- cadence: weekly
- mcp_tool: ux_page_templates
+  category: design/ux
+  pillar: ux
+  agents: [Designer, PM, Design Engineer]
+  autonomy: autonomous
+  portable: true
+  cadence: weekly
+  mcp_tool: ux_page_templates
 ---
 
 # Page Templates
@@ -28,19 +28,19 @@ Templates are starting points, not straitjackets. They encode the layouts your b
 
 ## Inputs
 
-* `template` — `article` | `section-front` | `media` | `account` | `game-hub` | `all`. Default `all` (list) or the one named.
-* `viewport` — optional focus: `small` | `medium` | `large` | `xlarge`.
+- `template` — `article` | `section-front` | `media` | `account` | `game-hub` | `all`. Default `all` (list) or the one named.
+- `viewport` — optional focus: `small` | `medium` | `large` | `xlarge`.
 
 ## The grid, briefly
 
 Four viewports, columns increasing with width. Verify live values with `discovery/token-lookup` on the `grid` and `viewport/*` sets; the reference documents them and the token set is authoritative.
 
-| Viewport | Columns | Notes |
-|---|---|---|
-| Small | 4 | phone; single column of content, list-first |
-| Medium | 12 | tablet |
-| Large | 10 or 12 | **known drift**: `grid.md` documents 10, `tokens.json` has 12. Confirm before building; tracked in `ui/monthly-audit` Known drift. |
-| XLarge | 12 | wide desktop |
+| Viewport | Columns  | Notes                                                                                                                              |
+| -------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Small    | 4        | phone; single column of content, list-first                                                                                        |
+| Medium   | 12       | tablet                                                                                                                             |
+| Large    | 10 or 12 | **known drift**: `grid.md` documents 10, `tokens.json` has 12. Confirm before building; tracked in `ui/monthly-audit` Known drift. |
+| XLarge   | 12       | wide desktop                                                                                                                       |
 
 Reading measure: body text never wider than about 8 columns / 60–75 characters (`DS-TYP-07`). Gutters and margins come from the grid tokens; spacing between sections uses fluid spacing (`spacing.fluid.*`, which scales by the viewport multiplier), spacing inside components uses static (`spacing.static.*`). This is the content-rhythm principle made concrete (DNA principle 3).
 
@@ -56,7 +56,7 @@ The reading page; the product's centre.
 ### Section front
 
 A topic landing page: a curated list of articles.
-**Layout.** A lead block (one large card, full or 8-column) then a grid of cards. Card grid: 1-up on Small, 2–3-up on Medium, 3–4-up on Large/XLarge. An ad slot (`AdContainer`) at documented intervals, never mid-card.
+**Layout.** A lead block (one large card, full or 8-column) then a grid of cards. Card grid: 1-up on Small, 2–3-up on Medium, 3–4-up on Large/XLarge.
 **Reflow.** Cards reflow by column count; the lead card spans full width on Small, a larger span on wide viewports. Density holds — cards keep a consistent internal rhythm.
 **Evidence.** `layout-patterns.md#section-front`.
 
@@ -93,25 +93,28 @@ Listing mode returns template names with one-line summaries. Single-template mod
 ```markdown
 # Page template — <name>
 
-> Grid source: grid.md + viewport/* tokens
+> Grid source: grid.md + viewport/\* tokens
 > Corpus evidence: <vN or none>
 
 ## Layout
+
 <the column structure and measure>
 
 ## Reflow
 
-| Viewport | Columns | Layout |
-|---|---|---|
-| Small | 4 | ... |
-| Medium | 12 | ... |
-| Large | 10/12 (confirm) | ... |
-| XLarge | 12 | ... |
+| Viewport | Columns         | Layout |
+| -------- | --------------- | ------ |
+| Small    | 4               | ...    |
+| Medium   | 12              | ...    |
+| Large    | 10/12 (confirm) | ...    |
+| XLarge   | 12              | ...    |
 
 ## Components and patterns
+
 <DS components; links to ux/pattern-library cards>
 
 ## Notes
+
 <states, known drift>
 ```
 
@@ -129,20 +132,20 @@ Followed by:
 
 ## Error Handling
 
-* **Grid values uncertain.** Do not guess. Look them up via `discovery/token-lookup` on the `grid`/`viewport` sets; if still ambiguous (the Large-column drift), present both and flag for confirmation.
-* **Template does not fit the screen.** Say so and route to `ux/flow-design` to shape a new layout from prior art; propose adding it here once validated.
-* **Content would break the reading measure.** The measure wins (`DS-TYP-07`); widen margins, not lines.
-* **Corpus empty.** Templates stand on the grid reference and the DNA; mark evidence "none yet".
+- **Grid values uncertain.** Do not guess. Look them up via `discovery/token-lookup` on the `grid`/`viewport` sets; if still ambiguous (the Large-column drift), present both and flag for confirmation.
+- **Template does not fit the screen.** Say so and route to `ux/flow-design` to shape a new layout from prior art; propose adding it here once validated.
+- **Content would break the reading measure.** The measure wins (`DS-TYP-07`); widen margins, not lines.
+- **Corpus empty.** Templates stand on the grid reference and the DNA; mark evidence "none yet".
 
 ## Composition
 
-* `compose_after`: `design/foundation/design-dna`, `design/ux/experience-principles`, `design/ux/flow-design`
-* `compose_before`: `design/ui/design-critique`, `design/handoff/frame-to-spec`
-* `calls`: `discovery/token-lookup`, `design/foundation/corpus-guide`
+- `compose_after`: `design/foundation/design-dna`, `design/ux/experience-principles`, `design/ux/flow-design`
+- `compose_before`: `design/ui/design-critique`, `design/handoff/frame-to-spec`
+- `calls`: `discovery/token-lookup`, `design/foundation/corpus-guide`
 
 ## Related skills
 
-* `./flow-design.md` — decides which screens are full pages
-* `./pattern-library.md` — the patterns that fill these templates
-* `../ui/state-matrix.md` — the states each template's components need
-* `packages/tokens/docs/reference/grid.md` — the grid source of truth (BETA)
+- `./flow-design.md` — decides which screens are full pages
+- `./pattern-library.md` — the patterns that fill these templates
+- `../ui/state-matrix.md` — the states each template's components need
+- `packages/tokens/docs/reference/grid.md` — the grid source of truth (BETA)

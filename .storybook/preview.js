@@ -1,6 +1,60 @@
 import React from 'react';
 import { create } from 'storybook/theming';
 import { DocsContainer } from '@storybook/addon-docs/blocks';
+import brandManifest from './public/brands/index.json';
+
+/* ------------------------------------------------------------------ */
+/* Brand switcher                                                      */
+/*                                                                     */
+/* `public/brands/index.json` is written by `npm run build:brands`     */
+/* (tools/controller/cli/build-brands.mjs), one entry per file under  */
+/* brands/. Each brand ships its own variables.css, and the decorator  */
+/* swaps the stylesheet the preview-head links, so every story is      */
+/* re-themed without a rebuild.                                        */
+/* ------------------------------------------------------------------ */
+
+const brandItems = (brandManifest.brands || []).map((b) => ({
+  value: b.slug,
+  title:
+    b.name + (b.contrastFailures ? ` · ${b.contrastFailures} contrast ⚠` : ''),
+  right: b.primary
+}));
+
+const GOOGLE_FONT_WEIGHTS = ':wght@400;500;600;700;800';
+function fontsHref(brand) {
+  const fams = [
+    ...new Set([brand.headingFont, brand.bodyFont].filter(Boolean))
+  ].filter((f) => f !== 'Inter'); // Inter is self-hosted in preview-head
+  if (!fams.length) return '';
+  return (
+    'https://fonts.googleapis.com/css2?' +
+    fams
+      .map(
+        (f) =>
+          'family=' +
+          encodeURIComponent(f).replace(/%20/g, '+') +
+          GOOGLE_FONT_WEIGHTS
+      )
+      .join('&') +
+    '&display=swap'
+  );
+}
+
+let appliedBrand = null;
+function applyBrand(slug) {
+  if (!slug || slug === appliedBrand) return;
+  const entry = (brandManifest.brands || []).find((b) => b.slug === slug);
+  if (!entry) return;
+  const css = document.getElementById('prism-brand-css');
+  if (css) css.setAttribute('href', `./brands/${slug}/variables.css`);
+  const fonts = document.getElementById('prism-brand-fonts');
+  if (fonts) {
+    const href = fontsHref(entry);
+    if (href) fonts.setAttribute('href', href);
+    else fonts.removeAttribute('href');
+  }
+  appliedBrand = slug;
+}
 
 const docsLightTheme = create({
   base: 'light',
@@ -16,13 +70,48 @@ const docsLightTheme = create({
 
 /** @type { import('@storybook/nextjs-vite').Preview } */
 const preview = {
+  globalTypes: {
+    brand: {
+      description: 'Brand (white-label theme)',
+      toolbar: {
+        title: 'Brand',
+        icon: 'paintbrush',
+        items: brandItems,
+        dynamicTitle: true
+      }
+    },
+    colorMode: {
+      description: 'Colour mode',
+      toolbar: {
+        title: 'Mode',
+        icon: 'circlehollow',
+        items: [
+          { value: 'light', title: 'Light', icon: 'sun' },
+          { value: 'dark', title: 'Dark', icon: 'moon' }
+        ],
+        dynamicTitle: true
+      }
+    }
+  },
+
+  initialGlobals: {
+    brand:
+      brandManifest.active || (brandItems[0] && brandItems[0].value) || 'prism',
+    colorMode: 'light'
+  },
+
   decorators: [
-    (Story) => {
+    (Story, context) => {
+      const brand = context.globals.brand;
+      const mode = context.globals.colorMode === 'dark' ? 'dark' : 'light';
       if (typeof document !== 'undefined') {
-        document.documentElement.setAttribute('data-color-mode', 'light');
+        applyBrand(brand);
+        document.documentElement.setAttribute('data-color-mode', mode);
         document.documentElement.setAttribute('data-theme', 'core');
-        document.body?.setAttribute('data-color-mode', 'light');
+        document.documentElement.setAttribute('data-brand', brand || '');
+        document.body?.setAttribute('data-color-mode', mode);
         document.body?.setAttribute('data-theme', 'core');
+        document.body?.setAttribute('data-brand', brand || '');
       }
 
       return Story();
@@ -93,7 +182,6 @@ const preview = {
             '*'
           ],
 
-
           // Keep any unmatched stories at the end
           '*'
         ],
@@ -138,6 +226,10 @@ const preview = {
         }
       }
     },
+
+    // The canvas is painted from the brand's surface tokens (preview-head.html), so
+    // the Backgrounds addon would fight the Mode switcher; keep it off.
+    backgrounds: { disable: true },
 
     controls: {
       matchers: {

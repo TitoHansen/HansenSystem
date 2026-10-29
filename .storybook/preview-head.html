@@ -1,4 +1,6 @@
-<link rel="stylesheet" type="text/css" href="/variables.css">
+<!-- Active brand tokens. The brand switcher (see preview.js) swaps this href to /brands/<slug>/variables.css. -->
+<link id="prism-brand-css" rel="stylesheet" type="text/css" href="./variables.css">
+<link id="prism-brand-fonts" rel="stylesheet" href="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
 <style>
 
@@ -52,6 +54,13 @@
 
   html {
     font-size: 62.5%;
+  }
+
+  /* Canvas follows the brand + colour mode so dark mode reads as dark. */
+  body,
+  .sb-show-main {
+    background: var(--surface-canvas, #ffffff);
+    color: var(--text-primary, #1a1a1a);
   }
 
   #storybook-root {
@@ -113,8 +122,12 @@
     line-height: 112.5% !important;
   }
 
-  /* ── Docs theme tokens (light/dark) ── */
-  :root {
+  /* ── Docs theme tokens (light/dark) ──
+     Declared on body as well as :root: the dark-mode token block in
+     variables.css is `[data-color-mode="dark"] [data-theme="core"]`, a
+     descendant selector, so the dark values exist on <body>, not on <html>. */
+  :root,
+  body {
     --ds-storybook-canvas: var(--surface-canvas, #ffffff);
     --ds-storybook-text-primary: var(--text-primary, #1a1a1a);
     --ds-storybook-text-secondary: var(--text-secondary, #404040);

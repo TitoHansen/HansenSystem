@@ -532,7 +532,7 @@
           "description": "Form input background at placeholder/rest state."
         },
         "error": {
-          "value": "#FCD5D2",
+          "value": "#FFCECA",
           "type": "color",
           "description": "Form input background in error state. Uses messaging error fill semantics."
         },
@@ -557,12 +557,12 @@
           "description": "Form input background in success state. Uses messaging success fill semantics."
         },
         "warning": {
-          "value": "#FEE8D0",
+          "value": "#FFE4B6",
           "type": "color",
           "description": "Form input background in warning state. Uses messaging warning fill semantics."
         },
         "info": {
-          "value": "#B8D3FF",
+          "value": "#AFD3FF",
           "type": "color",
           "description": "Form input background in info state. Uses messaging info fill semantics."
         }
@@ -574,7 +574,7 @@
           "description": "Form input border at rest. Defines field boundary with neutral contrast."
         },
         "error": {
-          "value": "#52020C",
+          "value": "#590003",
           "type": "color",
           "description": "Form input border in error state. Uses messaging error border semantics."
         },
@@ -594,17 +594,17 @@
           "description": "Form input border after completion."
         },
         "success": {
-          "value": "#044228",
+          "value": "#004522",
           "type": "color",
           "description": "Form input border in success state. Uses messaging success border semantics."
         },
         "warning": {
-          "value": "#613D0A",
+          "value": "#693900",
           "type": "color",
           "description": "Form input border in warning state. Uses messaging warning border semantics."
         },
         "info": {
-          "value": "#023379",
+          "value": "#003080",
           "type": "color",
           "description": "Form input border in info state. Uses messaging info border semantics."
         }
@@ -697,7 +697,7 @@
     "messaging": {
       "fill": {
         "error": {
-          "value": "#FCD5D2",
+          "value": "#FFCECA",
           "type": "color",
           "description": "Error message background. Signals critical issue, validation failure, or danger."
         },
@@ -707,56 +707,56 @@
           "description": "Success message background. Signals positive completion or confirmation."
         },
         "warning": {
-          "value": "#FEE8D0",
+          "value": "#FFE4B6",
           "type": "color",
           "description": "Warning message background. Signals caution, blocked action, or attention need."
         },
         "info": {
-          "value": "#B8D3FF",
+          "value": "#AFD3FF",
           "type": "color",
           "description": "Info message background. Signals neutral information or helpful guidance."
         }
       },
       "border": {
         "error": {
-          "value": "#52020C",
+          "value": "#590003",
           "type": "color",
           "description": "Error message border. Reinforces error intent with colour accent."
         },
         "success": {
-          "value": "#044228",
+          "value": "#004522",
           "type": "color",
           "description": "Success message border. Reinforces success intent with colour accent."
         },
         "warning": {
-          "value": "#794D0B",
+          "value": "#814800",
           "type": "color",
           "description": "Warning message border. Reinforces warning intent with colour accent."
         },
         "info": {
-          "value": "#052C67",
+          "value": "#002974",
           "type": "color",
           "description": "Info message border. Reinforces info intent with colour accent."
         }
       },
       "icon": {
         "error": {
-          "value": "#650C15",
+          "value": "#6F0009",
           "type": "color",
           "description": "Status icon used within error messaging surfaces."
         },
         "success": {
-          "value": "#0F613E",
+          "value": "#006439",
           "type": "color",
           "description": "Status icon used within success messaging surfaces."
         },
         "warning": {
-          "value": "#794D0B",
+          "value": "#814800",
           "type": "color",
           "description": "Status icon used within warning messaging surfaces."
         },
         "info": {
-          "value": "#052C67",
+          "value": "#002974",
           "type": "color",
           "description": "Status icon used within informational messaging surfaces."
         }
@@ -991,7 +991,7 @@
         },
         "border": {
           "default": {
-            "value": "#650C15",
+            "value": "#6F0009",
             "type": "color",
             "description": "Border for destructive action buttons. Signals critical actions requiring user attention and confirmation."
           },
@@ -1008,7 +1008,7 @@
         },
         "text": {
           "default": {
-            "value": "#650C15",
+            "value": "#6F0009",
             "type": "color",
             "description": "Text for destructive action buttons. High contrast ensures readability and signals danger."
           },
@@ -1510,7 +1510,7 @@
       },
       "callout": {
         "fill": {
-          "value": "#52020C",
+          "value": "#590003",
           "type": "color",
           "description": "Fill token for LIVE Flag."
         },
@@ -1529,22 +1529,22 @@
     "toast": {
       "fill": {
         "info": {
-          "value": "#02183F",
+          "value": "#00134C",
           "type": "color",
           "description": "Info toast background."
         },
         "success": {
-          "value": "#05331E",
+          "value": "#003618",
           "type": "color",
           "description": "Success toast background."
         },
         "warning": {
-          "value": "#794D0B",
+          "value": "#814800",
           "type": "color",
           "description": "Warning toast background."
         },
         "error": {
-          "value": "#650C15",
+          "value": "#6F0009",
           "type": "color",
           "description": "Error toast background."
         }
@@ -1561,12 +1561,12 @@
           "description": "Icon on success toast."
         },
         "warning": {
-          "value": "#FDC380",
+          "value": "#FFBD5B",
           "type": "color",
           "description": "Icon on warning toast."
         },
         "error": {
-          "value": "#FC8481",
+          "value": "#FF7977",
           "type": "color",
           "description": "Icon on error toast."
         }
@@ -1783,7 +1783,7 @@
         "description": "Success feedback."
       },
       "success-foreground": {
-        "value": "#ffffff",
+        "value": "#070707",
         "type": "color",
         "description": "Text on success."
       },
@@ -2002,7 +2002,7 @@
           "description": "Form input background at placeholder/rest state."
         },
         "error": {
-          "value": "#140001",
+          "value": "#190000",
           "type": "color",
           "description": "Form input background in error state. Uses messaging error fill semantics."
         },
@@ -2022,17 +2022,17 @@
           "description": "Form input background after completion."
         },
         "success": {
-          "value": "#000803",
+          "value": "#000A01",
           "type": "color",
           "description": "Form input background in success state. Uses messaging success fill semantics."
         },
         "warning": {
-          "value": "#090300",
+          "value": "#0D0200",
           "type": "color",
           "description": "Form input background in warning state. Uses messaging warning fill semantics."
         },
         "info": {
-          "value": "#000B27",
+          "value": "#000438",
           "type": "color",
           "description": "Form input background in info state. Uses messaging info fill semantics."
         }
@@ -2167,22 +2167,22 @@
     "messaging": {
       "fill": {
         "error": {
-          "value": "#140001",
+          "value": "#190000",
           "type": "color",
           "description": "Error message background. Signals critical issue, validation failure, or danger."
         },
         "success": {
-          "value": "#000803",
+          "value": "#000A01",
           "type": "color",
           "description": "Success message background. Signals positive completion or confirmation."
         },
         "warning": {
-          "value": "#090300",
+          "value": "#0D0200",
           "type": "color",
           "description": "Warning message background. Signals caution, blocked action, or attention need."
         },
         "info": {
-          "value": "#000B27",
+          "value": "#000438",
           "type": "color",
           "description": "Info message background. Signals neutral information or helpful guidance."
         }
@@ -2199,7 +2199,7 @@
           "description": "Success message border. Reinforces success intent with colour accent."
         },
         "warning": {
-          "value": "#523204",
+          "value": "#592F00",
           "type": "color",
           "description": "Warning message border. Reinforces warning intent with colour accent."
         },
@@ -2221,7 +2221,7 @@
           "description": "Status icon used within success messaging surfaces."
         },
         "warning": {
-          "value": "#523204",
+          "value": "#592F00",
           "type": "color",
           "description": "Status icon used within warning messaging surfaces."
         },
@@ -3003,21 +3003,21 @@
           "type": "color"
         },
         "success": {
-          "value": "#06331F",
+          "value": "#003718",
           "type": "color"
         },
         "warning": {
-          "value": "#3E2503",
+          "value": "#442100",
           "type": "color"
         },
         "error": {
-          "value": "#570810",
+          "value": "#600005",
           "type": "color"
         }
       },
       "icon": {
         "info": {
-          "value": "#B7D2FB",
+          "value": "#AED2FF",
           "type": "color"
         },
         "success": {
@@ -3029,7 +3029,7 @@
           "type": "color"
         },
         "error": {
-          "value": "#FFDFDD",
+          "value": "#FFDAD6",
           "type": "color"
         }
       },
@@ -3221,17 +3221,17 @@
         "description": "Text on info."
       },
       "success": {
-        "value": "#09472d",
+        "value": "#004b25",
         "type": "color",
         "description": "Success feedback."
       },
       "success-foreground": {
-        "value": "#000000",
+        "value": "#e8e8e8",
         "type": "color",
         "description": "Text on success."
       },
       "warning": {
-        "value": "#482c03",
+        "value": "#4f2800",
         "type": "color",
         "description": "Warning feedback."
       },
@@ -5636,27 +5636,27 @@
   "borderRadius": {
     "border-radius": {
       "50": {
-        "value": "4*0.5",
+        "value": "0",
         "type": "borderRadius"
       },
       "100": {
-        "value": "4",
+        "value": "0",
         "type": "borderRadius"
       },
       "150": {
-        "value": "4*1.5",
+        "value": "0",
         "type": "borderRadius"
       },
       "200": {
-        "value": "4*2.0",
+        "value": "0",
         "type": "borderRadius"
       },
       "300": {
-        "value": "4*3.0",
+        "value": "0",
         "type": "borderRadius"
       },
       "400": {
-        "value": "4*4.0",
+        "value": "0",
         "type": "borderRadius"
       },
       "full": {

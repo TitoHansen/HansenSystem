@@ -12,7 +12,7 @@
   width: 373px;
   min-height: var(--spacing-18);
   padding: var(--spacing-07) var(--spacing-09);
-  border-radius: 4px;
+  border-radius: var(--border-radius-100, 4px);
   background: var(--ds-toast-fill);
   color: var(--ds-toast-text);
   box-shadow: 0 16px 24px 0 rgb(0 0 0 / 8%);

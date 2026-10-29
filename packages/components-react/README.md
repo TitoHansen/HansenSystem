@@ -13,12 +13,7 @@ npm install @ds/components-react
 ### Import All Components
 
 ```tsx
-import {
-  Button,
-  Input,
-  Link,
-  Toast
-} from '@ds/components-react';
+import { Button, Input, Link, Toast } from '@ds/components-react';
 
 export function App() {
   return (
@@ -51,9 +46,6 @@ import { IconButton } from '@ds/components-react/IconButton';
 - **Flag** - Badge/label component
 - **Toast** - Notification component
 - **Icon** - Icon rendering with design system icon library
-- **AdContainer** - Container for ad placement
-- **CommentsDisabled** - Comments disabled state component
-- **Article** - Article-specific components (UpNextArticles)
 
 ## Component Examples
 
@@ -180,10 +172,7 @@ All components follow WAI-ARIA standards:
 Full TypeScript support with exported interfaces:
 
 ```tsx
-import {
-  Button,
-  type ButtonProps
-} from '@ds/components-react/Button';
+import { Button, type ButtonProps } from '@ds/components-react/Button';
 
 interface MyComponentProps extends ButtonProps {
   customProp?: string;

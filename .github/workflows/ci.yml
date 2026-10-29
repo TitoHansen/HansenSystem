@@ -23,5 +23,11 @@ jobs:
       - name: Build token output
         run: npm run build:output
 
+      - name: Build every brand (headless controller pipeline)
+        run: npm run build:brands
+
+      - name: Fail if building the active brand drifts the committed sources
+        run: git diff --exit-code --ignore-all-space -- packages/tokens/src/tokens.json packages/theme-css/src/variables.css
+
       - name: Check controller syntax
         run: node --check tools/controller/server.mjs

@@ -33,3 +33,6 @@ credentials.json
 service-account*.json
 .aws/
 *.env.local
+
+# generated per-brand theme bundles (npm run build:brands)
+.storybook/public/brands/
