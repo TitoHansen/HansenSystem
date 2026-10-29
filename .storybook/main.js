@@ -1,4 +1,5 @@
 import { createRequire } from 'module';
+import tailwindcss from '@tailwindcss/vite';
 import { join, dirname } from 'path';
 
 const require = createRequire(import.meta.url);
@@ -43,6 +44,17 @@ const config = {
     }
   },
   viteFinal: async (config) => {
+    // @ds/ui is shadcn on Tailwind v4; the plugin compiles stories/ui.css.
+    config.plugins = [...(config.plugins ?? []), tailwindcss()];
+    // shadcn files carry "use client"; Rollup warns on every one. Not an error.
+    config.build = config.build ?? {};
+    config.build.rollupOptions = config.build.rollupOptions ?? {};
+    const prev = config.build.rollupOptions.onwarn;
+    config.build.rollupOptions.onwarn = (warning, warn) => {
+      if (warning.code === 'MODULE_LEVEL_DIRECTIVE') return;
+      if (prev) prev(warning, warn);
+      else warn(warning);
+    };
     config.resolve.conditions = [
       'development',
       ...(config.resolve.conditions ?? [])

@@ -45,9 +45,9 @@ sandbox/
 
 ## Naming rules
 
-* **Project slug**: kebab-case, from the feature or project name the wizard already asks for (`checkout`, `saved-articles`, `live-blog`). One project folder per thing, reused across runs.
-* **Run folder**: `<YYYY-MM-DD>-<run-slug>`. The date is the run date. The run slug is two to four kebab-case words describing the attempt (`first-pass`, `darker-header`, `six-versions`, `react-conversion`).
-* **Collision**: same project, same day, same slug already exists: append `-2`, `-3`. Never overwrite, never merge into an existing run folder.
+- **Project slug**: kebab-case, from the feature or project name the wizard already asks for (`checkout`, `saved-items`, `live-blog`). One project folder per thing, reused across runs.
+- **Run folder**: `<YYYY-MM-DD>-<run-slug>`. The date is the run date. The run slug is two to four kebab-case words describing the attempt (`first-pass`, `darker-header`, `six-versions`, `react-conversion`).
+- **Collision**: same project, same day, same slug already exists: append `-2`, `-3`. Never overwrite, never merge into an existing run folder.
 
 ## The manifest
 
@@ -62,23 +62,28 @@ Every run folder contains a `MANIFEST.md`, written when the run completes:
 > Previous run: <folder name or "none">
 
 ## The ask
+
 <one line, the designer's or engineer's request in their words>
 
 ## Inputs
+
 - <Figma link | screenshot filename | pasted code | description>
 - Target: <web desktop | web mobile | responsive web | native ios | "n/a">
 - Channel: <name or "none">
 - Tokens snapshot: <git sha or "n/a">
 
 ## What ran
+
 - Skills: <list>
 - Agent: <name or "none">
 
 ## What came out
+
 - <artefact filename>: <one line on what it is>
 - reports/<file>: <one line>
 
 ## Next steps
+
 <the recommended next moves, e.g. "run a critique", "convert to React">
 ```
 
@@ -118,13 +123,13 @@ The run folder itself is the output. When reporting completion to the user, stat
 
 ## Error Handling
 
-* **Cannot create the folder.** Stop and say so before generating; never generate into an unmanaged location as a fallback.
-* **Collision suffix exhausted (unlikely).** Add the time: `<date>-<slug>-<HHMM>`.
-* **A skill tries to edit a past run.** Refuse, cite this convention, and offer a new run instead.
-* **Manifest write fails after generation.** Report it plainly so the human can fix the folder; do not delete the artefacts.
+- **Cannot create the folder.** Stop and say so before generating; never generate into an unmanaged location as a fallback.
+- **Collision suffix exhausted (unlikely).** Add the time: `<date>-<slug>-<HHMM>`.
+- **A skill tries to edit a past run.** Refuse, cite this convention, and offer a new run instead.
+- **Manifest write fails after generation.** Report it plainly so the human can fix the folder; do not delete the artefacts.
 
 ## Composition
 
-* `compose_after`: the generating paths of `/design-start` and `/engineer-start`, `agents/prototyping-agent`, `agents/build-agent`, `handoff/stack-convert`.
-* `compose_before`: `handoff/dev-spec` (writes the engineer quick view into the run folder), `agents/learning-agent` (reads manifests for capture), `coordination/usage-report` (reads run folders for the weekly roll-up).
-* Pre-convention folders (projects without manifests) are welcome in `sandbox/`; they simply predate the rules and are read-only history.
+- `compose_after`: the generating paths of `/design-start` and `/engineer-start`, `agents/prototyping-agent`, `agents/build-agent`, `handoff/stack-convert`.
+- `compose_before`: `handoff/dev-spec` (writes the engineer quick view into the run folder), `agents/learning-agent` (reads manifests for capture), `coordination/usage-report` (reads run folders for the weekly roll-up).
+- Pre-convention folders (projects without manifests) are welcome in `sandbox/`; they simply predate the rules and are read-only history.

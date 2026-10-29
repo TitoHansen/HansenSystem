@@ -2,6 +2,7 @@ import React from 'react';
 import { create } from 'storybook/theming';
 import { DocsContainer } from '@storybook/addon-docs/blocks';
 import brandManifest from './public/brands/index.json';
+import '../stories/ui.css';
 
 /* ------------------------------------------------------------------ */
 /* Brand switcher                                                      */
@@ -45,9 +46,11 @@ function applyBrand(slug) {
   if (!slug || slug === appliedBrand) return;
   const entry = (brandManifest.brands || []).find((b) => b.slug === slug);
   if (!entry) return;
-  const css = document.getElementById('prism-brand-css');
+  const css = document.getElementById('hansen-brand-css');
   if (css) css.setAttribute('href', `./brands/${slug}/variables.css`);
-  const fonts = document.getElementById('prism-brand-fonts');
+  const theme = document.getElementById('hansen-brand-theme');
+  if (theme) theme.setAttribute('href', `./brands/${slug}/theme.css`);
+  const fonts = document.getElementById('hansen-brand-fonts');
   if (fonts) {
     const href = fontsHref(entry);
     if (href) fonts.setAttribute('href', href);
@@ -96,7 +99,9 @@ const preview = {
 
   initialGlobals: {
     brand:
-      brandManifest.active || (brandItems[0] && brandItems[0].value) || 'prism',
+      brandManifest.active ||
+      (brandItems[0] && brandItems[0].value) ||
+      'hansen',
     colorMode: 'light'
   },
 
@@ -109,6 +114,8 @@ const preview = {
         document.documentElement.setAttribute('data-color-mode', mode);
         document.documentElement.setAttribute('data-theme', 'core');
         document.documentElement.setAttribute('data-brand', brand || '');
+        // shadcn's dark variant is class-based (see shadcn.css @custom-variant).
+        document.documentElement.classList.toggle('dark', mode === 'dark');
         document.body?.setAttribute('data-color-mode', mode);
         document.body?.setAttribute('data-theme', 'core');
         document.body?.setAttribute('data-brand', brand || '');
@@ -169,16 +176,15 @@ const preview = {
             '*'
           ],
 
-          // L1 — section
-          'Components',
+          // L1 — section: the segment-agnostic core, grouped by job
+          'Core',
           [
-            // L2 (Components children)
-            'Button',
-            'Divider',
-            'Input',
-            'IconButton',
-            'Link',
-            'Text',
+            'Actions',
+            'Inputs',
+            'Feedback',
+            'Navigation',
+            'Overlays',
+            'Content',
             '*'
           ],
 

@@ -2,7 +2,7 @@
 
 A practical guide: how to drive the design skills, how to prompt, when to use each, how to get good results from screens, and when you actually need Figma.
 
-This is the single how-to for the suite. Prefer recipes over a manual? See `PROMPT-COOKBOOK.md` in this folder for copy-paste prompts by scenario. It now also covers the getting-started walkthrough that used to live in `ONBOARDING.md`, so this is the one doc to read to learn how to use the system. For *what* the system is (the architecture and pillars), read `README.md`. For the brand and principles, read `foundation/design-dna.md`.
+This is the single how-to for the suite. Prefer recipes over a manual? See `PROMPT-COOKBOOK.md` in this folder for copy-paste prompts by scenario. It now also covers the getting-started walkthrough that used to live in `ONBOARDING.md`, so this is the one doc to read to learn how to use the system. For _what_ the system is (the architecture and pillars), read `README.md`. For the brand and principles, read `foundation/design-dna.md`.
 
 ---
 
@@ -20,8 +20,8 @@ Press enter and you get **clickable options**: a short question about what you w
 
 ```
 /design critique this checkout screen for spacing and contrast
-/design design a new saved-articles experience
-/design this article is ready, get it ready for engineering
+/design design a new saved-items experience
+/design this detail screen is ready, get it ready for engineering
 /design learn from these screenshots
 ```
 
@@ -56,13 +56,13 @@ Golden rule of the system: **every judgement traces to a source.** If a critique
 
 ## The five routes
 
-| You are… | Route | What runs |
-|---|---|---|
-| Trying a quick idea | **prototype** | `prototyping-agent` — fast, read-only, low ceremony |
-| Checking or fixing a design | **ui-craft** | `design-critique` (scored) + the checks you need |
+| You are…                                       | Route              | What runs                                              |
+| ---------------------------------------------- | ------------------ | ------------------------------------------------------ |
+| Trying a quick idea                            | **prototype**      | `prototyping-agent` — fast, read-only, low ceremony    |
+| Checking or fixing a design                    | **ui-craft**       | `design-critique` (scored) + the checks you need       |
 | Designing something new that doesn't exist yet | **new-experience** | the `ux/` pillar: principles → flow-design → templates |
-| Handing a design to engineering | **handoff** | `handoff-flow` → a `PACKET.md` |
-| Teaching the system from screenshots | **corpus-distill** | `distill-corpus` |
+| Handing a design to engineering                | **handoff**        | `handoff-flow` → a `PACKET.md`                         |
+| Teaching the system from screenshots           | **corpus-distill** | `distill-corpus`                                       |
 
 ---
 
@@ -77,7 +77,7 @@ Golden rule of the system: **every judgement traces to a source.** If a critique
 Good router prompts name the **task** and the **artefact** (a Figma link, "the screenshot above", or a description):
 
 ```
-/design critique the attached article screen. It's the dark theme.
+/design critique the attached detail screen. It's the dark theme.
 /design design a live-blog experience. Web first.
 /design hand off the events landing page. Figma is my active tab.
 ```
@@ -87,9 +87,9 @@ Good router prompts name the **task** and the **artefact** (a Figma link, "the s
 Call the agent by name and give it the artefact:
 
 ```
-Use the critique-agent on the screenshot above. It's an article screen.
+Use the critique-agent on the screenshot above. It's a detail screen.
 Use the prototyping-agent: what surface and text tokens for a callout card?
-Use the handoff-agent for the "saved articles" feature. Light: <figma-url>. Dark: <figma-url>.
+Use the handoff-agent for the "saved items" feature. Light: <figma-url>. Dark: <figma-url>.
 Use the build-agent to scaffold Banner from the packet in .design/banner/.
 ```
 
@@ -108,32 +108,32 @@ Map every value in this frame to tokens.                 (→ token-mapping-audi
 
 ## When to use which agent
 
-| Agent | Use it when | Writes code? | Speed |
-|---|---|---|---|
-| **prototyping-agent** | Early exploration, "mock this up", "what token for X", first 30 minutes | No | Fast |
-| **critique-agent** | "Is this any good?" — runs the full battery (critique + a11y + content + parity) and gives one report with a score | No | Balanced |
-| **handoff-agent** | "This is ready" — produces the complete engineering `PACKET.md` | No | Thorough |
-| **build-agent** | Turn an approved packet into a React component (scaffold + Code Connect + visual check) | **Yes, approval-gated** | Careful |
+| Agent                 | Use it when                                                                                                        | Writes code?            | Speed    |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------- | -------- |
+| **prototyping-agent** | Early exploration, "mock this up", "what token for X", first 30 minutes                                            | No                      | Fast     |
+| **critique-agent**    | "Is this any good?" — runs the full battery (critique + a11y + content + parity) and gives one report with a score | No                      | Balanced |
+| **handoff-agent**     | "This is ready" — produces the complete engineering `PACKET.md`                                                    | No                      | Thorough |
+| **build-agent**       | Turn an approved packet into a React component (scaffold + Code Connect + visual check)                            | **Yes, approval-gated** | Careful  |
 
 Rule of thumb: **prototyping → critique → handoff → build** is the lifecycle. Most days you live in prototyping and critique.
 
 ## Skill cheat-sheet by task
 
-| I want to… | Skill |
-|---|---|
-| Score a design against the rules | `ui/design-critique` |
-| Check accessibility (contrast, targets, focus) | `ui/a11y-check` |
-| Check copy and voice | `ui/content-style-check` |
-| Check every value maps to a real token | `ui/token-mapping-audit` |
-| Get the full state grid for a component | `ui/state-matrix` |
-| Compare light vs dark | `ui/light-dark-parity` |
-| Design a new flow/journey | `ux/flow-design` |
-| Find the house way to build a list, paywall, feed | `ux/pattern-library` |
-| Lay a new page on the grid | `ux/page-templates` |
-| Write button/error/empty-state copy | `ux/microcopy` |
-| Turn a frame into an engineering spec | `handoff/frame-to-spec` |
-| Look up who your brand is / a principle | `foundation/design-dna` |
-| See or promote a rule | `foundation/design-rules` |
+| I want to…                                     | Skill                     |
+| ---------------------------------------------- | ------------------------- |
+| Score a design against the rules               | `ui/design-critique`      |
+| Check accessibility (contrast, targets, focus) | `ui/a11y-check`           |
+| Check copy and voice                           | `ui/content-style-check`  |
+| Check every value maps to a real token         | `ui/token-mapping-audit`  |
+| Get the full state grid for a component        | `ui/state-matrix`         |
+| Compare light vs dark                          | `ui/light-dark-parity`    |
+| Design a new flow/journey                      | `ux/flow-design`          |
+| Find the house way to build a list, form, flow | `ux/pattern-library`      |
+| Lay a new page on the grid                     | `ux/page-templates`       |
+| Write button/error/empty-state copy            | `ux/microcopy`            |
+| Turn a frame into an engineering spec          | `handoff/frame-to-spec`   |
+| Look up who your brand is / a principle        | `foundation/design-dna`   |
+| See or promote a rule                          | `foundation/design-rules` |
 
 ---
 
@@ -142,7 +142,8 @@ Rule of thumb: **prototyping → critique → handoff → build** is the lifecyc
 The single biggest lever on output quality is the input you give. In order of impact:
 
 **1. Give context with the screen.** A bare image gets a generic read. Tell the system:
-- **What it is** — "article page", "checkout step 2 of 3", "empty saved-articles state".
+
+- **What it is** — "detail page", "checkout step 2 of 3", "empty saved-items state".
 - **Light or dark** — parity and contrast checks need to know.
 - **What you want** — a full critique, just accessibility, just the copy.
 
@@ -156,7 +157,7 @@ The single biggest lever on output quality is the input you give. In order of im
 
 Each finding cites a rule ID so the fix is unambiguous, and the 0–100 score trends across runs so you can see progress. `ui/monthly-audit` rolls those scores up over time.
 
-**4. Feed the corpus.** This is the compounding one. Drop real product screenshots into `design-corpus/raw/inbox/` and run `distill-corpus`. After that, the skills cite how the brand *actually* designs (real card anatomy, real paywall behaviour) instead of principled assumptions. The more you feed it, the more brand-specific every future critique and flow becomes. Ten to twenty screens per batch; web, iOS and Android all welcome.
+**4. Feed the corpus.** This is the compounding one. Drop real product screenshots into `design-corpus/raw/inbox/` and run `distill-corpus`. After that, the skills cite how the brand _actually_ designs (real card anatomy, real upgrade gate behaviour) instead of principled assumptions. The more you feed it, the more brand-specific every future critique and flow becomes. Ten to twenty screens per batch; web, iOS and Android all welcome.
 
 **5. Point at prior art for new experiences.** For `new-experience` work, the flow is grounded in Mobbin (600k+ shipped screens) plus your corpus. If Mobbin is connected, say so; if you have a reference, mention it.
 
@@ -164,19 +165,19 @@ Each finding cites a rule ID so the fix is unambiguous, and the 0–100 score tr
 
 ## Do you need the Figma MCP every time?
 
-**No.** It depends on *what kind* of feedback you want. There are three ways to give the system a screen, and they are good at different things.
+**No.** It depends on _what kind_ of feedback you want. There are three ways to give the system a screen, and they are good at different things.
 
-| Input | Setup | Best for | The catch |
-|---|---|---|---|
-| **Paste a screenshot** | None | Visual critique, UX review, accessibility eyeballing, feeding the corpus | The system sees *pixels*, not token names |
-| **Figma Desktop MCP** (`localhost:3845`) | Open the file as the active tab, enable the local MCP server | **Token-level accuracy** — is this bound to the right token? legacy drift? | Serves only the **active tab**, one file at a time |
-| **claude.ai Figma connector** | Connector auth | Any file the connected account can open | Your work/org files are **not** accessible on the personal-account connector (blocked) |
+| Input                                    | Setup                                                        | Best for                                                                   | The catch                                                                              |
+| ---------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| **Paste a screenshot**                   | None                                                         | Visual critique, UX review, accessibility eyeballing, feeding the corpus   | The system sees _pixels_, not token names                                              |
+| **Figma Desktop MCP** (`localhost:3845`) | Open the file as the active tab, enable the local MCP server | **Token-level accuracy** — is this bound to the right token? legacy drift? | Serves only the **active tab**, one file at a time                                     |
+| **claude.ai Figma connector**            | Connector auth                                               | Any file the connected account can open                                    | Your work/org files are **not** accessible on the personal-account connector (blocked) |
 
 ### The rule of thumb
 
 - **For design quality — layout, hierarchy, spacing rhythm, does-it-look-right, UX flow, copy, rough contrast — a screenshot is enough.** You do not need Figma. Paste and go.
 
-- **For token fidelity — "is this the right token?", "is there legacy drift?", light/dark parity by token — you need the Figma MCP**, because only it can read the *actual variable bindings*. A screenshot shows a blue; the Figma MCP shows whether that blue is `interactive.primary.fill` (correct) or `legacy/interactivePrimary030` (legacy drift). You cannot see that in pixels.
+- **For token fidelity — "is this the right token?", "is there legacy drift?", light/dark parity by token — you need the Figma MCP**, because only it can read the _actual variable bindings_. A screenshot shows a blue; the Figma MCP shows whether that blue is `interactive.primary.fill` (correct) or `legacy/interactivePrimary030` (legacy drift). You cannot see that in pixels.
 
 This is exactly what happened critiquing the Home page v2: the **screenshot** gave a clean 91 on structure, but pulling the **variable definitions via the desktop MCP** is what exposed the legacy bindings that dropped the real score to the mid-60s. Same screen, two very different findings — the difference was token access.
 

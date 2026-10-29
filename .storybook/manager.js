@@ -14,9 +14,9 @@ const lightTheme = create({
   base: 'light',
 
   // ── Branding ──────────────────────────────────────────────
-  brandTitle: 'Design System',
+  brandTitle: 'Hansen System',
   brandUrl: '/',
-  brandImage: '/logo.svg',
+  brandImage: './logo.svg',
   brandTarget: '_self',
 
   // ── Typography ────────────────────────────────────────────

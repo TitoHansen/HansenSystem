@@ -1,9 +1,9 @@
 {
-  "name": "prism-system",
+  "name": "hansen-system",
   "private": true,
   "type": "module",
   "version": "1.0.0",
-  "description": "Prism System: a white-label, multi-brand design system (web + iOS) with tokens, themes, components and an AI agent toolchain.",
+  "description": "Hansen System: a white-label, multi-brand design system (web + iOS) with tokens, themes, components and an AI agent toolchain.",
   "main": "index.js",
   "scripts": {
     "test": "lerna run test",
@@ -45,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TitoHansen/PrismSystem.git"
+    "url": "git+https://github.com/TitoHansen/HansenSystem.git"
   },
   "author": "Tito Hansen",
   "license": "MIT",
@@ -68,6 +68,7 @@
     "@storybook/addon-docs": "^10.2.19",
     "@storybook/addon-vitest": "^10.2.19",
     "@storybook/nextjs-vite": "^10.2.19",
+    "@tailwindcss/vite": "4.3.3",
     "@tokens-studio/sd-transforms": "2.0.3",
     "@vitest/browser": "^3.2.4",
     "@vitest/coverage-v8": "^3.2.4",
@@ -88,6 +89,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-postcss": "^4.0.2",
     "style-dictionary": "5.1.1",
+    "tailwindcss": "4.3.3",
     "vitest": "^3.2.4"
   },
   "lint-staged": {

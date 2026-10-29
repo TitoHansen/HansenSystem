@@ -1,10 +1,10 @@
 # Start here
 
-A one-page orientation for Prism System, so anyone can find their way without being the person who built it.
+A one-page orientation for Hansen System, so anyone can find their way without being the person who built it.
 
 ## What this is
 
-Prism System is a white-label design system monorepo: fork it, feed it a brand, and generate on-brand product UI with AI agents. The `README.md` is the front door; read it first for the concept, the quick start and the architecture map.
+Hansen System is a white-label design system monorepo: fork it, feed it a brand, and generate on-brand product UI with AI agents. The `README.md` is the front door; read it first for the concept, the quick start and the architecture map.
 
 ## The mental model (three layers)
 

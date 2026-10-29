@@ -1,14 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git -C /Users/apparicio.junior/VSCode/DS-Prism/PrismSystem remote -v)",
+      "Bash(git -C /Users/apparicio.junior/VSCode/DS-Hansen/HansenSystem remote -v)",
       "Bash(python3 -c ' *)",
       "Bash(gh api *)",
       "Bash(npm update *)",
       "Bash(npm ls *)",
       "Bash(npm run *)",
       "Bash(npx playwright *)",
-      "Read(//Users/apparicio.junior/VSCode/DS-Prism/PrismSystem/build/**)",
+      "Read(//Users/apparicio.junior/VSCode/DS-Hansen/HansenSystem/build/**)",
       "Bash(git check-ignore *)"
     ],
     "deny": []

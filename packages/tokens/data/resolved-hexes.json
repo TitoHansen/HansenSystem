@@ -168,160 +168,160 @@
     "dark": "#00000A"
   },
   "ramp.messaging.info.100": {
-    "light": "#CFE7FF",
-    "dark": "#000025"
+    "light": "#D3EAFF",
+    "dark": "#000021"
   },
   "ramp.messaging.info.150": {
-    "light": "#AFD3FF",
-    "dark": "#000438"
+    "light": "#B6D9FF",
+    "dark": "#000037"
   },
   "ramp.messaging.info.200": {
-    "light": "#8EBFFF",
-    "dark": "#00124B"
+    "light": "#99C7FF",
+    "dark": "#000948"
   },
   "ramp.messaging.info.250": {
-    "light": "#76ABFE",
-    "dark": "#00205F"
+    "light": "#7CB5FF",
+    "dark": "#00165A"
   },
   "ramp.messaging.info.300": {
-    "light": "#6097ED",
-    "dark": "#012F73"
+    "light": "#66A3FF",
+    "dark": "#00236C"
   },
   "ramp.messaging.info.350": {
-    "light": "#4C83DC",
-    "dark": "#0E3E87"
+    "light": "#5392F1",
+    "dark": "#00317E"
   },
   "ramp.messaging.info.400": {
-    "light": "#3770C9",
-    "dark": "#1D4E9A"
+    "light": "#4181E2",
+    "dark": "#013E8F"
   },
   "ramp.messaging.info.450": {
-    "light": "#245DB6",
-    "dark": "#2C5EAD"
+    "light": "#2F70D1",
+    "dark": "#124CA0"
   },
   "ramp.messaging.info.500": {
-    "light": "#0F4AA2",
-    "dark": "#3B6EC0"
+    "light": "#1D5FBF",
+    "dark": "#215BAF"
   },
   "ramp.messaging.info.550": {
-    "light": "#044198",
-    "dark": "#4C7FD1"
+    "light": "#1054B2",
+    "dark": "#3169BF"
   },
   "ramp.messaging.info.600": {
-    "light": "#00398C",
-    "dark": "#588BDC"
+    "light": "#0349A4",
+    "dark": "#3F77CC"
   },
   "ramp.messaging.info.650": {
-    "light": "#003080",
-    "dark": "#6496E6"
+    "light": "#003E95",
+    "dark": "#4F85D8"
   },
   "ramp.messaging.info.700": {
-    "light": "#002974",
-    "dark": "#72A2EF"
+    "light": "#003486",
+    "dark": "#5F93E3"
   },
   "ramp.messaging.info.750": {
-    "light": "#002167",
-    "dark": "#80AEF7"
+    "light": "#002B76",
+    "dark": "#6FA1EE"
   },
   "ramp.messaging.info.800": {
-    "light": "#001A5A",
-    "dark": "#8FBAFE"
+    "light": "#002166",
+    "dark": "#81B0F8"
   },
   "ramp.messaging.info.850": {
-    "light": "#00134C",
-    "dark": "#9EC6FF"
+    "light": "#001955",
+    "dark": "#93BEFF"
   },
   "ramp.messaging.info.900": {
-    "light": "#000D3E",
-    "dark": "#AED2FF"
+    "light": "#001045",
+    "dark": "#A5CDFF"
   },
   "ramp.messaging.info.950": {
-    "light": "#000731",
-    "dark": "#BFDEFF"
+    "light": "#000835",
+    "dark": "#BBDBFF"
   },
   "ramp.messaging.info.1000": {
-    "light": "#000424",
-    "dark": "#D3E9FF"
+    "light": "#000325",
+    "dark": "#D2EAFF"
   },
   "ramp.messaging.error.50": {
     "light": "#FFF3F1",
     "dark": "#030000"
   },
   "ramp.messaging.error.100": {
-    "light": "#FFE1DE",
-    "dark": "#0C0000"
+    "light": "#FFDEDA",
+    "dark": "#0E0000"
   },
   "ramp.messaging.error.150": {
-    "light": "#FFCECA",
-    "dark": "#190000"
+    "light": "#FFC8C3",
+    "dark": "#1D0000"
   },
   "ramp.messaging.error.200": {
-    "light": "#FFBBB6",
-    "dark": "#260000"
+    "light": "#FFB1AB",
+    "dark": "#2D0000"
   },
   "ramp.messaging.error.250": {
-    "light": "#FFA7A2",
-    "dark": "#330000"
+    "light": "#FF9893",
+    "dark": "#3D0000"
   },
   "ramp.messaging.error.300": {
-    "light": "#FF918D",
-    "dark": "#420001"
+    "light": "#FF7D79",
+    "dark": "#4E0001"
   },
   "ramp.messaging.error.350": {
-    "light": "#FF7977",
-    "dark": "#510002"
+    "light": "#FF6967",
+    "dark": "#600003"
   },
   "ramp.messaging.error.400": {
-    "light": "#FF6868",
-    "dark": "#600005"
+    "light": "#F15757",
+    "dark": "#730006"
   },
   "ramp.messaging.error.450": {
-    "light": "#F3595B",
-    "dark": "#700007"
+    "light": "#E14549",
+    "dark": "#86000A"
   },
   "ramp.messaging.error.500": {
-    "light": "#E54B4F",
-    "dark": "#80000B"
+    "light": "#D1343B",
+    "dark": "#950017"
   },
   "ramp.messaging.error.550": {
-    "light": "#D23A41",
-    "dark": "#8D0015"
+    "light": "#C1232F",
+    "dark": "#A21623"
   },
   "ramp.messaging.error.600": {
-    "light": "#BF2A34",
-    "dark": "#A01C27"
+    "light": "#B00F23",
+    "dark": "#B32F34"
   },
   "ramp.messaging.error.650": {
-    "light": "#AC1928",
-    "dark": "#B2363A"
+    "light": "#9E0019",
+    "dark": "#C34444"
   },
   "ramp.messaging.error.700": {
-    "light": "#97051D",
-    "dark": "#C44C4D"
+    "light": "#8C000F",
+    "dark": "#D25856"
   },
   "ramp.messaging.error.750": {
-    "light": "#830013",
-    "dark": "#D46260"
+    "light": "#790007",
+    "dark": "#E16C68"
   },
   "ramp.messaging.error.800": {
-    "light": "#6F0009",
-    "dark": "#E47875"
+    "light": "#650004",
+    "dark": "#EE807B"
   },
   "ramp.messaging.error.850": {
-    "light": "#590003",
-    "dark": "#F38F8A"
+    "light": "#510001",
+    "dark": "#FB948F"
   },
   "ramp.messaging.error.900": {
-    "light": "#440001",
-    "dark": "#FFA5A0"
+    "light": "#3F0000",
+    "dark": "#FFA9A3"
   },
   "ramp.messaging.error.950": {
-    "light": "#2F0000",
-    "dark": "#FFBDB8"
+    "light": "#2D0000",
+    "dark": "#FFC1BB"
   },
   "ramp.messaging.error.1000": {
     "light": "#1C0000",
-    "dark": "#FFDAD6"
+    "dark": "#FFDAD5"
   },
   "ramp.messaging.warning.50": {
     "light": "#FFF6DC",
@@ -3688,10 +3688,10 @@
     "hex": "#FFFFFF"
   },
   "input.fill.error.core.light": {
-    "hex": "#FFCECA"
+    "hex": "#FFC8C3"
   },
   "input.fill.error.core.dark": {
-    "hex": "#190000"
+    "hex": "#1D0000"
   },
   "input.fill.error.theme-4.light": {
     "hex": "#FFEFEF"
@@ -4192,10 +4192,10 @@
     "hex": "#FFF7EF"
   },
   "input.fill.info.core.light": {
-    "hex": "#AFD3FF"
+    "hex": "#B6D9FF"
   },
   "input.fill.info.core.dark": {
-    "hex": "#000438"
+    "hex": "#000037"
   },
   "input.fill.info.theme-4.light": {
     "hex": "#EFF2F8"
@@ -4360,10 +4360,10 @@
     "hex": "#8C8C8C"
   },
   "input.border.error.core.light": {
-    "hex": "#590003"
+    "hex": "#510001"
   },
   "input.border.error.core.dark": {
-    "hex": "#D46260"
+    "hex": "#E16C68"
   },
   "input.border.error.theme-4.light": {
     "hex": "#B20908"
@@ -4864,10 +4864,10 @@
     "hex": "#CC8103"
   },
   "input.border.info.core.light": {
-    "hex": "#003080"
+    "hex": "#003E95"
   },
   "input.border.info.core.dark": {
-    "hex": "#6496E6"
+    "hex": "#4F85D8"
   },
   "input.border.info.theme-4.light": {
     "hex": "#2658A9"
@@ -6292,10 +6292,10 @@
     "hex": "#2658A9"
   },
   "messaging.fill.error.core.light": {
-    "hex": "#FFCECA"
+    "hex": "#FFC8C3"
   },
   "messaging.fill.error.core.dark": {
-    "hex": "#190000"
+    "hex": "#1D0000"
   },
   "messaging.fill.error.theme-4.light": {
     "hex": "#FFEFEF"
@@ -6544,10 +6544,10 @@
     "hex": "#FFF7EF"
   },
   "messaging.fill.info.core.light": {
-    "hex": "#AFD3FF"
+    "hex": "#B6D9FF"
   },
   "messaging.fill.info.core.dark": {
-    "hex": "#000438"
+    "hex": "#000037"
   },
   "messaging.fill.info.theme-4.light": {
     "hex": "#EFF2F8"
@@ -6628,10 +6628,10 @@
     "hex": "#EFF2F8"
   },
   "messaging.border.error.core.light": {
-    "hex": "#590003"
+    "hex": "#510001"
   },
   "messaging.border.error.core.dark": {
-    "hex": "#D46260"
+    "hex": "#E16C68"
   },
   "messaging.border.error.theme-4.light": {
     "hex": "#B20908"
@@ -6880,10 +6880,10 @@
     "hex": "#FFBA5B"
   },
   "messaging.border.info.core.light": {
-    "hex": "#002974"
+    "hex": "#003486"
   },
   "messaging.border.info.core.dark": {
-    "hex": "#80AEF7"
+    "hex": "#6FA1EE"
   },
   "messaging.border.info.theme-4.light": {
     "hex": "#0F4AA2"
@@ -9904,10 +9904,10 @@
     "hex": "#000000"
   },
   "messaging.icon.error.core.light": {
-    "hex": "#6F0009"
+    "hex": "#650004"
   },
   "messaging.icon.error.core.dark": {
-    "hex": "#D46260"
+    "hex": "#E16C68"
   },
   "messaging.icon.error.theme-4.light": {
     "hex": "#CB0705"
@@ -10156,10 +10156,10 @@
     "hex": "#FFBA5B"
   },
   "messaging.icon.info.core.light": {
-    "hex": "#002974"
+    "hex": "#003486"
   },
   "messaging.icon.info.core.dark": {
-    "hex": "#80AEF7"
+    "hex": "#6FA1EE"
   },
   "messaging.icon.info.theme-4.light": {
     "hex": "#0F4AA2"
@@ -10492,10 +10492,10 @@
     "hex": "#000000"
   },
   "interactive.negative.border.default.core.light": {
-    "hex": "#6F0009"
+    "hex": "#650004"
   },
   "interactive.negative.border.default.core.dark": {
-    "hex": "#A01C27"
+    "hex": "#B32F34"
   },
   "interactive.negative.border.default.theme-4.light": {
     "hex": "#CB0705"
@@ -10744,10 +10744,10 @@
     "hex": "#B90200"
   },
   "interactive.negative.text.default.core.light": {
-    "hex": "#6F0009"
+    "hex": "#650004"
   },
   "interactive.negative.text.default.core.dark": {
-    "hex": "#A01C27"
+    "hex": "#B32F34"
   },
   "interactive.negative.text.default.theme-4.light": {
     "hex": "#CB0705"
@@ -21580,10 +21580,10 @@
     "hex": "#0A1717"
   },
   "flag.callout.fill.core.light": {
-    "hex": "#590003"
+    "hex": "#510001"
   },
   "flag.callout.fill.core.dark": {
-    "hex": "#A01C27"
+    "hex": "#B32F34"
   },
   "flag.callout.fill.theme-4.light": {
     "hex": "#B20908"
@@ -21916,10 +21916,10 @@
     "hex": "#FF403A"
   },
   "toast.fill.info.core.light": {
-    "hex": "#00134C"
+    "hex": "#001955"
   },
   "toast.fill.info.core.dark": {
-    "hex": "#3B6EC0"
+    "hex": "#215BAF"
   },
   "toast.fill.info.theme-4.light": {
     "hex": "#0A3472"
@@ -22168,10 +22168,10 @@
     "hex": "#FFCD8B"
   },
   "toast.fill.error.core.light": {
-    "hex": "#6F0009"
+    "hex": "#650004"
   },
   "toast.fill.error.core.dark": {
-    "hex": "#600005"
+    "hex": "#730006"
   },
   "toast.fill.error.theme-4.light": {
     "hex": "#CB0705"
@@ -22252,10 +22252,10 @@
     "hex": "#FF9F98"
   },
   "toast.icon.info.core.light": {
-    "hex": "#3770C9"
+    "hex": "#4181E2"
   },
   "toast.icon.info.core.dark": {
-    "hex": "#AED2FF"
+    "hex": "#A5CDFF"
   },
   "toast.icon.info.theme-4.light": {
     "hex": "#97AED7"
@@ -22504,10 +22504,10 @@
     "hex": "#7E520D"
   },
   "toast.icon.error.core.light": {
-    "hex": "#FF7977"
+    "hex": "#FF6967"
   },
   "toast.icon.error.core.dark": {
-    "hex": "#FFDAD6"
+    "hex": "#FFDAD5"
   },
   "toast.icon.error.theme-4.light": {
     "hex": "#FFB4B0"

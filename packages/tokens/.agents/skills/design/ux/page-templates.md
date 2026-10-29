@@ -1,6 +1,6 @@
 ---
 name: page-templates
-description: The page-level layout templates for brand experiences. Article, section front, media, account and settings, and game hub, each expressed on the DS responsive grid (Small, Medium, Large, XLarge viewports). Grounded in the grid reference and the design corpus. Tells a new full-page screen how to sit on the grid before it fills in content.
+description: The page-level layout templates that recur in almost every product, whatever the segment. List, detail, form, multi-step flow, dashboard, and settings, each expressed on the DS responsive grid (Small, Medium, Large, XLarge viewports). Grounded in the grid reference and the design corpus. Tells a new full-page screen how to sit on the grid before it fills in content.
 license: MIT
 metadata:
   category: design/ux
@@ -18,7 +18,7 @@ metadata:
 
 `ux/flow-design` decides a screen should be a full page. This skill decides how that page sits on the grid: how many columns, where the reading measure sits, how it reflows across viewports. It is the bridge between a flow and a real layout, expressed in the DS grid system rather than in arbitrary pixels.
 
-Templates are starting points, not straitjackets. They encode the layouts your brand already uses so a new page inherits the product's rhythm instead of reinventing it.
+Templates are starting points, not straitjackets. They encode layouts that hold across segments, so a new page inherits a proven rhythm instead of reinventing it. What fills a template (which records, which fields, which figures) comes from the brief and the active brand's guidelines, never from this file.
 
 ## Preconditions
 
@@ -28,7 +28,7 @@ Templates are starting points, not straitjackets. They encode the layouts your b
 
 ## Inputs
 
-- `template` — `article` | `section-front` | `media` | `account` | `game-hub` | `all`. Default `all` (list) or the one named.
+- `template` — `list` | `detail` | `form` | `flow` | `dashboard` | `settings` | `all`. Default `all` (list) or the one named.
 - `viewport` — optional focus: `small` | `medium` | `large` | `xlarge`.
 
 ## The grid, briefly
@@ -46,45 +46,49 @@ Reading measure: body text never wider than about 8 columns / 60–75 characters
 
 ## The templates
 
-### Article
+### List
 
-The reading page; the product's centre.
-**Layout.** Single reading column centred, max ~8 columns for the measure. Hero image full content-width above or beside the headline block. Related/UpNext rail below the article on Small/Medium, optionally beside it on Large/XLarge if the measure is preserved.
-**Reflow.** Small: one column, rail stacks below. Large/XLarge: reading column stays ~8 cols even as the page widens; extra width becomes margin, not longer lines.
-**Anatomy source.** `ux/pattern-library` → article anatomy. Evidence: `layout-patterns.md#article-template`.
+Many items of one kind: records, products, conversations, results.
+**Layout.** Page heading with the primary action top-right; a filter/search row; then either a `Table` (full content width, horizontally scrollable on Small) or a card grid (1-up on Small, 2–3-up on Medium, 3–4-up on Large/XLarge). `Pagination` or load-more below.
+**Reflow.** Cards reflow by column count; tables keep their columns and scroll, with the first column sticky where the platform allows.
+**Anatomy source.** `ux/pattern-library` → lists and cards; state trio for loading/empty/error.
 
-### Section front
+### Detail
 
-A topic landing page: a curated list of articles.
-**Layout.** A lead block (one large card, full or 8-column) then a grid of cards. Card grid: 1-up on Small, 2–3-up on Medium, 3–4-up on Large/XLarge.
-**Reflow.** Cards reflow by column count; the lead card spans full width on Small, a larger span on wide viewports. Density holds — cards keep a consistent internal rhythm.
-**Evidence.** `layout-patterns.md#section-front`.
+One item opened from a list.
+**Layout.** `Breadcrumb` or back link · heading block (title, status, meta) with actions top-right · main column of sections (max ~8 columns for readable text) · optional side rail (related items, summary) on Large/XLarge.
+**Reflow.** Small: one column, rail stacks below the sections. Large/XLarge: the main column stays ~8 columns; extra width becomes margin or the rail, not longer lines.
+**Anatomy source.** `ux/pattern-library` → detail view.
 
-### Media (gallery / video)
+### Form
 
-Image- or video-led pages.
-**Layout.** Media dominant, using fixed aspect ratios (`Image` component ratios). Caption and credit below in `brand-meta-*`. Galleries are a horizontal or grid set with a clear position indicator; video uses the product player chrome.
-**Reflow.** Media scales to content width; captions keep the reading measure. On Small, galleries are swipeable with a visible count.
-**Accessibility.** Every media item has alt or a caption; galleries are keyboard-navigable; autoplay respects reduced-motion and is muted.
-**Evidence.** `layout-patterns.md#media`.
+A single-screen data-entry task: sign-in, sign-up, request, edit.
+**Layout.** One centred column, 4–6 columns wide on Large/XLarge, inside a `Card` when it is the whole page. Fields stack vertically; related short fields may pair horizontally on Medium and up. Actions at the bottom, primary on the right.
+**Reflow.** Small: full width, paired fields unpair. The column never widens past comfortable reading.
+**Anatomy source.** `ux/pattern-library` → forms and authentication.
 
-### Account and settings
+### Multi-step flow
 
-Utility pages: profile, subscription, preferences.
-**Layout.** A single narrow column of grouped settings (a settings list of rows: label, current value, control). Section headings group related settings. On Large/XLarge an optional left nav lists the setting groups; content stays a readable single column, not stretched full-width.
-**Reflow.** Small: stacked, nav becomes a top list or accordion. The content column never widens past comfortable reading.
-**States.** In-place edit (`motion/interaction-patterns` → `in-place-edit`), optimistic save with Toast confirmation, InlineMessage for validation.
-**Copy.** Plain, `core` tokens. Microcopy via `ux/microcopy`.
-**Evidence.** `ux-patterns/onboarding.md`, `layout-patterns.md#account`.
+A task too long for one screen.
+**Layout.** `Stepper` across the top (horizontal) on Medium and up, or down the left on XLarge; vertical and collapsed on Small. The current step renders as the Form template. Back and continue persist in the same place on every step.
+**Reflow.** The stepper collapses to "Step 2 of 4" plus a progress bar on Small.
+**Anatomy source.** `ux/pattern-library` → multi-step flow.
 
-### Game hub
+### Dashboard
 
-The games landing: a warmer, more playful surface within the brand frame.
-**Layout.** A grid of game entry cards (crossword, sudoku, etc.), each with title, difficulty, and a play action. A "continue where you left off" block at top when there is progress.
-**Reflow.** Card grid by column count as section front; the continue block spans wide.
-**Tone.** A warmer, more interactive tone is on-brand here — still on-brand, not a games app (DNA: playful but restrained).
-**States.** Progress persistence, locked-until-subscribed entries marked with `Label` (subscriber pattern), completed state.
-**Evidence.** `layout-patterns.md#game-hub`.
+An overview surface: a handful of key figures and a few lists or charts.
+**Layout.** A row of stat `Card`s (2-up on Small, 4-up on Large) · one or two wide chart or table cards · a narrower activity list. Every card has a title and one way in.
+**Reflow.** Cards reflow by column count; charts keep aspect ratio; tables scroll.
+**States.** Each card owns its own loading/empty/error so one failure does not blank the page.
+**Anatomy source.** `ux/pattern-library` → lists and cards; `dataviz` guidance for the charts.
+
+### Settings
+
+Utility pages: profile, preferences, security, billing.
+**Layout.** A single narrow column of grouped rows (label, current value, control). Section headings group related settings. On Large/XLarge an optional left `Sidebar` lists the groups; content stays a readable single column, not stretched full-width.
+**Reflow.** Small: stacked, the group nav becomes a top `Tabs` row or an `Accordion`.
+**States.** In-place edit, `Toast` on save, inline `Alert` on failure, `AlertDialog` for consequential changes.
+**Anatomy source.** `ux/pattern-library` → settings and preferences.
 
 ## Output Contract
 

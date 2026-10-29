@@ -532,7 +532,7 @@
           "description": "Form input background at placeholder/rest state."
         },
         "error": {
-          "value": "#FFCECA",
+          "value": "#FFC8C3",
           "type": "color",
           "description": "Form input background in error state. Uses messaging error fill semantics."
         },
@@ -562,7 +562,7 @@
           "description": "Form input background in warning state. Uses messaging warning fill semantics."
         },
         "info": {
-          "value": "#AFD3FF",
+          "value": "#B6D9FF",
           "type": "color",
           "description": "Form input background in info state. Uses messaging info fill semantics."
         }
@@ -574,7 +574,7 @@
           "description": "Form input border at rest. Defines field boundary with neutral contrast."
         },
         "error": {
-          "value": "#590003",
+          "value": "#510001",
           "type": "color",
           "description": "Form input border in error state. Uses messaging error border semantics."
         },
@@ -604,7 +604,7 @@
           "description": "Form input border in warning state. Uses messaging warning border semantics."
         },
         "info": {
-          "value": "#003080",
+          "value": "#003E95",
           "type": "color",
           "description": "Form input border in info state. Uses messaging info border semantics."
         }
@@ -697,7 +697,7 @@
     "messaging": {
       "fill": {
         "error": {
-          "value": "#FFCECA",
+          "value": "#FFC8C3",
           "type": "color",
           "description": "Error message background. Signals critical issue, validation failure, or danger."
         },
@@ -712,14 +712,14 @@
           "description": "Warning message background. Signals caution, blocked action, or attention need."
         },
         "info": {
-          "value": "#AFD3FF",
+          "value": "#B6D9FF",
           "type": "color",
           "description": "Info message background. Signals neutral information or helpful guidance."
         }
       },
       "border": {
         "error": {
-          "value": "#590003",
+          "value": "#510001",
           "type": "color",
           "description": "Error message border. Reinforces error intent with colour accent."
         },
@@ -734,14 +734,14 @@
           "description": "Warning message border. Reinforces warning intent with colour accent."
         },
         "info": {
-          "value": "#002974",
+          "value": "#003486",
           "type": "color",
           "description": "Info message border. Reinforces info intent with colour accent."
         }
       },
       "icon": {
         "error": {
-          "value": "#6F0009",
+          "value": "#650004",
           "type": "color",
           "description": "Status icon used within error messaging surfaces."
         },
@@ -756,7 +756,7 @@
           "description": "Status icon used within warning messaging surfaces."
         },
         "info": {
-          "value": "#002974",
+          "value": "#003486",
           "type": "color",
           "description": "Status icon used within informational messaging surfaces."
         }
@@ -991,7 +991,7 @@
         },
         "border": {
           "default": {
-            "value": "#6F0009",
+            "value": "#650004",
             "type": "color",
             "description": "Border for destructive action buttons. Signals critical actions requiring user attention and confirmation."
           },
@@ -1008,7 +1008,7 @@
         },
         "text": {
           "default": {
-            "value": "#6F0009",
+            "value": "#650004",
             "type": "color",
             "description": "Text for destructive action buttons. High contrast ensures readability and signals danger."
           },
@@ -1510,7 +1510,7 @@
       },
       "callout": {
         "fill": {
-          "value": "#590003",
+          "value": "#510001",
           "type": "color",
           "description": "Fill token for LIVE Flag."
         },
@@ -1529,7 +1529,7 @@
     "toast": {
       "fill": {
         "info": {
-          "value": "#00134C",
+          "value": "#001955",
           "type": "color",
           "description": "Info toast background."
         },
@@ -1544,14 +1544,14 @@
           "description": "Warning toast background."
         },
         "error": {
-          "value": "#6F0009",
+          "value": "#650004",
           "type": "color",
           "description": "Error toast background."
         }
       },
       "icon": {
         "info": {
-          "value": "#3770C9",
+          "value": "#4181E2",
           "type": "color",
           "description": "Icon on info toast."
         },
@@ -1566,7 +1566,7 @@
           "description": "Icon on warning toast."
         },
         "error": {
-          "value": "#FF7977",
+          "value": "#FF6967",
           "type": "color",
           "description": "Icon on error toast."
         }
@@ -1683,32 +1683,32 @@
     },
     "theme": {
       "background": {
-        "value": "#fcfcfc",
+        "value": "#ffffff",
         "type": "color",
         "description": "App/page base surface."
       },
       "foreground": {
-        "value": "#000000",
+        "value": "#101010",
         "type": "color",
         "description": "Default text on background."
       },
       "card": {
-        "value": "#ffffff",
+        "value": "#ebebeb",
         "type": "color",
         "description": "Card surface."
       },
       "card-foreground": {
-        "value": "#000000",
+        "value": "#101010",
         "type": "color",
         "description": "Text on card."
       },
       "popover": {
-        "value": "#fcfcfc",
+        "value": "#ffffff",
         "type": "color",
         "description": "Popover/menu surface."
       },
       "popover-foreground": {
-        "value": "#000000",
+        "value": "#101010",
         "type": "color",
         "description": "Text on popover."
       },
@@ -1723,12 +1723,12 @@
         "description": "Text/icon on primary."
       },
       "secondary": {
-        "value": "#ebebeb",
+        "value": "#cecece",
         "type": "color",
         "description": "Secondary tier."
       },
       "secondary-foreground": {
-        "value": "#000000",
+        "value": "#101010",
         "type": "color",
         "description": "Text/icon on secondary."
       },
@@ -1738,37 +1738,37 @@
         "description": "Tertiary accent tier."
       },
       "tertiary-foreground": {
-        "value": "#000000",
+        "value": "#070707",
         "type": "color",
         "description": "Text/icon on tertiary."
       },
       "muted": {
-        "value": "#f5f5f5",
+        "value": "#dcdcdc",
         "type": "color",
         "description": "Muted surface."
       },
       "muted-foreground": {
-        "value": "#525252",
+        "value": "#606060",
         "type": "color",
         "description": "Muted/secondary text."
       },
       "border": {
-        "value": "#e4e4e4",
+        "value": "#b1b1b1",
         "type": "color",
         "description": "Default border colour."
       },
       "input": {
-        "value": "#ebebeb",
+        "value": "#b1b1b1",
         "type": "color",
         "description": "Form input border."
       },
       "ring": {
-        "value": "#000000",
+        "value": "#606060",
         "type": "color",
         "description": "Focus ring."
       },
       "info": {
-        "value": "#0f4aa2",
+        "value": "#1d5fbf",
         "type": "color",
         "description": "Informational feedback."
       },
@@ -1798,7 +1798,7 @@
         "description": "Text on warning."
       },
       "error": {
-        "value": "#e54b4f",
+        "value": "#d1343b",
         "type": "color",
         "description": "Error feedback."
       },
@@ -1808,7 +1808,7 @@
         "description": "Text on error."
       },
       "destructive": {
-        "value": "#e54b4f",
+        "value": "#d1343b",
         "type": "color",
         "description": "Destructive action."
       },
@@ -2002,7 +2002,7 @@
           "description": "Form input background at placeholder/rest state."
         },
         "error": {
-          "value": "#190000",
+          "value": "#1D0000",
           "type": "color",
           "description": "Form input background in error state. Uses messaging error fill semantics."
         },
@@ -2032,7 +2032,7 @@
           "description": "Form input background in warning state. Uses messaging warning fill semantics."
         },
         "info": {
-          "value": "#000438",
+          "value": "#000037",
           "type": "color",
           "description": "Form input background in info state. Uses messaging info fill semantics."
         }
@@ -2044,7 +2044,7 @@
           "description": "Form input border at rest. Defines field boundary with neutral contrast."
         },
         "error": {
-          "value": "#D46260",
+          "value": "#E16C68",
           "type": "color",
           "description": "Form input border in error state. Uses messaging error border semantics."
         },
@@ -2074,7 +2074,7 @@
           "description": "Form input border in warning state. Uses messaging warning border semantics."
         },
         "info": {
-          "value": "#6496E6",
+          "value": "#4F85D8",
           "type": "color",
           "description": "Form input border in info state. Uses messaging info border semantics."
         }
@@ -2167,7 +2167,7 @@
     "messaging": {
       "fill": {
         "error": {
-          "value": "#190000",
+          "value": "#1D0000",
           "type": "color",
           "description": "Error message background. Signals critical issue, validation failure, or danger."
         },
@@ -2182,14 +2182,14 @@
           "description": "Warning message background. Signals caution, blocked action, or attention need."
         },
         "info": {
-          "value": "#000438",
+          "value": "#000037",
           "type": "color",
           "description": "Info message background. Signals neutral information or helpful guidance."
         }
       },
       "border": {
         "error": {
-          "value": "#D46260",
+          "value": "#E16C68",
           "type": "color",
           "description": "Error message border. Reinforces error intent with colour accent."
         },
@@ -2204,14 +2204,14 @@
           "description": "Warning message border. Reinforces warning intent with colour accent."
         },
         "info": {
-          "value": "#80AEF7",
+          "value": "#6FA1EE",
           "type": "color",
           "description": "Info message border. Reinforces info intent with colour accent."
         }
       },
       "icon": {
         "error": {
-          "value": "#D46260",
+          "value": "#E16C68",
           "type": "color",
           "description": "Status icon used within error messaging surfaces."
         },
@@ -2226,7 +2226,7 @@
           "description": "Status icon used within warning messaging surfaces."
         },
         "info": {
-          "value": "#80AEF7",
+          "value": "#6FA1EE",
           "type": "color",
           "description": "Status icon used within informational messaging surfaces."
         }
@@ -2461,7 +2461,7 @@
         },
         "border": {
           "default": {
-            "value": "#A01C27",
+            "value": "#B32F34",
             "type": "color",
             "description": "Border for destructive action buttons. Signals critical actions requiring user attention and confirmation."
           },
@@ -2478,7 +2478,7 @@
         },
         "text": {
           "default": {
-            "value": "#A01C27",
+            "value": "#B32F34",
             "type": "color",
             "description": "Text for destructive action buttons. High contrast ensures readability and signals danger."
           },
@@ -2980,7 +2980,7 @@
       },
       "callout": {
         "fill": {
-          "value": "#A01C27",
+          "value": "#B32F34",
           "type": "color",
           "description": "Fill token for LIVE Flag."
         },
@@ -2999,7 +2999,7 @@
     "toast": {
       "fill": {
         "info": {
-          "value": "#3B6EC0",
+          "value": "#215BAF",
           "type": "color"
         },
         "success": {
@@ -3011,13 +3011,13 @@
           "type": "color"
         },
         "error": {
-          "value": "#600005",
+          "value": "#730006",
           "type": "color"
         }
       },
       "icon": {
         "info": {
-          "value": "#AED2FF",
+          "value": "#A5CDFF",
           "type": "color"
         },
         "success": {
@@ -3029,7 +3029,7 @@
           "type": "color"
         },
         "error": {
-          "value": "#FFDAD6",
+          "value": "#FFDAD5",
           "type": "color"
         }
       },
@@ -3131,32 +3131,32 @@
         "description": "App/page base surface."
       },
       "foreground": {
-        "value": "#ffffff",
+        "value": "#d8d8d8",
         "type": "color",
         "description": "Default text on background."
       },
       "card": {
-        "value": "#090909",
+        "value": "#030303",
         "type": "color",
         "description": "Card surface."
       },
       "card-foreground": {
-        "value": "#ffffff",
+        "value": "#d8d8d8",
         "type": "color",
         "description": "Text on card."
       },
       "popover": {
-        "value": "#121212",
+        "value": "#000000",
         "type": "color",
         "description": "Popover/menu surface."
       },
       "popover-foreground": {
-        "value": "#ffffff",
+        "value": "#d8d8d8",
         "type": "color",
         "description": "Text on popover."
       },
       "primary": {
-        "value": "#ffffff",
+        "value": "#fad6e0",
         "type": "color",
         "description": "Primary brand tier. Main CTAs."
       },
@@ -3166,57 +3166,57 @@
         "description": "Text/icon on primary."
       },
       "secondary": {
-        "value": "#222222",
+        "value": "#131313",
         "type": "color",
         "description": "Secondary tier."
       },
       "secondary-foreground": {
-        "value": "#ffffff",
+        "value": "#d8d8d8",
         "type": "color",
         "description": "Text/icon on secondary."
       },
       "tertiary": {
-        "value": "#333333",
+        "value": "#3e310e",
         "type": "color",
         "description": "Tertiary accent tier."
       },
       "tertiary-foreground": {
-        "value": "#ffffff",
+        "value": "#e8e8e8",
         "type": "color",
         "description": "Text/icon on tertiary."
       },
       "muted": {
-        "value": "#1d1d1d",
+        "value": "#0a0a0a",
         "type": "color",
         "description": "Muted surface."
       },
       "muted-foreground": {
-        "value": "#a4a4a4",
+        "value": "#828282",
         "type": "color",
         "description": "Muted/secondary text."
       },
       "border": {
-        "value": "#242424",
+        "value": "#292929",
         "type": "color",
         "description": "Default border colour."
       },
       "input": {
-        "value": "#333333",
+        "value": "#292929",
         "type": "color",
         "description": "Form input border."
       },
       "ring": {
-        "value": "#a4a4a4",
+        "value": "#747474",
         "type": "color",
         "description": "Focus ring."
       },
       "info": {
-        "value": "#3b6ec0",
+        "value": "#215baf",
         "type": "color",
         "description": "Informational feedback."
       },
       "info-foreground": {
-        "value": "#000000",
+        "value": "#e8e8e8",
         "type": "color",
         "description": "Text on info."
       },
@@ -3241,47 +3241,47 @@
         "description": "Text on warning."
       },
       "error": {
-        "value": "#ff5b5b",
+        "value": "#950017",
         "type": "color",
         "description": "Error feedback."
       },
       "error-foreground": {
-        "value": "#000000",
+        "value": "#e8e8e8",
         "type": "color",
         "description": "Text on error."
       },
       "destructive": {
-        "value": "#ff5b5b",
+        "value": "#950017",
         "type": "color",
         "description": "Destructive action."
       },
       "destructive-foreground": {
-        "value": "#000000",
+        "value": "#e8e8e8",
         "type": "color",
         "description": "Text on destructive."
       },
       "chart-1": {
-        "value": "#f9b138",
+        "value": "#4b2a00",
         "type": "color",
         "description": "Data-vis series 1."
       },
       "chart-2": {
-        "value": "#2671f4",
+        "value": "#1741bc",
         "type": "color",
         "description": "Data-vis series 2."
       },
       "chart-3": {
-        "value": "#747474",
+        "value": "#3e310e",
         "type": "color",
         "description": "Data-vis series 3."
       },
       "chart-4": {
-        "value": "#525252",
+        "value": "#3e310e",
         "type": "color",
         "description": "Data-vis series 4."
       },
       "chart-5": {
-        "value": "#e4e4e4",
+        "value": "#5b4e2b",
         "type": "color",
         "description": "Data-vis series 5."
       }
@@ -4172,7 +4172,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Subtle subheading for sections and tertiary content. Typically h5, h6."
+              "description": "Compact label-sized heading for badges and dense callouts. Light weight: quiet emphasis. Typically h5, h6."
             },
             "xsmall": {
               "value": {
@@ -4182,7 +4182,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Article subheading or secondary headline for opinion pieces. Typically h4, h5."
+              "description": "Subheading inside a section or card. Light weight: quiet emphasis. Typically h4, h5."
             },
             "small": {
               "value": {
@@ -4192,7 +4192,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Standard heading for sections and cards. Typically h3, h4."
+              "description": "Section heading for cards, panels and list groups. Light weight: quiet emphasis. Typically h3, h4."
             },
             "medium": {
               "value": {
@@ -4202,7 +4202,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Prominent section heading for major stories and category pages. Typically h2, h3."
+              "description": "Section heading for page regions and category views. Light weight: quiet emphasis. Typically h2, h3."
             },
             "large": {
               "value": {
@@ -4212,7 +4212,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Lead heading for hero and top-level content. Typically h1, h2."
+              "description": "Page-level heading. Light weight: quiet emphasis. Typically h1, h2."
             },
             "xlarge": {
               "value": {
@@ -4222,7 +4222,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Hero headline for breaking news and major investigations. Typically h1."
+              "description": "Hero heading for landing and entry screens. Light weight: quiet emphasis. Typically h1."
             },
             "2xlarge": {
               "value": {
@@ -4232,7 +4232,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Maximum impact headline for front-page stories and special reports. Typically h1."
+              "description": "Display heading for splash and campaign screens. Light weight: quiet emphasis. Typically h1."
             }
           },
           "regular": {
@@ -4244,7 +4244,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Body-weight subheading for accessible hierarchy. Typically h5, h6."
+              "description": "Compact label-sized heading for badges and dense callouts. Regular weight: the default voice. Typically h5, h6."
             },
             "xsmall": {
               "value": {
@@ -4254,7 +4254,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Regular article subheading for balanced typographic rhythm. Typically h4, h5."
+              "description": "Subheading inside a section or card. Regular weight: the default voice. Typically h4, h5."
             },
             "small": {
               "value": {
@@ -4264,7 +4264,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Standard news headline with approachable weight. Typically h3, h4."
+              "description": "Section heading for cards, panels and list groups. Regular weight: the default voice. Typically h3, h4."
             },
             "medium": {
               "value": {
@@ -4274,7 +4274,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Lead heading balancing authority and readability. Typically h2, h3."
+              "description": "Section heading for page regions and category views. Regular weight: the default voice. Typically h2, h3."
             },
             "large": {
               "value": {
@@ -4284,7 +4284,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Major heading for hero sections. Typically h1, h2."
+              "description": "Page-level heading. Regular weight: the default voice. Typically h1, h2."
             },
             "xlarge": {
               "value": {
@@ -4294,7 +4294,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Breaking news headline with commanding presence. Typically h1."
+              "description": "Hero heading for landing and entry screens. Regular weight: the default voice. Typically h1."
             },
             "2xlarge": {
               "value": {
@@ -4304,7 +4304,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Front-page impact headline for watershed moments. Typically h1."
+              "description": "Display heading for splash and campaign screens. Regular weight: the default voice. Typically h1."
             }
           },
           "bold": {
@@ -4316,7 +4316,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Emphasized subheading for visual hierarchy in dense layouts. Typically h5, h6."
+              "description": "Compact label-sized heading for badges and dense callouts. Bold weight: strong emphasis. Typically h5, h6."
             },
             "xsmall": {
               "value": {
@@ -4326,7 +4326,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Strong article subheading for analysis and opinion pieces. Typically h4, h5."
+              "description": "Subheading inside a section or card. Bold weight: strong emphasis. Typically h4, h5."
             },
             "small": {
               "value": {
@@ -4336,7 +4336,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Bold news headline for sidebar stories and related content. Typically h3, h4."
+              "description": "Section heading for cards, panels and list groups. Bold weight: strong emphasis. Typically h3, h4."
             },
             "medium": {
               "value": {
@@ -4346,7 +4346,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Prominent lead headline for section fronts and topic pages. Typically h2, h3."
+              "description": "Section heading for page regions and category views. Bold weight: strong emphasis. Typically h2, h3."
             },
             "large": {
               "value": {
@@ -4356,7 +4356,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "High-impact headline for exclusive stories and investigations. Typically h1, h2."
+              "description": "Page-level heading. Bold weight: strong emphasis. Typically h1, h2."
             },
             "xlarge": {
               "value": {
@@ -4366,7 +4366,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Bold breaking news headline for crisis coverage. Typically h1."
+              "description": "Hero heading for landing and entry screens. Bold weight: strong emphasis. Typically h1."
             },
             "2xlarge": {
               "value": {
@@ -4376,7 +4376,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Maximum emphasis front-page headline for historic events. Typically h1."
+              "description": "Display heading for splash and campaign screens. Bold weight: strong emphasis. Typically h1."
             }
           },
           "black": {
@@ -4388,7 +4388,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Ultra-bold micro headline for badges and compact callouts. Typically h5, h6."
+              "description": "Compact label-sized heading for badges and dense callouts. Black weight: maximum emphasis; use sparingly. Typically h5, h6."
             },
             "xsmall": {
               "value": {
@@ -4398,7 +4398,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Extra-bold subheading for emphasis and callouts. Typically h4, h5."
+              "description": "Subheading inside a section or card. Black weight: maximum emphasis; use sparingly. Typically h4, h5."
             },
             "small": {
               "value": {
@@ -4408,7 +4408,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Heavy-weight headline for opinion columns and features. Typically h3, h4."
+              "description": "Section heading for cards, panels and list groups. Black weight: maximum emphasis; use sparingly. Typically h3, h4."
             },
             "medium": {
               "value": {
@@ -4418,7 +4418,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Ultra-bold lead headline for major statements. Typically h2, h3."
+              "description": "Section heading for page regions and category views. Black weight: maximum emphasis; use sparingly. Typically h2, h3."
             },
             "large": {
               "value": {
@@ -4428,7 +4428,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Maximum impact headline for flagship investigations. Typically h1, h2."
+              "description": "Page-level heading. Black weight: maximum emphasis; use sparingly. Typically h1, h2."
             },
             "xlarge": {
               "value": {
@@ -4438,7 +4438,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Black-weight breaking news for critical national events. Typically h1."
+              "description": "Hero heading for landing and entry screens. Black weight: maximum emphasis; use sparingly. Typically h1."
             },
             "2xlarge": {
               "value": {
@@ -4448,7 +4448,7 @@
                 "lineHeight": "{foundation.fontLineHeight020}"
               },
               "type": "typography",
-              "description": "Absolute maximum impact headline for once-in-generation stories. Typically h1."
+              "description": "Display heading for splash and campaign screens. Black weight: maximum emphasis; use sparingly. Typically h1."
             }
           }
         },
@@ -5000,7 +5000,7 @@
             "lineHeight": "{foundation.fontLineHeight020}"
           },
           "type": "typography",
-          "description": "Article intro paragraph, large. Use p."
+          "description": "Lead paragraph, large. Opens a page or section before the body copy. Use p."
         },
         "medium": {
           "value": {
@@ -5010,7 +5010,7 @@
             "lineHeight": "{foundation.fontLineHeight020}"
           },
           "type": "typography",
-          "description": "Article intro paragraph, standard. Use p."
+          "description": "Lead paragraph, standard. Opens a page or section before the body copy. Use p."
         }
       },
       "paragraph": {

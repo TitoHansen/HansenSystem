@@ -362,7 +362,7 @@ We're planning a brand-specific plugin that will:
 4. ✅ Support advanced mode switching with better UX
 5. ✅ Export to multiple formats (Style Dictionary, Tailwind, etc.)
 
-**Roadmap**: See [plugin-roadmap.md](https://github.com/TitoHansen/PrismSystem/blob/main/packages/tokens/.agents/archive/plugin-roadmap.md) (archived)
+**Roadmap**: See [plugin-roadmap.md](https://github.com/TitoHansen/HansenSystem/blob/main/packages/tokens/.agents/archive/plugin-roadmap.md) (archived)
 
 ---
 

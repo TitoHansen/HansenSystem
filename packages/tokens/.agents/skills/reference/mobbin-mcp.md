@@ -13,7 +13,7 @@ This applies to both:
 
 | Trigger                                 | Example                                                 |
 | --------------------------------------- | ------------------------------------------------------- |
-| Designing a new component or pattern    | "I need to design a paywall"                            |
+| Designing a new component or pattern    | "I need to design a upgrade gate"                       |
 | Stuck on a micro-decision               | "Should the CTA label say 'Get started' or 'Continue'?" |
 | UI pattern feels uncertain or dated     | "How do top apps handle onboarding permission prompts?" |
 | Validating a layout before implementing | "Show me checkout flows from top e-commerce apps"       |
@@ -27,7 +27,7 @@ This applies to both:
 
 The Mobbin MCP exposes tools for searching and retrieving real app screens. Common operations:
 
-- **Search by design pattern or UI concept** — "paywalls from finance apps", "notification permission prompts", "pull-to-refresh animations"
+- **Search by design pattern or UI concept** — "upgrade gates from finance apps", "notification permission prompts", "pull-to-refresh animations"
 - **Search by app name** — "Revolut checkout flow", "Duolingo onboarding"
 - **Search by platform** — iOS, Android, Web
 - **Search by category** — Finance, Health, E-commerce, Social, Productivity
@@ -57,7 +57,7 @@ Copy and adapt these for common design decisions:
 "Show me the most effective empty state designs from productivity apps"
 
 # Conversion patterns
-"Show me paywall designs from top subscription apps that use a single-tier model"
+"Show me upgrade gate designs from top subscription apps that use a single-tier model"
 ```
 
 ---

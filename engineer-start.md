@@ -2,7 +2,7 @@
 description: Guided engineering intake. Pick what you want, then send the design or prototype. No keywords to remember.
 ---
 
-Run the Prism System guided engineering intake. The engineer clicks through what they want; never make them type a skill name. This command carries its own flow (below); it does not defer to the router's guided-mode section. It is the engineer's mirror of `/design-start`.
+Run the Hansen System guided engineering intake. The engineer clicks through what they want; never make them type a skill name. This command carries its own flow (below); it does not defer to the router's guided-mode section. It is the engineer's mirror of `/design-start`.
 
 $ARGUMENTS
 

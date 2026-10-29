@@ -26,9 +26,9 @@ Turn a week of `usage.jsonl` lines into one page the team actually reads: what g
 
 ## Inputs
 
-* `week` - ISO week to report on, `<year>-W<nn>`. Default: the current ISO week, UTC.
-* `lookback` - how many previous weeks to include in the deltas table. Default 4. Set 0 to disable.
-* `min_evidence` - minimum events in a friction cluster before it may generate an upgrade suggestion. Default 3.
+- `week` - ISO week to report on, `<year>-W<nn>`. Default: the current ISO week, UTC.
+- `lookback` - how many previous weeks to include in the deltas table. Default 4. Set 0 to disable.
+- `min_evidence` - minimum events in a friction cluster before it may generate an upgrade suggestion. Default 3.
 
 ## Procedure
 
@@ -145,10 +145,10 @@ PY
 
 Counting definitions the script encodes, so humans can audit it:
 
-* **Top-level run**: any non-feedback line except nested skill lines (a nested line has both `skill` and `agent` set; it is a skill running inside an agent). This keeps an agent run plus its four composed skills from counting as five runs.
-* **Feedback events** (`event: "feedback"`, `outcome: "rejected"`) are judgements about earlier runs and are excluded from run totals.
-* **Friction** = rejected + `retry_after_wizard` + abandoned. A single run carrying two flags counts twice in friction rows; the honesty notes say so.
-* **Abandoned (inferred)** = a `design-start` line not already logged abandoned, with no artefacts of its own and whose feature produced no artefact all week: the wizard ran, nothing came out.
+- **Top-level run**: any non-feedback line except nested skill lines (a nested line has both `skill` and `agent` set; it is a skill running inside an agent). This keeps an agent run plus its four composed skills from counting as five runs.
+- **Feedback events** (`event: "feedback"`, `outcome: "rejected"`) are judgements about earlier runs and are excluded from run totals.
+- **Friction** = rejected + `retry_after_wizard` + abandoned. A single run carrying two flags counts twice in friction rows; the honesty notes say so.
+- **Abandoned (inferred)** = a `design-start` line not already logged abandoned, with no artefacts of its own and whose feature produced no artefact all week: the wizard ran, nothing came out.
 
 ### Step 3: Assemble the report
 
@@ -191,28 +191,28 @@ Write the report to `packages/tokens/.agents/weekly/<week>/USAGE-REPORT.md`. The
 
 ### By skill
 
-| Value | Runs |
-|---|---|
-| design/ui/design-critique | 14 |
+| Value                     | Runs |
+| ------------------------- | ---- |
+| design/ui/design-critique | 14   |
 
 ### By agent
 
-| Value | Runs |
-|---|---|
-| critique-agent | 5 |
+| Value          | Runs |
+| -------------- | ---- |
+| critique-agent | 5    |
 
 ### By entry point
 
-| Value | Runs |
-|---|---|
-| design-start | 11 |
-| direct | 9 |
+| Value        | Runs |
+| ------------ | ---- |
+| design-start | 11   |
+| direct       | 9    |
 
 ## Top routes
 
-| Value | Runs |
-|---|---|
-| ui-craft | 12 |
+| Value    | Runs |
+| -------- | ---- |
+| ui-craft | 12   |
 
 ## Artefacts produced
 
@@ -223,32 +223,32 @@ Write the report to `packages/tokens/.agents/weekly/<week>/USAGE-REPORT.md`. The
 
 ## Outcome breakdown
 
-| Value | Runs |
-|---|---|
-| completed | 18 |
-| partial | 3 |
-| failed | 1 |
-| abandoned | 2 |
+| Value     | Runs |
+| --------- | ---- |
+| completed | 18   |
+| partial   | 3    |
+| failed    | 1    |
+| abandoned | 2    |
 
 ## Friction list
 
-| Signal | Count | Features |
-|---|---|---|
-| rejected | 2 | saved-articles x2 |
-| retry_after_wizard | 3 | saved-articles x2, live-blog x1 |
-| abandoned (logged) | 2 | events-landing x2 |
-| abandoned (inferred) | 1 | (none) x1 |
+| Signal               | Count | Features                     |
+| -------------------- | ----- | ---------------------------- |
+| rejected             | 2     | saved-items x2               |
+| retry_after_wizard   | 3     | saved-items x2, live-blog x1 |
+| abandoned (logged)   | 2     | events-landing x2            |
+| abandoned (inferred) | 1     | (none) x1                    |
 
 Rejected reasons, verbatim from the log:
 
-- rejected: design/ui/a11y-check / saved-articles: contrast advice ignored the dark theme
+- rejected: design/ui/a11y-check / saved-items: contrast advice ignored the dark theme
 
 ## Week over week
 
-| Week | Runs | Completed | Friction | Completion |
-|---|---|---|---|---|
-| 2026-W29 | 24 | 18 | 8 | 75% |
-| 2026-W28 | 19 | 16 | 3 | 84% |
+| Week     | Runs | Completed | Friction | Completion |
+| -------- | ---- | --------- | -------- | ---------- |
+| 2026-W29 | 24   | 18        | 8        | 75%        |
+| 2026-W28 | 19   | 16        | 3        | 84%        |
 
 ## Upgrade suggestions
 
@@ -276,20 +276,20 @@ Followed by the machine-readable summary:
 
 ## Error Handling
 
-* **`usage.jsonl` missing or empty.** Still write the report, with zeros and no suggestions, plus one line noting that an empty week is itself a signal: either the suite went unused or the logging convention is not being followed. Both are findings, not failures.
-* **`python3` unavailable.** Stop and say so. Do not hand-count; a wrong report is worse than a late one.
-* **Malformed lines.** Skipped and counted by the script. If they exceed 10 percent of lines read, the first upgrade suggestion writes itself: fix whichever appender is emitting broken JSON (the count and the week narrow it down).
-* **A previous week's folder is missing.** The script prints it as a zero row; keep it, and note under Week over week that a zero row means "no log for that week", which is not the same as zero usage. Do not backfill or interpolate.
-* **No friction cluster reaches `min_evidence`.** Output fewer than three suggestions, or none, and say why. Never invent a suggestion to fill the list.
-* **Tempted to soften the friction list.** Do not. The friction list is the point of the report; a flattering report teaches the team nothing and erodes trust in the numbers.
+- **`usage.jsonl` missing or empty.** Still write the report, with zeros and no suggestions, plus one line noting that an empty week is itself a signal: either the suite went unused or the logging convention is not being followed. Both are findings, not failures.
+- **`python3` unavailable.** Stop and say so. Do not hand-count; a wrong report is worse than a late one.
+- **Malformed lines.** Skipped and counted by the script. If they exceed 10 percent of lines read, the first upgrade suggestion writes itself: fix whichever appender is emitting broken JSON (the count and the week narrow it down).
+- **A previous week's folder is missing.** The script prints it as a zero row; keep it, and note under Week over week that a zero row means "no log for that week", which is not the same as zero usage. Do not backfill or interpolate.
+- **No friction cluster reaches `min_evidence`.** Output fewer than three suggestions, or none, and say why. Never invent a suggestion to fill the list.
+- **Tempted to soften the friction list.** Do not. The friction list is the point of the report; a flattering report teaches the team nothing and erodes trust in the numbers.
 
 ## Composition
 
-* `compose_after`: `coordination/usage-log`, whose lines are the sole input.
-* `compose_before`: `design/ui/monthly-audit` (critique scores and usage trends are read together at month end); `coordination/release-process` (friction clusters feed the backlog discussion).
-* `calls`: `python3` for deterministic counting; a shell append for its own usage line.
+- `compose_after`: `coordination/usage-log`, whose lines are the sole input.
+- `compose_before`: `design/ui/monthly-audit` (critique scores and usage trends are read together at month end); `coordination/release-process` (friction clusters feed the backlog discussion).
+- `calls`: `python3` for deterministic counting; a shell append for its own usage line.
 
 ## Related skills
 
-* `usage-log.md` - the append convention, field schema and privacy rules this report depends on
-* `../../design/design-router.md` - where wizard-step friction findings usually point for the fix
+- `usage-log.md` - the append convention, field schema and privacy rules this report depends on
+- `../../design/design-router.md` - where wizard-step friction findings usually point for the fix
